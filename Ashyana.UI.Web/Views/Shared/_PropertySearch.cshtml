@@ -1,0 +1,166 @@
+﻿
+
+<style type="text/css">
+    .hdr {
+        font-size: 18px;
+        font-family: Garamond;
+        color: yellow;
+    }
+</style>
+
+<!--  Start Search form-->
+
+<div class="left_srch">
+    <h1>
+        @Html.Label("SEARCH FOR A PROPERTY", new { @class = "hdr" })
+    </h1>
+    <div class="spacer_5">
+    </div>
+    <div class="searchlist">
+
+        @*@Html.RadioButtonFor(m => m.allProperty.propertyPrice, "Buy")Buy
+            @Html.RadioButtonFor(m => m.allProperty.propertyPrice, "Rent")Rent*@
+
+
+        <div class="spacer_5" >
+        </div>
+        <div >
+            @Html.Label("Location", null, new { @class = "Searchlabel" })
+            @Html.TextBox("Location", null, new { @class = "form-control" })
+        </div>
+
+        <div class="spacer_5">
+        </div>
+        <div>
+            @Html.Label("Or Search by  Metro Station", null, new { @class = "Searchlabel" })
+            @Html.DropDownList("ddlMetro", new List<SelectListItem>
+                {
+                    new SelectListItem {Text="-Select-",Value="0"},
+
+
+                new SelectListItem {Text="Select",Value=""},
+                new SelectListItem {Text="ADARSH NAGAR",Value=""},
+                new SelectListItem {Text="AIIMS",Value=""},
+                new SelectListItem {Text="AKSHARDHAM",Value=""},
+                new SelectListItem {Text="ANAND VIHAR",Value=""},
+                new SelectListItem {Text="ARJANGARH",Value=""},
+                new SelectListItem {Text="ASHOK PARK MAIN",Value=""},
+                new SelectListItem {Text="AZADPUR",Value=""},
+                new SelectListItem {Text="BADARPUR",Value=""},
+                new SelectListItem {Text="BARAKHAMBA",Value=""},
+                new SelectListItem {Text="BOTANICAL GARDEN",Value=""},
+                new SelectListItem {Text="CENTRAL SECRETARIAT",Value=""},
+
+            }, new { @class = "dropdown-menu" })
+            <br />
+            or<br />
+        </div>
+        <div class="spacer_5">
+        </div>
+        <div>
+            @Html.Label("Pin", null, new { @class = "Searchlabel" })
+            @Html.TextBox("Pin", null, new { @class = "form-control" })
+        </div>
+        <div class="spacer_5">
+        </div>
+    </div>
+</div>
+<div class="right_srch">
+    <div class="searchlist">
+        Price Range:
+        @Html.DropDownList("ddlMinPriceBuy", new List<SelectListItem>
+                    {
+
+                   new SelectListItem {Text="Less than 10 Lakhs",Value="100000"},
+                   new SelectListItem {Text="10 Lakhs",Value="100000"},
+                   new SelectListItem {Text="20 Lakhs",Value="200000"},
+                   new SelectListItem {Text="30 Lakhs",Value="200000"},
+                }, new { style = "width: 100px;",@class="dropdown-menu" })
+
+        @Html.DropDownList("ddlMaxPriceBuy", new List<SelectListItem>
+                    {
+
+                   new SelectListItem {Text="Less than 10 Lakhs",Value="100000"},
+                   new SelectListItem {Text="10 Lakhs",Value="100000"},
+                   new SelectListItem {Text="20 Lakhs",Value="200000"},
+                   new SelectListItem {Text="30 Lakhs",Value="200000"},
+                }, new { @class = "dropdown-menu" })
+
+
+        <div class="spacer_5">
+        </div>
+        <div>@Html.Label("Bedrooms", null, new { @class = "Searchlabel" })</div>
+        <div>
+            @Html.DropDownList("ddlRoomRent", new List<SelectListItem>
+        {
+
+        new SelectListItem{Text="1",Value="1"},
+        new SelectListItem{Text="2",Value="2"},
+        new SelectListItem{Text="3",Value="3"},
+        new SelectListItem{Text="4",Value="4"},
+        new SelectListItem{Text="5",Value="5"}
+
+
+      }, new { @class = "dropdown-menu" })
+        </div>
+
+        <div class="spacer_5">
+        </div>
+        <div>
+            @Html.Label("Property Type", null, new { @class = "Searchlabel" })
+            @Html.DropDownList("Status", new List<SelectListItem>
+
+                 {
+                    new SelectListItem{ Text="Mr", Value = "1" },
+                    new SelectListItem{ Text="Mrs", Value = "0" }
+                 }, new { @class = "drpdn" })        <div class="spacer_5">
+            </div>
+        </div>
+        <div>
+            @Html.Label("City", null, new { @class = "dropdown-menu" })
+
+            @Html.DropDownList("ddlCity", new List<SelectListItem>
+                 {
+                     new SelectListItem{Text="1",Value="Pune"},
+                     new SelectListItem{Text="2",Value="Delhi"},
+                 }, new { @class = "dropdown-menu" }
+            )
+
+
+        </div>
+        <div class="spacer_5">
+        </div>
+        <div class="spacer_5">
+        </div>
+        <div id="S_img">
+            @Html.ActionLink("Search Property", "GetPropertyList", "Property", new { @class = "btn btn-primary" })
+            @*<input type="submit" value="btnSearch" name="btnSearch" class="button" onclick=" return checkDropdown();" />*@
+
+        </div>
+        <div class="spacer_5">
+        </div>
+    </div>
+</div>
+<div class="end_srch">
+    @*@Html.Partial("~/Views/Account/Register.cshtml")*@
+</div>
+<div class="big_pic">
+    <div class="left_box">
+        <input type="submit" value="btnSearchAgent" name="btnSearchAgent" class="button" />
+
+        Dealing In :
+        @Html.DropDownList("ddlDealingIn", new List<SelectListItem>
+        {
+            new SelectListItem{Text="-Transaction Type-", Value="0"},
+           new SelectListItem {Text="Rent/Lease", Value="1"},
+           new SelectListItem {Text="Pre-launch",Value="2"},
+           new SelectListItem {Text="Original-booking" ,Value="3"},
+           new SelectListItem {Text="Resale" ,Value="4"},
+           new SelectListItem {Text="Others", Value="5"}
+        }, new  {@class="dropdown-menu" })
+        City:
+
+    </div>
+</div>
+
+<!--   End Search form-->

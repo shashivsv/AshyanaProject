@@ -1,0 +1,108 @@
+﻿@model Ashyana.UI.Web.Models.User
+
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog " style="width:600px;">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Details</h4>
+            </div>
+            <div class="modal-body">
+
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.userFirstname)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.userFirstname)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.userLastname)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.userLastname)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.userEmailID)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.userEmailID)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.userContactno)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.userContactno)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.userName)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.userName)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.RoleID)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.RoleID)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.countryID)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.countryID)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.StateID)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.StateID)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.cityID)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.cityID)
+                    </dd>
+
+
+                </dl>
+            </div>
+     
+        </div>
+        <div class="modal-footer">
+            @Html.ActionLink("Edit", "Edit", new { id = Model.userID }) |
+  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+    </div>
+</div>
+
+
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+        $("#myModal").modal('show');
+
+    });
+
+</script>

@@ -1,0 +1,108 @@
+﻿@model Ashyana.UI.Web.Models.State
+
+<div>
+    <h4>State</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.StateName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StateName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StateDesc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StateDesc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StateImage)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StateImage)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StateDelete)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StateDelete)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StateCreatedby)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StateCreatedby)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StateCreatedon)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StateCreatedon)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StateDeletedby)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StateDeletedby)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StateDeletedon)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StateDeletedon)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StateUpdatedby)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StateUpdatedby)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StateUpdatedon)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StateUpdatedon)
+        </dd>
+
+        @*<dt>
+            @Html.DisplayNameFor(model => model.countryID)
+        </dt>*@
+        <dt>
+
+            @Html.DropDownList("ddlCountry")
+
+
+        </dt>
+
+
+
+        <dd>
+            @Html.DisplayFor(model => model.countryID)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.StateID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

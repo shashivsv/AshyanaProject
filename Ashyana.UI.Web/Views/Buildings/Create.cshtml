@@ -1,0 +1,89 @@
+﻿@model Ashyana.UI.Web.Models.Building
+<script src="~/Scripts/bootstrap-filestyle.min.js"></script>
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog " style="width:450px;">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Add New Building </h4>
+            </div>
+            <div class="modal-body">
+
+
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-horizontal">
+                       
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.buildingType, htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-6">
+                                @Html.EditorFor(model => model.buildingType, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.buildingType, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.buildingDesc, htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-6">
+                                @Html.EditorFor(model => model.buildingDesc, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.buildingDesc, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="thumbnail">
+                                    @if (TempData["buildingImage"] != null)
+                                    { <img id="user_img" src=@TempData["Image"] style="height:100px;width:100px;" class="img-responsive pull-right img-thumbnail" alt="" />
+                                    }
+                                    else
+                                    {  <img id="user_img" src="../images/uploads/upload.jpg" style="height:100px;width:100px;" class="img-responsive pull-right img-thumbnail" alt="" />
+                                    }
+
+                                    <div class="form-group">
+                                        <div class="col-md-8">
+                                            <input type="file" title="search image" class="filestyle" id="img_file" name="file" onchange="show(this)" />
+                                        </div>
+                                        @Html.ValidationMessageFor(model => model.buildingImage, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+
+
+
+
+                       
+
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <input type="submit" value="Create" class="btn btn-default" />
+                            </div>
+                        </div>
+                    </div>
+                }
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+          }
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+        $("#myModal").modal('show');
+
+    });
+
+</script>

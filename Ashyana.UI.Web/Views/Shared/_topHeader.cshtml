@@ -1,0 +1,20 @@
+﻿@model IEnumerable<Ashyana.UI.Web.ViewModel.MenuList>
+@{
+ 
+    var homemenu = Session["topMenu"] as List<Ashyana.UI.Web.ViewModel.MenuList>;
+   
+}
+
+<ul class="nav navbar-nav">
+    @if (Session["topMenu"] != null)
+    {
+        foreach (var a in homemenu)
+        {
+            <li><a href="@Url.Action("About", "Home")">@a.linkName</a></li>
+
+        }
+    }
+</ul>
+
+
+

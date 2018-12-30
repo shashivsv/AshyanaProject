@@ -1,0 +1,24 @@
+﻿@using Microsoft.AspNet.Identity
+@if (Session["userid"] != null)
+{
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
+    {
+        @Html.AntiForgeryToken()
+
+
+        <li>
+            @if (Session["username"] != null)
+            {
+                <span>    @Html.ActionLink("Hello " + Session["username"] + "(" + Session["userType"] + ")","Index","Manage", routeValues: null, htmlAttributes: new { title = "Manage" })</span><br />
+
+
+            }
+        </li>
+        <li><a href="javascript:document.getElementById('logoutForm').submit()" class="padding_tp_3">Log off</a></li>
+
+    }
+}
+
+
+
+

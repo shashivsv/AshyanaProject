@@ -1,0 +1,121 @@
+﻿@*@model IEnumerable<Ashyana.UI.Web.Models.Floor>
+
+    @{
+        Layout = null;
+    }
+
+    <!DOCTYPE html>
+
+    <html>
+    <head>
+        <meta name="viewport" content="width=device-width" />
+        <title>Index</title>
+    </head>
+    <body>
+        <p>
+            @Html.ActionLink("Create New", "Create")
+        </p>
+        <table class=" table table-striped table-bordered datatable">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.floorType)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.floorDesc)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.floorImage)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.floorDelete)
+                </th>
+
+            </tr>
+
+        @foreach (var item in Model) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.floorType)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.floorDesc)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.floorImage)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.floorDelete)
+                </td>
+
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id=item.floorTypeID }) |
+                    @Html.ActionLink("Details", "Details", new { id=item.floorTypeID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id=item.floorTypeID })
+                </td>
+            </tr>
+        }
+
+        </table>
+    </body>
+    </html>*@
+
+@*<div ng-app="myapp">
+        <div ng-controller="FloorCtrl">
+            <table class="table table-striped table-bordered table-hover table-checkable datatable">
+                <thead class="grid-top-panel">
+                    <tr>
+                        <th>Floor ID</th>
+                        <th>Floor Type</th>
+                        <th>Floor Desc</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="dataModel in floors">
+                        <td>{{dataModel.FloorID}}</td>
+                        <td>{{dataModel.FloorType}}</td>
+                        <td>{{dataModel.FloorDesc}}</td>
+
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>*@
+
+
+
+@*<script src="~/ScriptsNg/Controller/mytestangular.js"></script>*@
+<style type="text/css">
+   
+</style>
+<body data-ng-app="APIFloorModule">
+    <div ng-controller="APIFloorController">
+        <table class="table table-striped table-bordered table-hover table-checkable datatable">
+            <thead class="grid-top-panel">
+                <tr>
+                    <th>Floor ID</th>
+                    <th>Floor Type</th>
+                    <th>Floor Desc</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr data-ng-repeat="dataModel in floors">
+                    <td>{{dataModel.floorTypeID}}</td>
+                    <td>{{dataModel.floorType}}</td>
+                    <td>{{dataModel.floorDesc}}</td>
+
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+</body>
+
+<script src="~/Scripts/angular.js"></script>
+<script src="~/Scripts/angular-route.js"></script>
+
+<script src="~/Scripts/APIScripts/Module.js"></script>
+<script src="~/Scripts/APIScripts/Service.js"></script>
+<script src="~/Scripts/APIScripts/Controller.js"></script>

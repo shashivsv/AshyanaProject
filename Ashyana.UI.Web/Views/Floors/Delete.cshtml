@@ -1,0 +1,112 @@
+﻿@model Ashyana.UI.Web.Models.Floor
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Delete</title>
+</head>
+<body>
+    <h3>Are you sure you want to delete this?</h3>
+    <div>
+        <h4>Floor</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.floorType)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.floorType)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.floorDesc)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.floorDesc)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.floorImage)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.floorImage)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.floorDelete)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.floorDelete)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.floorDeletedon)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.floorDeletedon)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.floorCreatedby)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.floorCreatedby)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.floorCreatedon)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.floorCreatedon)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.floorDeletedby)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.floorDeletedby)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.floorUpdatedby)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.floorUpdatedby)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.floorUpdatedon)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.floorUpdatedon)
+            </dd>
+    
+        </dl>
+    
+        @using (Html.BeginForm()) {
+            @Html.AntiForgeryToken()
+    
+            <div class="form-actions no-color">
+                <input type="submit" value="Delete" class="btn btn-default" /> |
+                @Html.ActionLink("Back to List", "Index")
+            </div>
+        }
+    </div>
+</body>
+</html>

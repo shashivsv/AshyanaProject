@@ -1,0 +1,202 @@
+﻿@model Ashyana.UI.Web.Models.Property
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Property</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.propertyTypeID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.propertyTypeID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.propertyDesc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.propertyDesc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.purchaseType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.purchaseType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.propertyPrice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.propertyPrice)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.bedroom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.bedroom)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.propertyArea)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.propertyArea)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.countryID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.countryID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.stateID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.stateID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cityID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cityID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.metro)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.metro)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.propertyAddress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.propertyAddress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.propertyLocality)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.propertyLocality)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.pin)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.pin)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.propertyAge)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.propertyAge)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.propertyTenure)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.propertyTenure)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.propertyImage)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.propertyImage)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.propertyDelete)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.propertyDelete)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.propertyDeletedon)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.propertyDeletedon)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.propertyCreatedby)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.propertyCreatedby)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.propertyCreatedon)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.propertyCreatedon)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.propertyDeletedby)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.propertyDeletedby)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.propertyUpdatedby)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.propertyUpdatedby)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.propertyUpdatedon)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.propertyUpdatedon)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.propertyID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

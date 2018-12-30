@@ -1,0 +1,151 @@
+﻿@model Ashyana.UI.Web.ViewModel.MyUserModel
+
+<div class="modal fade" id="myModal2" role="dialog">
+    <div class="modal-dialog " style="width:500px;">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Register </h4>
+            </div>
+            <div class="modal-body">
+              
+                  <div class="frm">
+                    <div class="forcColor"></div>
+                    <div class="topar">
+                        <div class="spaColor"></div>
+                        @using (Html.BeginForm("Register", "Account", FormMethod.Post))
+                        {
+                            @Html.AntiForgeryToken()
+                            <div class="radio-inline">
+
+                                @Html.RadioButton("RoleID", "1", isChecked: true)@Html.Label("User")
+                            </div>
+                            <div class="radio-inline">
+                                @Html.RadioButton("RoleID", "2", isChecked: false)@Html.Label("Agent")
+                            </div>
+
+                            <div class="form-group">
+                                @Html.EditorFor(m => m.userName, new { htmlAttributes = new { @class = "form-control", placeholder = "username" } })
+                            </div>
+                            <div class="form-group">
+                                @Html.EditorFor(m => m.userFirstname, new { htmlAttributes = new { @class = "form-control", placeholder = "first name" } })
+                            </div>
+                            <div class="form-group">
+                                @Html.EditorFor(m => m.userLastname, new { htmlAttributes = new { @class = "form-control", placeholder = "last name" } })
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.countryID, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @if (ViewBag.countryDetails != null)
+                                    {
+                                        @Html.DropDownListFor(m => m.countryID, new SelectList(ViewBag.countryDetails, "Value", "Text"), "-Select", new { id = "countryID", @class = "form-control", @onchange = "GetState();" })
+                                    }
+                                    else
+                                    {
+                                        @Html.DropDownListFor(m => m.countryID, new SelectList(string.Empty, "Value", "Text"), "", new { @class = "form-control", id = "countryID" })
+                                    }
+                                    @Html.ValidationMessageFor(model => model.countryID, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.StateID, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+
+
+                                    @Html.DropDownListFor(m => m.StateID, new SelectList(string.Empty, "Value", "Text"), "", new { @class = "form-control", id = "stateID", @onchange = "GetCity()" })
+
+                                    @Html.ValidationMessageFor(model => model.StateID, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.cityID, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.DropDownListFor(m => m.cityID, new SelectList(string.Empty, "Value", "Text"), "", new { @class = "form-control", id = "cityID" })
+
+
+                                    @Html.ValidationMessageFor(model => model.cityID, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+
+                                @Html.EditorFor(m => m.userEmailID, new { htmlAttributes = new { @class = "form-control", placeholder = "Email" } })
+                            </div>
+                            <div class="form-group">
+                                @Html.PasswordFor(m => m.userPassword, new { htmlAttributes = new { @class = "form-control", placeholder = "password" } })
+                            </div>
+                            <div class="form-group">
+                                @Html.EditorFor(m => m.userContactno, new { htmlAttributes = new { @class = "form-control", placeholder = "contact" } })
+                            </div>
+
+
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <input type="submit" class="btn btn-default" value="Register" />
+                                </div>
+                            </div>
+
+                        }
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#myModal2").modal('show');
+    });
+
+    function GetState() {
+        var countryID = $('#countryID').val();
+
+        $.ajax(
+        {
+            type: "POST",
+            url: '@Url.Action("GetState", "Users")',
+            datatype: 'application/json',
+            contentType: "application/json; charset=utf-8",
+            data: '{countryID: "' + countryID + '"}',
+
+            success: function (result) {
+                $("#stateID").html("");
+                $.each(result, function (i, state) {
+                    $("#stateID").append('<option value="' + state.Value + '">' + state.Text + '</option>');
+                });
+            }
+        });
+    }
+
+
+
+    function GetCity() {
+        var stateID = $('#stateID').val();
+
+        $.ajax(
+        {
+            type: "POST",
+            url: '@Url.Action("GetCity", "Users")',
+            datatype: 'application/json',
+            contentType: "application/json; charset=utf-8",
+            data: '{stateID: "' + stateID + '"}',
+
+            success: function (result) {
+                $("#cityID").html("");
+                $.each(result, function (i, state) {
+                    $("#cityID").append('<option value="' + state.Value + '">' + state.Text + '</option>');
+                });
+            }
+        });
+    }
+</script>

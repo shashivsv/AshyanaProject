@@ -1,0 +1,105 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link href="~/Content/Home.css" rel="stylesheet" />
+    <link rel="shortcut icon" type="image/x-icon" href="~/images/favicon.ico" />
+    <link href="~/Content/Login.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="~/Scripts/jquery.min.js"></script>
+    @*<script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+        <script src="~/Scripts/jquery.validate.js"></script>*@
+    <link href="~/Content/flexinav.css" rel="stylesheet" />
+    <script src="~/Scripts/respond.js"></script>
+
+
+    <script src="~/Scripts/flexinav.js"></script>
+
+</head>
+<body>
+
+    <div id="templatemo_container">
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            @{
+                Html.RenderPartial("_topHeader");
+            }
+            <div class="navbar-buttons navbar-header pull-right" role="navigation">
+                <span style="font-size:10px;font-family:Aharoni;">Online :@HttpContext.Current.Application["Now"].ToString()</span>
+
+                <ul class="nav navbar-nav">
+
+                    <li class="dropdown">
+
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">My Account <b class="caret"></b></a>
+                        <ul class="dropdown-menu animated fadeInUp">
+                            @if (Session["userid"] != null)
+                            {
+
+                                <li>
+                                    <a href="Home/Logout">
+
+
+                                    </a>
+                                </li>
+                            }
+
+                            @Html.Partial("_LoginPartial")
+
+
+                        </ul>
+
+                    </li>
+
+
+                </ul>
+            </div>
+
+        </nav>
+
+        <!-- end of topBar -->
+        <!-- end of header panel -->
+
+        <div id="fdw">
+            @Html.Partial("~/Views/Shared/_Menu.cshtml")
+        </div> <!-- end of menu -->
+
+        <div id="templatemo_top_panel">
+            <img src="@Url.Content("../images/site.jpg")" alt="Image" class="imglogo" />
+
+            <p id="text">
+                Welcome to India's Property Hub<br />
+                @*<font size="5">
+                        <input type="button" id="btnPost" width="230" cssclass="button" text="POST YOUR PROPERTY" />
+                    </font><br />
+                    <br />
+                    <font size="5">
+                        <input type="button" id="btnBook" width="230" cssclass="button" text="BOOK YOUR FREE EVALUATION" />
+                    </font>*@
+            </p>
+
+        </div> <!-- end of top panel -->
+
+        <div class="container body-content">
+
+            @RenderBody()
+
+        </div> <!-- end of container -->
+
+    </div>
+
+    <footer>
+        @{
+            Html.RenderPartial("_footer");
+        }
+    </footer>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

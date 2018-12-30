@@ -1,0 +1,162 @@
+﻿@model Ashyana.UI.Web.Models.MapuserRoleLink
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4>MapuserRoleLink</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.roleID)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.roleID)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.userID)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.userID)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.linkID)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.linkID)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.subLinkID)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.subLinkID)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.sublinkView)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.sublinkView)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.sublinkAdd)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.sublinkAdd)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.sublinkUpdate)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.sublinkUpdate)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.sublinkDelete)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.sublinkDelete)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.sublinkPrint)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.sublinkPrint)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.linkCheck)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.linkCheck)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.subLinkcheck)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.subLinkcheck)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.linkCreatedBy)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.linkCreatedBy)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.linkCreatedOn)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.linkCreatedOn)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.linkDeletedBy)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.linkDeletedBy)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.linkDeletedOn)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.linkDeletedOn)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.linkUpdatedBy)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.linkUpdatedBy)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.linkUpdatedOn)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.linkUpdatedOn)
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.userLinkMapID }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>

@@ -1,0 +1,194 @@
+﻿@model Ashyana.UI.Web.Models.Property
+
+<script src="~/Scripts/bootstrap-filestyle.min.js"></script>
+<body data-title="create_property">
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog " style="width:700px;">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">New Property </h4>
+                </div>
+                <div class="modal-body">
+
+
+                    @using (Html.BeginForm("Create", "Property", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                    {
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-horizontal">
+
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.purchaseType, htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-6">
+
+
+                                @Html.DropDownListFor(model => model.purchaseType, new SelectList(ViewBag.purchaseDetails, "Value", "Text"), "-Select-", htmlAttributes: new { @class = "form-control" })
+
+                                @Html.ValidationMessageFor(model => model.purchaseType, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.propertyDesc, htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-6">
+                                @Html.EditorFor(model => model.propertyDesc, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.propertyDesc, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.propertyPrice, htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-6">
+                                @Html.EditorFor(model => model.propertyPrice, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.propertyPrice, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.bedroom, htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-6">
+                                @Html.EditorFor(model => model.bedroom, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.bedroom, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.propertyArea, htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-6">
+                                @Html.EditorFor(model => model.propertyArea, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.propertyArea, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                     
+                        <!--new method cal from api-->
+
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.countryID, htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-6">
+                                <select class="form-control" id="ddlCountry"></select><br />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">State Name</label>
+                            <div class="col-md-6">
+                                <select class="form-control" id="ddlState"></select>
+                            </div>
+                        </div>
+                        <br />
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">City Name</label>
+                            <div class="col-md-6">
+                                <select class="form-control" id="ddlCity"></select>
+
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.metro, htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-6">
+                                @Html.EditorFor(model => model.metro, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.metro, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.propertyAddress, htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-6">
+                                @Html.EditorFor(model => model.propertyAddress, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.propertyAddress, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.propertyLocality, htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-6">
+                                @Html.EditorFor(model => model.propertyLocality, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.propertyLocality, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.pin, htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-6">
+                                @Html.EditorFor(model => model.pin, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.pin, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.propertyAge, htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-6">
+                                @Html.EditorFor(model => model.propertyAge, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.propertyAge, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.propertyTenure, htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-6">
+                                @Html.EditorFor(model => model.propertyTenure, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.propertyTenure, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <div class="thumbnail">
+                                <div class="col-sm-4">
+
+                                    @if (TempData["Image"] != null)
+                                    { <img id="user_img" src=@TempData["Image"] style="width:100px;" alt="" />
+                                    }
+                                    else
+                                    {  <img id="user_img" src="../images/uploads/upload.jpg" style="width:100px;" alt="" />
+                                    }
+                                </div>
+
+                                <div class="col-md-6">
+                                    <input type="file" title="search image" id="img_file" name="file" onchange="show(this)" class="filestyle" />
+                                    @Html.ValidationMessageFor(model => model.propertyImage, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-6">
+                                <input type="submit" value="Create" class="btn btn-default" />
+                            </div>
+                        </div>
+                    </div>
+                    }
+
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div>
+            @Html.ActionLink("Back to List", "List")
+        </div>
+    </div>
+
+</body>
+<script type="text/javascript">
+
+    function show(input) {
+        if (input.files && input.files[0]) {
+            var filerdr = new FileReader();
+            filerdr.onload = function (e) {
+                $('#user_img').attr('src', e.target.result);
+            }
+            filerdr.readAsDataURL(input.files[0]);
+        }
+    }
+
+</script>

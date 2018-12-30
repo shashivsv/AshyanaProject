@@ -1,0 +1,63 @@
+﻿@model Ashyana.UI.Web.Models.PropertyType
+
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog " style="width:650px;">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Link PropertyType </h4>
+            </div>
+            <div class="modal-body">
+
+
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.propertyType1)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.propertyType1)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.propertyTypeDesc)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.propertyTypeDesc)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.propertyTypeDelete)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.propertyTypeDelete)
+                    </dd>
+
+                  
+
+                   
+
+                </dl>
+            </div>
+            <p>
+                @Html.ActionLink("Edit", "Edit", new { id = Model.propertyTypeID }) |
+                @Html.ActionLink("Back to List", "Index")
+            </p>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#myModal").modal('show');
+    });
+
+</script>

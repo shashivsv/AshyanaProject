@@ -1,0 +1,495 @@
+﻿@model  Ashyana.UI.Web.Models.Property
+
+<link href="~/content/search.css" rel="stylesheet" />
+<link href="~/content/site.css" rel="stylesheet" />
+
+<div id="container-inner">
+    <div id="search-result">
+        <div id="left-nav-bg">
+            <div class="cluster_wrap" id="cluster_wrap">
+                <div id="refine">
+                    <div class="refine_title">
+                        Filter Search
+                    </div>
+                </div>
+
+
+                <div class="rsearch1">
+                    <div id='recently_joined' class="rsearch-header pos_rel minus plus" data-cluster='' onclick="$('#divMetro').slideToggle(); $(this).toggleClass('minus');">
+                        <span>
+                            Metro
+                        </span>
+                    </div>
+                    <div id="divMetro" class="rsearch-option" style="display: block;">
+                        <ul>
+                            @Html.DropDownList("ddlMetro", new List<SelectListItem>
+                                 {
+                                     new SelectListItem {Text="-Select-",Value="0"},
+                                     new SelectListItem {Text="Select",Value=""},
+                                     new SelectListItem {Text="ADARSH NAGAR",Value=""},     
+                                     new SelectListItem {Text="AIIMS",Value=""},
+                                     new SelectListItem {Text="AKSHARDHAM",Value=""},
+                                     new SelectListItem {Text="ANAND VIHAR",Value=""},
+                                     new SelectListItem {Text="ARJANGARH",Value=""},
+                                     new SelectListItem {Text="ASHOK PARK MAIN",Value=""},
+                                     new SelectListItem {Text="AZADPUR",Value=""},
+                                     new SelectListItem {Text="BADARPUR",Value=""},
+                                     new SelectListItem {Text="BARAKHAMBA",Value=""},
+                                     new SelectListItem {Text="BOTANICAL GARDEN",Value=""},
+                                     new SelectListItem {Text="CENTRAL SECRETARIAT",Value=""},
+
+                                 }, new { @class = "drpDn" })
+                        </ul>
+                        @*<div class="clearfix"></div><div class="clearfix"></div>*@
+                    </div>
+                </div>
+
+                <div class="rsearch1">
+                    <div id='annualincome' class="rsearch-header pos_rel minus plus" data-cluster='' onclick="$('#divpropertTypeDetails').slideToggle(); $(this).toggleClass('minus');">
+                        <span>
+                            Property Type
+                        </span>
+                        <div id="divpropertTypeDetails" class="rsearch-option" style="display: -moz-inline-stack;">
+                            <ul>
+                                @if (ViewBag.propertTypeDetails != null)
+                                {
+                                    foreach (var v in ViewBag.propertTypeDetails)
+                                    {
+                                        <div class="checkbox">
+                                            <label>
+                                                <input type="checkbox" id="chk" name="@v.Text" value="@v.Value" />@v.Value
+                                            </label>
+                                        </div>
+                                    }
+                                }
+                              
+                            </ul>
+                        </div>
+                    </div>
+                    <div id="rsearch-option-annualincome" class="rsearch-option" style="display: block;">
+                        <ul></ul>
+                        <div class="clearfix"></div><span>
+                            <a href="javascript:void(0);" onclick="cluster_popup($(this));" rel="https://www.shaadi.com/search/ajax/refine-panel?pg_scriptpath=/search/matrimonial/result&pg_searchresults_id=F=098ffaa129fb7202415bd0832b51ae74&right_panel=refine_search&refined_cluster=annualincome" class="normal">More</a> <img height="9" width="7" title="Select More" alt="Select More" src="https://img.shaadi.com/community/search-result/view-arrow.gif">
+                            <div class="cluster"></div>
+                        </span><div class="clearfix"></div>
+                    </div>
+                </div>
+
+                <div class="rsearch1">
+                    <div id='annualincome' class="rsearch-header pos_rel minus plus" data-cluster='' onclick="$('#divbuildingTypeDetails').slideToggle(); $(this).toggleClass('minus');">
+                        <span>
+                        </span>Building Type
+                        <div id="divbuildingTypeDetails" class="rsearch-option" style="display: block;">
+                            @foreach (var v in ViewBag.buildingTypeDetails)
+                            {
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" id="chk" name="@v.Text" value="@v.Value" />@v.Value
+                                    </label>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                    <div id="rsearch-option-annualincome" class="rsearch-option" style="display: block;">
+                        <ul></ul>
+                        <div class="clearfix"></div><span>
+                            <a href="javascript:void(0);" onclick="cluster_popup($(this));" rel="https://www.shaadi.com/search/ajax/refine-panel?pg_scriptpath=/search/matrimonial/result&pg_searchresults_id=F=098ffaa129fb7202415bd0832b51ae74&right_panel=refine_search&refined_cluster=annualincome" class="normal">More</a> <img height="9" width="7" title="Select More" alt="Select More" src="https://img.shaadi.com/community/search-result/view-arrow.gif">
+                            <div class="cluster"></div>
+                        </span><div class="clearfix"></div>
+                    </div>
+                </div>
+
+                <div class="rsearch1">
+                    <div id='annualincome' class="rsearch-header pos_rel minus plus" data-cluster='' onclick="$('#divFloorTypeDetails').slideToggle(); $(this).toggleClass('minus');">
+                        <span>
+                        </span>Floor Type
+                        <div id="divFloorTypeDetails" class="rsearch-option" style="display: block;">
+                            @foreach (var v in ViewBag.floorTypeDetails)
+                            {
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" id="chk" name="@v.Text" value="@v.Value" />@v.Value
+                                    </label>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                    <div id="rsearch-option-annualincome" class="rsearch-option" style="display: block;">
+                        <ul></ul>
+                        <div class="clearfix"></div><span>
+                            <a href="javascript:void(0);" onclick="cluster_popup($(this));" rel="https://www.shaadi.com/search/ajax/refine-panel?pg_scriptpath=/search/matrimonial/result&pg_searchresults_id=F=098ffaa129fb7202415bd0832b51ae74&right_panel=refine_search&refined_cluster=annualincome" class="normal">More</a> <img height="9" width="7" title="Select More" alt="Select More" src="https://img.shaadi.com/community/search-result/view-arrow.gif">
+                            <div class="cluster"></div>
+                        </span><div class="clearfix"></div>
+                    </div>
+                </div>
+
+                <div class="rsearch1">
+                    <div id='maritalstatus' class="rsearch-header pos_rel minus plus" data-cluster='' onclick="$('#divcountryDetails').slideToggle(); $(this).toggleClass('minus');">
+                        <span class="spacer_1">
+                            Country
+                        </span>
+                    </div>
+                    <div id="divcountryDetails" class="rsearch-option" style="display: block;">
+                        @*<ul>
+                            @if (ViewBag.countryDetails != null)
+                            {
+                                @Html.DropDownListFor(m => m.countryID, ViewBag.countryDetails as SelectList, "-select- ", new { id = "ddlCountry", onchange = "getStateid()" })
+                            }
+                        </ul>*@
+                        <div class="clearfix"></div><div class="clearfix"></div>
+                    </div>
+                </div>
+
+                <div class="rsearch1">
+                    <div id='divstateDetails' class="rsearch-header pos_rel minus plus" data-cluster='' onclick="$('#divstateDetails').slideToggle(); $(this).toggleClass('minus');">
+                        <span class="spacer_1">
+                            State
+                        </span>
+                    </div>
+                    <div id="divstateDetails" class="rsearch-option" style="display: block;">
+                        <ul>
+                            @*@if (ViewBag.stateDetails != null)
+                            {
+                                @Html.DropDownListFor(m => m.StateName, ViewBag.stateDetails as SelectList, "-select-", new { id = "ddlState", onchange = "getCityid()" })
+                            }*@
+                        </ul>
+                        @*<ul>
+                                @if (ViewBag.cityDetails != null)
+                                {
+                                    @Html.DropDownListFor(m => m.CityName, ViewBag.cityDetails as SelectList, "-select- ", new { id = "ddlCity" })
+                                }
+
+                            </ul>*@
+                      
+                    </div>
+                    <div id="rsearch-option-religion" class="rsearch-option" style="display: block;">
+                        <ul></ul>
+                        <div class="clearfix"></div><span>
+                            <a href="javascript:void(0);" onclick="cluster_popup($(this));" rel="https://www.shaadi.com/search/ajax/refine-panel?pg_scriptpath=/search/matrimonial/result&pg_searchresults_id=F=098ffaa129fb7202415bd0832b51ae74&right_panel=refine_search&refined_cluster=religion" class="normal">More</a> <img height="9" width="7" title="Select More" alt="Select More" src="https://img.shaadi.com/community/search-result/view-arrow.gif">
+                            <div class="cluster"></div>
+                        </span><div class="clearfix"></div>
+                    </div>
+                </div>
+
+                <div class="rsearch1">
+                    <div id='mothertongue' class="rsearch-header pos_rel minus plus" data-cluster='' onclick="$('#rsearch-option-mothertongue').slideToggle();$(this).toggleClass('minus');">
+                        <span>
+                            Location
+                        </span>
+                    </div>
+                    <div id="divDD" class="rsearch-option" style="display: block;">
+                        <ul></ul>
+                        <div class="clearfix"></div><span>
+                            <a href="javascript:void(0);" onclick="cluster_popup($(this));" rel="https://www.shaadi.com/search/ajax/refine-panel?pg_scriptpath=/search/matrimonial/result&pg_searchresults_id=F=098ffaa129fb7202415bd0832b51ae74&right_panel=refine_search&refined_cluster=mothertongue" class="normal">More</a> <img height="9" width="7" title="Select More" alt="Select More" src="https://img.shaadi.com/community/search-result/view-arrow.gif">
+                            <div class="cluster"></div>
+                        </span><div class="clearfix"></div>
+                    </div>
+                </div>
+
+
+                <div class="rsearch1">
+                    <div id='countryofresidence' class="rsearch-header pos_rel minus plus" data-cluster='' onclick="$('#rsearch-option-countryofresidence').slideToggle();$(this).toggleClass('minus');">
+                        <span>
+                        </span>Address
+                    </div>
+                    <div id="rsearch-option-countryofresidence" class="rsearch-option" style="display: block;">
+                        <ul>
+
+                            <div class="clearfix"></div>
+                            <span>
+                                <a href="javascript:void(0);" onclick="cluster_popup($(this));" rel="">
+                                <div class="cluster"></div>
+                            </span>
+                            <div class="clearfix"></div>
+                    </div>
+                </div>
+
+
+                <div class="rsearch1">
+                    <div id='grew_up_in' class="rsearch-header pos_rel minus plus" data-cluster='' onclick="$('#rsearch-option-grew_up_in').slideToggle();$(this).toggleClass('minus');">
+                        <span>
+                            Price Range
+                        </span>
+                    </div>
+                    <div id="rsearch-option-grew_up_in" class="rsearch-option" style="display: block;">
+                        <ul></ul>
+                        <div class="clearfix"></div><span>
+                            <a href="javascript:void(0);" onclick="cluster_popup($(this));" rel="https://www.shaadi.com/search/ajax/refine-panel?pg_scriptpath=/search/matrimonial/result&pg_searchresults_id=F=098ffaa129fb7202415bd0832b51ae74&right_panel=refine_search&refined_cluster=grew_up_in" class="normal">More</a> <img height="9" width="7" title="Select More" alt="Select More" src="https://img.shaadi.com/community/search-result/view-arrow.gif">
+                            <div class="cluster"></div>
+                        </span><div class="clearfix"></div>
+                    </div>
+                </div>
+
+                <div class="rsearch1">
+                    <div id='education' class="rsearch-header pos_rel minus plus" data-cluster='' onclick="$('#rsearch-option-education').slideToggle();$(this).toggleClass('minus');">
+                        <span>
+                            Bedroom
+                        </span>
+                        <ul>
+
+                            @Html.DropDownList("ddlRoomRent", new List<SelectListItem>
+                              {
+                              new SelectListItem{Text="1",Value="1"},
+                              new SelectListItem{Text="2",Value="2"},
+                              new SelectListItem{Text="3",Value="3"},
+                              new SelectListItem{Text="4",Value="4"},
+                              new SelectListItem{Text="5",Value="5"}
+                            })
+                        </ul>
+                    </div>
+
+                </div>
+
+                <div class="rsearch1">
+                    <div id='occupation_area' class="rsearch-header pos_rel minus plus" data-cluster='' onclick="$('#rsearch-option-occupation_area').slideToggle();$(this).toggleClass('minus');">
+                        <span>
+                        </span> Area
+                    </div>
+                    <div id="rsearch-option-occupation_area" class="rsearch-option" style="display: block;">
+                        <ul></ul>
+                        <div class="clearfix"></div><span>
+                            <a href="javascript:void(0);" onclick="cluster_popup($(this));" rel="https://www.shaadi.com/search/ajax/refine-panel?pg_scriptpath=/search/matrimonial/result&pg_searchresults_id=F=098ffaa129fb7202415bd0832b51ae74&right_panel=refine_search&refined_cluster=occupation_area" class="normal">More</a> <img height="9" width="7" title="Select More" alt="Select More" src="https://img.shaadi.com/community/search-result/view-arrow.gif">
+                            <div class="cluster"></div>
+                        </span><div class="clearfix"></div>
+                    </div>
+                </div>
+
+                <div class="rsearch1">
+                    <div id='occupation_area' class="rsearch-header pos_rel minus plus" data-cluster='' onclick="$('#rsearch-option-occupation_area').slideToggle();$(this).toggleClass('minus');">
+                        <span>
+                        </span> Age
+                    </div>
+                    <div id="rsearch-option-occupation_area" class="rsearch-option" style="display: block;">
+                        <ul></ul>
+                        <div class="clearfix"></div><span>
+                            <a href="javascript:void(0);" onclick="cluster_popup($(this));" rel="https://www.shaadi.com/search/ajax/refine-panel?pg_scriptpath=/search/matrimonial/result&pg_searchresults_id=F=098ffaa129fb7202415bd0832b51ae74&right_panel=refine_search&refined_cluster=occupation_area" class="normal">More</a> <img height="9" width="7" title="Select More" alt="Select More" src="https://img.shaadi.com/community/search-result/view-arrow.gif">
+                            <div class="cluster"></div>
+                        </span><div class="clearfix"></div>
+                    </div>
+                </div>
+
+                <div class="rsearch1">
+                    <div id='occupation_area' class="rsearch-header pos_rel minus plus" data-cluster='' onclick="$('#rsearch-option-occupation_area').slideToggle();$(this).toggleClass('minus');">
+                        <span>
+                        </span> Tenure
+                    </div>
+                    <div id="rsearch-option-occupation_area" class="rsearch-option" style="display: block;">
+                        <ul></ul>
+                        <div class="clearfix"></div><span>
+                            <a href="javascript:void(0);" onclick="cluster_popup($(this));" rel="https://www.shaadi.com/search/ajax/refine-panel?pg_scriptpath=/search/matrimonial/result&pg_searchresults_id=F=098ffaa129fb7202415bd0832b51ae74&right_panel=refine_search&refined_cluster=occupation_area" class="normal">More</a> <img height="9" width="7" title="Select More" alt="Select More" src="https://img.shaadi.com/community/search-result/view-arrow.gif">
+                            <div class="cluster"></div>
+                        </span><div class="clearfix"></div>
+                    </div>
+                </div>
+
+                <div class="rsearch1">
+                    <div id='relationship' class="rsearch-header pos_rel minus plus" data-cluster='' onclick="$('#rsearch-option-relationship').slideToggle();$(this).toggleClass('minus');">
+                        <span>
+                        </span>Profile Created by
+                    </div>
+                    <div id="rsearch-option-relationship" class="rsearch-option" style="display: block;">
+                        <ul></ul>
+                        <div class="clearfix"></div><div class="clearfix"></div>
+                    </div>
+                </div>
+
+                <div class="rsearch-bottom"></div>
+            </div>
+            <div class="spacer_5"></div>
+            <div class="refine_search_tab" id="refine_search_tab">
+
+                <div class="notch"></div>
+            </div>		<!-- Refine Search EN -->
+
+        </div>
+
+        <!-- Right Div ST -->
+
+        <div id="content_area">
+
+
+            @using (Html.BeginForm("GetAllPropertyList", "Ashyana", FormMethod.Post))
+            {
+
+                foreach (var items in ViewBag.propertyDetails)
+                {
+
+                    <div class="result_box_nw">
+                        <div class="inner_spacer">
+                            <div class="check">
+                                <input type="checkbox" id="multiple-eoi-checkbox-ySH03711949" value="ySH03711949" />
+                            </div>
+                            <div class="fl">
+                                <div class="profile_title_wrap">
+                                    <br clear="all" />
+                                    <span class="online_msg">
+                                        <span>Property created by Agent / Owner</span>
+                                        <span class="notification_pipe">Online now, <a class="stop_propagation" href="" onclick="return mediator_login_page(this,'url');">Click to Chat<span title="Chat Now" class="pro_chat_icon"></span></a></span>
+                                    </span>
+                                </div>
+                                <div class="photo_section">
+                                    <div class='photo_normal'>
+                                        <a class="photo_tooltip_icn" href="javascript:void(0);" onclick="showPhotoFaq();"></a><div id="photofaq_div">
+                                            <div class="photo_tooltip_wrap message_layer_main" style="display: block;">
+                                                <div class="message_layer_header_bg">
+
+                                                    <div class="layerCloe fr">
+                                                        @if (items.propertyImage != null)
+                                                        {
+                                                            <img id="user_img1" src="@Url.Content(items.propertyImage.Replace("~", ".."))" style="width:auto;" alt="" class="img-thumbnail" />
+                                                        }
+                                                        else
+                                                        {
+                                                            <img id="user_img1" src="../uploads/House.jpg" style="width:auto;" alt="" class="img-thumbnail" />
+
+                                                        }
+                                                    </div>
+                                                    <div class="clear_fixed"></div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                        <div class='photo_ribbon'></div>
+                                        <a href="" onclick="return mediator_login_page(this,'url');" style="cursor:crosshair">
+                                            <span class="photo_count_holder"> 1 of 2</span>
+                                        </a>
+
+
+                                    </div>
+                                    <!-- this link set from photograph helper -->
+                                    <div class="photo_navigation">
+                                        <a href="#" onclick="popup_7ce=window.open('https://www.shaadi.com/profile/index/view-album-photos/profileid/ySH03711949/navigation/1/profileNumber/1/evt_ref//pg_searchresults_id/F=098ffaa129fb7202415bd0832b51ae74', 'popup_7ce', 'width=' + 750 + ', height=' + 581 + ', scrollbars=yes, left=' + ((screen.availWidth / 2) - (750 / 2)) + ', top=' + ((screen.availHeight / 2) - (581 / 2)) + ''); popup_7ce.focus(); return false;" class="secondary_link" target="_blank">View Full Photo</a>
+                                    </div>
+                                </div>
+                                <div class="profile_container">
+                                    <!-- Basic ST -->
+                                    <div class="profile_basic">
+
+                                        <label class="label">Price</label><div class="info">@items.propertyPrice </div>
+                                        <div class="clearfix"></div><div class="spacer_4"></div>
+                                        <label class="label">Address</label><div class="info">@items.propertyAddress</div>
+                                        <div class="clearfix"></div><div class="spacer_4"></div>
+                                        <label class="label">metro</label><div class="info">@items.metro</div>
+                                        <div class="clearfix"></div><div class="spacer_4"></div>
+                                        <label class="label">propertyArea</label><div class="info">@items.propertyArea</div>
+                                        <div class="clearfix"></div><div class="spacer_4"></div>
+                                        <label class="label">propertyLocality</label><div class="info">@items.purchaseType</div>
+                                        <div class="clearfix"></div><div class="spacer_4"></div>
+                                        <label class="label">Description</label><div class="info">@items.propertyDesc ...</div>
+                                        <div class="clearfix"></div><div class="spacer_4"></div>
+
+                                    </div>
+                                    <!-- Basic EN -->
+                                    <!-- Activity ST -->
+                                    <div class="profile_activity_b" id="profile_ySH03711949">
+
+                                        <!-- Express interest button -->
+
+                                        <div id="header_msg_ySH03711949"><span class="like_txt"></span><div class="spacer_5"></div></div><a href="/registration/user/login?go=https%3A%2F%2Fwww.shaadi.com%2Fsearch%2Fmatrimonial%2Fresult%3Fpg_searchresults_id%3DF%253D098ffaa129fb7202415bd0832b51ae74&vcase=express_interest" onclick="return mediator_login_page(this,'url');" id="link_change_id_ySH03711949" class="green_btn_interested">Yes, I'm Interested</a><div>
+                                            <div id="shortlist_container_ySH03711949" class="search_maybe_btn">
+                                                <div id="shortlist_wrapper_ySH03711949" class="pos_rel">
+                                                    <span id="fav_link_ySH03711949">
+                                                        <div class="search_maybe_btn" id="shortlist_container_ySH03711949">
+                                                            <div class="pos_rel" id="shortlist_wrapper_ySH03711949">
+                                                                <span id="fav_link_ySH03711949">
+                                                                    <a title="Not sure? Shortlist this Profile now and decide later." alt="Shortlist" class="gray_1 light_blue" href="/registration/user/login?go=https%3A%2F%2Fwww.shaadi.com%2Fsearch%2Fmatrimonial%2Fresult%3Fpg_searchresults_id%3DF%253D098ffaa129fb7202415bd0832b51ae74&vcase=express_interest" onclick="return mediator_login_page(this,'url');">
+                                                                        <div id="shortlist_title_ySH03711949" class="gray_1 light_blue">
+                                                                            <span class="shortlist_ic" id="shortlist_ic_ySH03711949"></span>
+                                                                            <span class="pro_lightblue_btn">Yes</span>
+                                                                        </div>
+                                                                    </a>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <a class="no light_blue" id="ignore_profile_ySH03711949" href="/registration/user/login?go=https%3A%2F%2Fwww.shaadi.com%2Fsearch%2Fmatrimonial%2Fresult%3Fpg_searchresults_id%3DF%253D098ffaa129fb7202415bd0832b51ae74&vcase=express_interest" onclick="return mediator_login_page(this,'url');" title="This Profile will not be shown again in your Search Results">
+                                                <span class="ignore_profile_icon ignore_profile_icon_normal"></span>No
+                                            </a>
+                                            <div class="clearfix"></div>
+                                        </div>                <span><a onclick="return mediator_login_page(this,'url');" href="/registration/user/login?go=https%3A%2F%2Fwww.shaadi.com%2Fprofile%3Fprofileid%3DySH03711949%26pg_searchresults_id%3DF%253D098ffaa129fb7202415bd0832b51ae74%26np%3Dsearch-result%26evt_ref%3D%26navigation%3D1%26profileNumber%3D1&vcase=view_full_profile" class="gray_1" id="view_profile_ySH03711949" data-shajx="true"><span class="viewprofile_icon"></span>View details</a></span>
+                                        <br /><br />
+
+                                    </div>
+                                    <!-- Activity ST -->
+
+                                    <div class="clearfix"></div>
+                                    <div class="profile_content">
+                                        @items.propertyDesc ...
+                                        <a onclick="return mediator_login_page(this,'url');" href="/registration/user/login?go=https%3A%2F%2Fwww.shaadi.com%2Fprofile%3Fprofileid%3DySH03711949%26pg_searchresults_id%3DF%253D098ffaa129fb7202415bd0832b51ae74%26np%3Dsearch-result%26evt_ref%3D%26navigation%3D1%26profileNumber%3D1&vcase=view_full_profile#top" class="secondary_link" data-shajx="true">
+                                            Read more
+                                        </a><img src="https://img.shaadi.com/community/search-result/view-arrow.gif" width="" height="9" alt="Read more" title="Read more" style="margin-left:3px" />
+
+                                    </div>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                }
+            }
+
+
+            <div class="clearfix"></div>
+            <div style="clear:both"></div>
+            <div class="spacer_4"></div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <div class="clearfix"></div>
+</div>
+
+<script type="text/javascript">
+  
+    $(Document).ready(function () {
+
+        $.ajax({
+
+            type: "POST",
+            url: URl("Registration", "GeGetPropertyTypeList"),
+            data: '{}',
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: OnSuccess,
+            failure: function (response) {
+                alert(response.d);
+            },
+            error: function (response) {
+                alert(response.d);
+            }
+
+
+        });
+    });
+
+    
+    function getStateid() {
+        var st = $('#ddlCountry').val();
+     
+        $.ajax(
+          {
+             
+              type: "POST",
+              url: '@Url.Action("GetState","Ashyana")',
+              datatype: 'application/json',
+              contentType: "application/json; charset=utf-8",
+              data: JSON.stringify({ statID: +st }),
+              dataType: "json",
+              success: function (lstState) {
+                 
+                  $("#ddlState").html("");
+                  $.each(lstState, function (i, state) {
+                      $("#ddlState").append('<option value="' + state.Value + '">' + state.Text + '</option>');
+                  });
+              }
+          });
+    }
+
+
+
+</script>
+

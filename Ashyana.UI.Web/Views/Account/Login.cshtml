@@ -1,0 +1,157 @@
+﻿@model  Ashyana.UI.Web.ViewModel.MyUserModel
+
+@{
+    ViewBag.Title = "Log in";
+}
+
+
+<style type="text/css">
+    .progressclass {
+        position: fixed;
+        z-index: 999;
+        height: 100%;
+        width: 100%;
+        top: 0;
+        background-color: Black;
+        filter: alpha(opacity=60);
+        opacity: 0.6;
+        -moz-opacity: 0.8;
+        display: none;
+    }
+
+    .center {
+        z-index: 1000;
+        margin: 50px auto;
+        padding: 10px;
+        width: 130px;
+        background-color: White;
+        border-radius: 10px;
+        filter: alpha(opacity=100);
+        opacity: 1;
+        -moz-opacity: 1;
+    }
+</style>
+
+<link href="~/Content/Login.css" rel="stylesheet" />
+
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog " style="width:380px;">
+        <!-- Modal content-->
+        <div class="modal-content">
+         
+                <button type="button" class="close" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span></button>
+
+        
+         
+
+
+                <div class="form">
+                    <div class="forceColor"></div>
+                    <div class="topbar">
+                        <div class="spaColor"></div>
+                        <div id="dialog" style="display: none">
+                        </div>
+                        @using (Html.BeginForm())
+                        {
+                            @Html.AntiForgeryToken()
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger", id = "errorMsg" })
+                            @Html.TextBoxFor(m => m.userName, new { placeholder = "userName", @class = "input" })
+                            @Html.ValidationMessageFor(m => m.userName, "", new { @class = "text-danger" })
+                            @Html.PasswordFor(m => m.userPassword, new { @class = "input", placeholder = "password" })
+                            @Html.ValidationMessageFor(m => m.userPassword, "", new { @class = "text-danger" })
+                            @Html.CheckBoxFor(m => m.RememberMe)
+                            @Html.LabelFor(m => m.RememberMe)
+
+                            <input type="submit" value="Log in" class="submit" />
+                            <p>
+                                @Html.ActionLink("Register as a new user", "Register")
+                            </p>
+                            @* Enable this once you have account confirmation enabled for password reset functionality
+                                <p>
+                                    @Html.ActionLink("Forgot your password?", "ForgotPassword")
+                                </p>*@
+                        }
+
+                    </div>
+                </div>
+           
+        </div>
+    </div>
+</div>
+
+
+<div id="progress" class="progressclass">
+    <div class="center">
+        <img src="~/images/loader4.gif" />
+    </div>
+</div>
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+
+<script type="text/javascript">
+
+       
+        $('form').submit(function () {
+
+
+
+            if ($("#userName").val() == "") {
+                alert("username is required");
+                return false;
+            }
+            if ($("#userPassword").val() == "") {
+                alert("userPassword is required");
+                return false;
+            }
+
+            $("#errorMsg").html("Logging in...");
+            var data =
+                {
+                    "userName": $("#userName").val(),
+                    "userPassword": $("#userPassword").val()
+                    //, "RememberMe": $('#RememberMe').val()
+                };
+           
+            debugger;
+            $.ajax({
+                url: "/Account/CheckUser/",
+                type: "POST",
+                data: JSON.stringify(data),
+                dataType: "json",
+                contentType: "application/json",
+                success: function (status) {
+                    if (status == 1) {
+                        alert("Login failed");
+                    }
+                  
+                 
+                },
+                error: function () {
+                    $('#mymodal').show();
+
+                    $("#message").html("Error while authenticating usser credentials!");
+                }
+            });
+
+
+        });
+
+  
+
+
+    function OnSuccess(response) {
+        $.ajax({
+            url: '@Url.Action("Index", "Home")',
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: successFunc,
+            error: errorFunc
+        });
+    }
+    function OnFailure(response) {
+        alert("Error occured.");
+    }
+</script>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

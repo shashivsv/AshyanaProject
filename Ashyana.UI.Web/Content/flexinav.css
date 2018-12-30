@@ -1,0 +1,1106 @@
+﻿
+/*New dropdownl menu*/
+.flexinav_wrapper flexinav_menu ul li{
+    color:red;
+}
+#header {
+	background: #003674;
+}
+#flexinav1 {
+	z-index: 9998;
+}
+#flexinav2 {
+	z-index: 9997;
+}
+.flexinav *, .flexinav *:before, .flexinav *:after {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+.flexinav {
+	/*position: relative;*/
+	margin: 0 auto 0px auto;
+	float: left;
+	padding: 0;
+	width: 100%;
+	z-index: 9990;
+	font-family: 'Raleway', sans-serif;
+	font-size: 11px;
+	line-height: 21px;
+	background: #8696a8;
+}
+.flexinav_fixed {
+	/*position: fixed;*/
+	top: 0;
+	left: 0;
+	margin: 0 0 0px 0;
+}
+.flexinav .flexinav_wrapper {
+	width: 100%;
+	max-width: 1170px;
+	margin: 0 auto;
+}
+.flexinav .flexinav_wrapper .flexinav_menu {
+	padding: 25px;
+	margin: 0 auto;
+	list-style: none;
+	/*float: right;*/
+}
+.flexinav .flexinav_wrapper .flexinav_menu.leftside {
+	float: left;
+}
+.flexinav .flexinav_wrapper .flexinav_menu_right {
+	float: right;
+}
+.flexinav .flexinav_wrapper .flexinav_menu > li {
+	float: left;
+	padding: 0;
+	margin: 0;
+	line-height: 50px;
+	font-size: 11px;
+	position: relative;
+	-webkit-transition: background 0.3s;
+	-moz-transition: background 0.3s;
+	-o-transition: background 0.3s;
+	transition: background 0.3s;
+    color: #fff;
+      text-transform:uppercase;
+}
+.flexinav .flexinav_wrapper .flexinav_menu > li.flexnav_mega {
+	position: static;
+}
+/* Hover and active states */
+
+.flexinav .flexinav_wrapper .flexinav_menu > li > a, .flexinav .flexinav_wrapper .flexinav_menu > li > span, .flexinav .flexinav_wrapper .flexinav_menu > li > span > a {
+	color: #fff;
+}
+.flexinav .flexinav_wrapper .flexinav_menu > li > a, .flexinav .flexinav_wrapper .flexinav_menu > li > span, .flexinav .flexinav_wrapper .flexinav_menu > li >  form >a {
+	color: #fff;
+    padding-top:11px;
+    text-decoration:none;
+}
+.flexinav .flexinav_wrapper .flexinav_menu > li:hover, .flexinav .flexinav_wrapper .flexinav_menu > li.active {
+	color: #fff;
+      text-transform:uppercase;
+	background: #002b5d;
+  
+}
+.flexinav .flexinav_wrapper .flexinav_menu > li:hover > a, .flexinav .flexinav_wrapper .flexinav_menu > li:hover > span, .flexinav .flexinav_wrapper .flexinav_menu > li:hover > span > a, .flexinav .flexinav_wrapper .flexinav_menu > li.active > a, .flexinav .flexinav_wrapper .flexinav_menu > li.active > span, .flexinav .flexinav_wrapper .flexinav_menu > li.active > span > a {
+	color: #fff;
+}
+.flexinav .flexinav_wrapper .flexinav_menu > li.noactive {
+	background: #002b5d;
+}
+.flexinav .flexinav_wrapper .flexinav_menu > li.noactive > a, .flexinav .flexinav_wrapper .flexinav_menu > li.noactive > span, .flexinav .flexinav_wrapper .flexinav_menu > li.noactive > span > a, .flexinav .flexinav_wrapper .flexinav_menu > li.noactive:hover > a, .flexinav .flexinav_wrapper .flexinav_menu > li.noactive:hover > span, .flexinav .flexinav_wrapper .flexinav_menu > li.noactive:hover > span > a {
+	color: #eeeeee;
+}
+.flexinav .flexinav_wrapper .flexinav_menu > li > span, .flexinav .flexinav_wrapper .flexinav_menu >li>form, .flexinav .flexinav_wrapper .flexinav_menu > li > a, {
+	display: block;
+	line-height: 57px;
+	padding: 0 15px;
+}
+.flexinav .flexinav_wrapper .flexinav_menu > li > a, .flexinav .flexinav_wrapper .flexinav_menu > li > span, .flexinav .flexinav_wrapper .flexinav_menu > li > span > a {
+	font-size: 13px;
+	font-weight: 500;
+	text-transform: uppercase;
+	text-decoration: none;
+	cursor: pointer;
+}
+.flexinav .flexinav_wrapper .flexinav_menu > li > span > a {
+	margin-left: 0px;
+}
+.flexinav .flexinav_wrapper .flexinav_menu > li > span + a i {
+	margin-right: 0px;
+}
+.flexinav .flexinav_wrapper .flexinav_menu > li i {
+	margin-right: 0px;
+	margin-left: 4px;
+}
+/* Logo */
+
+.flexinav .flexinav_wrapper .flexinav_menu > li.flexinav_logo {
+	width: 170px;
+	height: 50px;
+	padding: 0;
+	margin: 0;
+	float: left;
+}
+.flexinav .flexinav_wrapper .flexinav_menu > li.flexinav_logo:hover {
+	background: none;
+}
+.flexinav .flexinav_wrapper .flexinav_menu > li.flexinav_logo > a, .flexinav .flexinav_wrapper .flexinav_menu > li.flexinav_logo:hover > a {
+	width: 100%;
+	height: 50px;
+	padding: 0;
+	margin: 0;
+	float: left;
+	background: url('../img/logo.html') no-repeat left center;
+}
+/*  _______________________________________________
+
+    02 MENU TOGGLE BUTTON
+    _______________________________________________  */
+
+
+
+
+/* 
+   This button is available only for the 
+   fixed version of the menu 
+*/ 
+
+.flexinav_btn {
+	position: fixed;
+	z-index: 9990;
+	top: 50px;
+	right: 0;
+	font-size: 12px;
+	color: #fff;
+	text-decoration: none;
+	height: 50px;
+	padding: 0 17px;
+	background: #272727;
+	outline: none;
+	-webkit-transition: all 0.3s 0.2s;
+	-moz-transition: all 0.3s 0.2s;
+	-o-transition: all 0.3s 0.2s;
+	transition: all 0.3s 0.2s;
+}
+.flexinav_btn i {
+	font-size: 18px;
+	line-height: 50px;
+	float: left;
+	-webkit-transition: all 0.3s 0.2s;
+	-moz-transition: all 0.3s 0.2s;
+	-o-transition: all 0.3s 0.2s;
+	transition: all 0.3s 0.2s;
+}
+.flexinav_btn.btn_active {
+	top: 0;
+}
+.flexinav_btn.btn_active i {
+	-webkit-transform: rotate(-180deg);
+	-moz-transform: rotate(-180deg);
+	-o-transform: rotate(-180deg);
+	transform: rotate(-180deg);
+}
+/*  _______________________________________________
+
+    03 DROP DOWN CONTAINERS
+    _______________________________________________  */
+
+
+
+
+.flexinav .flexinav_menu .flexinav_ddown {
+	position: absolute;
+	top: -9999em;
+	z-index: 9999;
+	background: #fff;
+	padding: 27px 20px 13px 20px;
+	margin: 0 auto;
+	opacity: 0;
+	display: block;
+}
+.flexinav .flexinav_menu .flexinav_ddown_scroll {
+	padding: 20px 10px 30px 20px;
+}
+.flexinav .flexinav_menu .flexinav_ddown_fly_out {
+	padding: 0px 0 0px 0;
+	border-top: 3px solid #fc4242;
+}
+.flexinav .flexinav_menu .flexinav_ddown:before, .flexinav .flexinav_menu .flexinav_ddown:after {
+	display: table;
+	content: " ";
+}
+.flexinav .flexinav_menu .flexinav_ddown:after {
+	clear: both;
+}
+/* Drop Down Sizes */
+
+.flexinav .flexinav_menu .flexinav_ddown_mega {
+	width: 960px;
+	left: 50%;
+	margin-left: -480px;
+	border-top: 3px solid #fc4242;
+	-moz-box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.2);
+	-webkit-box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.2);
+	box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.2);
+}
+.flexinav .flexinav_menu .flexinav_ddown_full {
+	width: 100%;
+	left: 0;
+	margin-left: 0;
+}
+.flexinav .flexinav_menu .flexinav_ddown_960 {
+	width: 960px;
+}
+.flexinav .flexinav_menu .flexinav_ddown_880 {
+	width: 880px;
+}
+.flexinav .flexinav_menu .flexinav_ddown_800 {
+	width: 800px;
+}
+.flexinav .flexinav_menu .flexinav_ddown_720 {
+	width: 720px;
+}
+.flexinav .flexinav_menu .flexinav_ddown_640 {
+	width: 640px;
+}
+.flexinav .flexinav_menu .flexinav_ddown_560 {
+	width: 560px;
+}
+.flexinav .flexinav_menu .flexinav_ddown_480 {
+	width: 480px;
+}
+.flexinav .flexinav_menu .flexinav_ddown_400 {
+	width: 400px;
+}
+.flexinav .flexinav_menu .flexinav_ddown_320 {
+	width: 320px;
+}
+.flexinav .flexinav_menu .flexinav_ddown_240 {
+	width: 240px;
+}
+.flexinav .flexinav_menu .flexinav_ddown_180 {
+	width: 270px;
+}
+.flexinav .flexinav_menu .flexinav_ddown_160 {
+	width: 160px;
+}
+.flexinav .flexinav_menu .flexinav_ddown_80 {
+	width: 80px;
+}
+.flexinav .flexinav_menu .flexinav_ddown_960, .flexinav .flexinav_menu .flexinav_ddown_880, .flexinav .flexinav_menu .flexinav_ddown_800, .flexinav .flexinav_menu .flexinav_ddown_720, .flexinav .flexinav_menu .flexinav_ddown_640, .flexinav .flexinav_menu .flexinav_ddown_560, .flexinav .flexinav_menu .flexinav_ddown_480, .flexinav .flexinav_menu .flexinav_ddown_400, .flexinav .flexinav_menu .flexinav_ddown_320, .flexinav .flexinav_menu .flexinav_ddown_240, .flexinav .flexinav_menu .flexinav_ddown_180, .flexinav .flexinav_menu .flexinav_ddown_160, .flexinav .flexinav_menu .flexinav_ddown_80 {
+	margin-left: 0;
+}
+.flexinav .flexinav_menu .flexinav_ddown_960, .flexinav .flexinav_menu .flexinav_ddown_880, .flexinav .flexinav_menu .flexinav_ddown_800, .flexinav .flexinav_menu .flexinav_ddown_720, .flexinav .flexinav_menu .flexinav_ddown_640, .flexinav .flexinav_menu .flexinav_ddown_560, .flexinav .flexinav_menu .flexinav_ddown_480, .flexinav .flexinav_menu .flexinav_ddown_400, .flexinav .flexinav_menu .flexinav_ddown_320, .flexinav .flexinav_menu .flexinav_ddown_240, .flexinav .flexinav_menu .flexinav_ddown_180, .flexinav .flexinav_menu .flexinav_ddown_160, .flexinav .flexinav_menu .flexinav_ddown_80 a{
+	margin-left: 0;
+    color:red;
+}
+.flexinav .flexinav_menu .flexinav_ddown_right {
+	right: 0;
+}
+/* Show Drop Downs on Mouse Hover */
+
+.flexinav .flexinav_menu li:hover > .flexinav_ddown {
+	opacity: 1;
+	top: auto;
+}
+/*  _______________________________________________
+
+    04 DROP DOWN COLUMNS
+    _______________________________________________  */
+
+
+
+
+.flexinav .colrow {
+	margin-right: -2%;
+	margin-left: -2%;
+}
+.flexinav .colrow:before, .flexinav .colrow:after {
+	display: table;
+	content: " ";
+}
+.flexinav .colrow:after {
+	clear: both;
+}
+.flexinav .col1, .flexinav .col2, .flexinav .col3, .flexinav .col4, .flexinav .col5, .flexinav .col6, .flexinav .col7, .flexinav .col8, .flexinav .col9, .flexinav .col10, .flexinav .col11, .flexinav .col12 {
+	position: relative;
+	float: left;
+	min-height: 1px;
+	padding-right: 2%;
+	padding-left: 2%;
+}
+.flexinav .col12 {
+	width: 100%;
+}
+.flexinav .col11 {
+	width: 91.66666666666666%;
+}
+.flexinav .col10 {
+	width: 83.33333333333334%;
+}
+.flexinav .col9 {
+	width: 75%;
+}
+.flexinav .col8 {
+	width: 66.66666666666666%;
+}
+.flexinav .col7 {
+	width: 58.333333333333336%;
+}
+.flexinav .col6 {
+	width: 50%;
+}
+.flexinav .col5 {
+	width: 41.66666666666667%;
+}
+.flexinav .col4 {
+	width: 33.33333333333333%;
+}
+.flexinav .col3 {
+	width: 25%;
+}
+.flexinav .col2 {
+	width: 16.666666666666664%;
+}
+.flexinav .col1 {
+	width: 8.333333333333332%;
+}
+/*  _______________________________________________
+
+    05 MULTILEVEL FLY-OUTS
+    _______________________________________________  */
+
+
+
+
+.flexinav .dropdown_flyout, .flexinav .dropdown_flyout .dropdown_flyout_level {
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+.flexinav .dropdown_flyout li {
+	float: left;
+	width: 100%;
+}
+.flexinav .dropdown_flyout li a, .flexinav .dropdown_flyout li span {
+	float: left;
+	width: 100%;
+	padding: 6px 0 6px 18px;
+    	/*//padding: 6px 0 6px 18pxmodified*/
+	display: block;
+	cursor: pointer;
+	border-bottom: 1px solid #e0e0e0;
+	text-transform: uppercase;
+}
+/* Fly-Outs */
+
+.flexinav .dropdown_flyout .dropdown_flyout_level {
+	background: #ffffff;
+	position: absolute;
+	margin: 0px 0 0 0px;
+	padding: 0px;
+	left: 100%;
+	top: auto;
+	display: none;
+	zoom: 1;
+	float: left;
+	border-left: 4px solid #e0e0e0;
+}
+.flexinav .dropdown_flyout .dropdown_flyout_level_left {
+	left: -102%;
+	right: 100%;
+}
+.flexinav .dropdown_flyout .dropdown_flyout_level li {
+	width: 180px;
+	padding: 0 0px 0 10px;
+}
+.flexinav .dropdown_flyout li.last {
+	margin-bottom: 0px;
+}
+.flexinav .dropdown_flyout ul.flexinav_icons li {
+	margin-left: -12px !important;
+}
+.flexinav .dropdown_flyout .flyout_heading {
+	font-family: 'Raleway', sans-serif;
+	color: #383838;
+	font-size: 16px;
+	width: 80%;
+	padding-bottom: 9px;
+	margin: 0 10% 9px 10%;
+	border-bottom: 1px solid #eeeeee;
+}
+.flexinav .dropdown_flyout li:hover > .dropdown_flyout_level, .flexinav .dropdown_flyout li:hover > .dropdown_flyout_level_left {
+	display: block;
+}
+/* Parent Elements */
+
+.flexinav .dropdown_flyout .dropdown_parent i {
+	font-size: 11px;
+	line-height: 21px;
+	margin-right: 12px;
+}
+.flexinav .dropdown_parent > span:after {
+	content: '\f105';
+	font-family: FontAwesome;
+	float: right;
+	padding-top: 1px;
+	margin-right: 13px;
+}
+.flexinav .dropdown_parent_left > span:after {
+	content: '\f104';
+	font-family: FontAwesome;
+	float: right;
+	padding-top: 1px;
+}
+/*  _______________________________________________
+
+    06 TYPOGRAPHY & ELEMENTS
+    _______________________________________________  */
+
+
+
+
+/* 1. Basic Typography */
+
+.flexinav .flexinav_ddown h1, .flexinav .flexinav_ddown h2, .flexinav .flexinav_ddown h3, .flexinav .flexinav_ddown h4, .flexinav .flexinav_ddown h5, .flexinav .flexinav_ddown h6 {
+	margin: 0;
+	padding-bottom: 5px;
+	color: #454545;
+	border-bottom: 1px solid #eee;
+}
+.flexinav .flexinav_ddown ul, .flexinav .flexinav_ddown ol {
+	color: #727272;
+	font-size: 13px;
+	margin: 0 0 21px 0;
+	line-height: 23px;
+}
+.flexinav .flexinav_ddown p {
+	color: #727272;
+	font-size: 13px;
+	margin: 0 0 21px 0;
+	line-height: 21px;
+}
+.flexinav .flexinav_ddown h1, .flexinav .flexinav_ddown h2, .flexinav .flexinav_ddown h3, .flexinav .flexinav_ddown h4, .flexinav .flexinav_ddown h5, .flexinav .flexinav_ddown h6 {
+	color: #272727;
+	font-weight: 500;
+	font-family: 'Raleway', sans-serif;
+}
+.flexinav .flexinav_ddown h1 {
+	font-size: 24px;
+	line-height: 28px;
+	margin-bottom: 21px;
+}
+.flexinav .flexinav_ddown h2 {
+	font-size: 20px;
+	line-height: 22px;
+	margin-bottom: 21px;
+}
+.flexinav .flexinav_ddown h3 {
+	font-size: 16px;
+	line-height: 20px;
+	margin-bottom: 21px;
+	border-bottom: 1px solid #d7d7d7;
+}
+.flexinav .flexinav_ddown h4 {
+	font-size: 14px;
+	line-height: 18px;
+	margin-bottom: 12px;
+	border-bottom: 1px solid #d7d7d7;
+}
+.flexinav .flexinav_ddown h5 {
+	font-size: 12px;
+	line-height: 18px;
+	margin-bottom: 14px;
+	border-bottom: 1px solid #d7d7d7;
+}
+.flexinav .flexinav_ddown h6 {
+	font-size: 10px;
+	line-height: 16px;
+	margin-bottom: 14px;
+	text-transform: uppercase;
+	border-bottom: 1px solid #d7d7d7;
+}
+.flexinav .flexinav_ddown a, .flexinav .dropdown_flyout li span {
+	text-decoration: none;
+	color: #454545;
+	cursor: pointer;
+	-webkit-transition: color 0.2s;
+	-moz-transition: color 0.2s;
+	-o-transition: color 0.2s;
+	transition: color 0.2s;
+	background-color: #eee;
+}
+.flexinav .flexinav_ddown a:hover, .flexinav .dropdown_flyout li span:hover {
+	color: #272727;
+	background-color: #f4f4f4;
+}
+.flexinav .flexinav_ddown .colrow a {
+	-webkit-transition: 0.3s;
+	-moz-transition: 0.3s;
+	-ms-transition: 0.3s;
+	-o-transition: 0.3s;
+	transition: 0.3s;
+	background-color: #fff;
+}
+.flexinav .flexinav_ddown .colrow a:hover {
+	color: #272727;
+	padding: 4px 7px;
+	background-color: #f3f3f3;
+	border-radius: 3px;
+	-webkit-transition: 0.3s;
+	-moz-transition: 0.3s;
+	-ms-transition: 0.3s;
+	-o-transition: 0.3s;
+	transition: 0.3s;
+}
+/* 2. Default Lists */
+
+.flexinav .flexinav_ddown .colrow ul {
+	list-style: none;
+	padding-left: 0;
+	margin-bottom: 10px;
+	margin-left: 0;
+}
+.flexinav .flexinav_ddown .colrow ol {
+	padding-left: 16px;
+	margin-bottom: 21px;
+	margin-left: 0;
+}
+.flexinav .flexinav_ddown .colrow ul li, .flexinav .flexinav_ddown .colrow ol li {
+	line-height: 30px;
+	padding: 0;
+	margin: 0;
+}
+.flexinav .flexinav_ddown .colrow ul li i, .flexinav .flexinav_ddown .colrow ol li i {
+	font-size: 11px;
+	line-height: 21px;
+	margin-right: 4px;
+}
+/* 3. Icons Lists */
+
+.flexinav .flexinav_ddown .colrow .flexinav_icons {
+	list-style: none;
+	padding: 0;
+	margin-left: -20px;
+}
+.flexinav .flexinav_ddown .colrow .flexinav_icons > li {
+	padding: 0 0 5px 20px;
+	text-align: left;
+}
+.flexinav .flexinav_ddown .colrow .flexinav_icons i {
+	font-size: 14px;
+	width: 12px;
+	float: left;
+}
+/* 4. Videos & Images */
+
+.flexinav .flexinav_ddown .video_container {
+	position: relative;
+	padding-bottom: 56.25%;
+	padding-top: 30px;
+	height: 0;
+	overflow: hidden;
+	margin-bottom: 18px;
+}
+.flexinav .flexinav_ddown .video_container iframe, .flexinav .flexinav_ddown .video_container object, .flexinav .flexinav_ddown .video_container embed {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	border: none;
+	outline: none;
+}
+.flexinav .flexinav_ddown iframe {
+	border: 0;
+	outline: none;
+	width: 100%;
+	font-size: 100%;
+	vertical-align: baseline;
+	background: transparent;
+	margin-bottom: 12px;
+}
+.flexinav .flexinav_ddown img {
+	display: block;
+	height: auto;
+	max-width: 100% !important;
+	margin-bottom: 18px;
+}
+/* 5. Misc */
+
+.flexinav .flexinav_ddown .greybox {
+	padding: 16px;
+	background: #eeeeee;
+	color: #aaaaaa;
+}
+.flexinav .flexinav_ddown .coldemo {
+	padding: 4px 8px;
+	background: #dddddd;
+	color: #666666;
+}
+/*  _______________________________________________
+
+    07 FORM ELEMENTS
+    _______________________________________________  */
+
+
+
+
+.flexinav .contact_form {
+	display: block;
+	margin: 0 0 10px 0;
+}
+.flexinav .contact_form form {
+	margin: 0;
+	padding: 0;
+	line-height: 18px;
+}
+.flexinav .contact_form label {
+	font-size: 12px;
+	margin-bottom: 18px;
+	float: left;
+	width: 100%;
+	font-family: 'Raleway', sans-serif;
+}
+.flexinav .contact_form .form_element {
+	color: #000000;
+	background-color: #fbfbfb;
+	border: 1px solid #dddddd;
+	font-family: 'Raleway', sans-serif;
+	font-size: 12px;
+	line-height: 10px;
+	width: 100%;
+	padding: 9px 2% 9px 2%;
+	margin: 0 0 18px 0;
+	float: left;
+	-webkit-transition: background-color 0.3s ease-out;
+	-moz-transition: background-color 0.3s ease-out;
+	-o-transition: background-color 0.3s ease-out;
+	-ms-transition: background-color 0.3s ease-out;
+	transition: background-color 0.3s ease-out;
+}
+.flexinav .contact_form .form_element:hover {
+	background-color: #fcfcfc;
+}
+.flexinav .contact_form .form_element:focus {
+	background-color: #ffffff;
+	outline: none;
+}
+.flexinav .contact_form textarea {
+	height: 140px;
+	resize: none;
+}
+.flexinav .contact_form .required {
+	color: #C00;
+}
+.flexinav .contact_form .error, .flexinav .contact_form .success {
+	font-family: 'Raleway', sans-serif;
+	font-size: 12px;
+	line-height: 12px;
+	float: left;
+	width: 100%;
+	padding: 9px 15px 9px 15px;
+	margin: 0 0 18px 0;
+	border: 1px solid rgba(0,0,0,0.15);
+}
+.flexinav .contact_form .error {
+	background: #f7cac4;
+	color: #992213;
+}
+.flexinav .contact_form .success {
+	background: #d8f6bc;
+	color: #2f530b;
+	margin-bottom: 12px;
+}
+.flexinav .contact_form .button {
+	padding: 9px 14px;
+	margin: 9px 12px 0 0;
+	white-space: nowrap;
+	font-family: 'Raleway', sans-serif;
+	font-size: 11px;
+	font-weight: bold;
+	text-transform: uppercase;
+	vertical-align: middle;
+	cursor: pointer;
+	outline: none;
+	border: 1px solid #000000;
+	color: #ffffff;
+	background-color: #222222;
+	text-shadow: 0 1px 1px #000000;
+	-webkit-transition: background-color 0.3s;
+	-moz-transition: background-color 0.3s;
+	-o-transition: background-color 0.3s;
+	-ms-transition: background-color 0.3s;
+	transition: background-color 0.3s;
+}
+.flexinav .contact_form .button:hover, .flexinav .contact_form .button:focus {
+	color: #ffffff;
+	background-color: #1A1A1A;
+}
+/*  _______________________________________________
+
+    08 MOBILE DEVICES
+    _______________________________________________  */
+
+
+
+
+/* IE8 */
+
+.flexinav .flexinav_wrapper .flexinav_menu > li.flexinav_collapse {
+	display: none\0/;
+}
+
+/* Switch between the desktop and mobile versions */
+@media only screen and (min-width: 999px) {
+.flexinav .flexinav_wrapper .flexinav_menu > li {
+	display: block !important;
+}
+.flexinav .flexinav_wrapper .flexinav_menu > li.flexinav_collapse {
+	display: none !important;
+}
+}
+ @media only screen and (max-width: 991px) {
+.flexinav .flexinav_wrapper {
+	width: 100%;
+}
+.flexinav .flexinav_wrapper .flexinav_menu > li {
+	position: static;
+}
+.flexinav .flexinav_wrapper .flexinav_menu > li > span, .flexinav .flexinav_wrapper .flexinav_menu > li > a {
+	padding: 0 15px;
+}
+.flexinav .flexinav_wrapper .flexinav_menu .flexinav_ddown, .flexinav .flexinav_wrapper .flexinav_menu .flexinav_ddown_full {
+	width: 100%;
+	left: 0;
+	margin-left: 0;
+}
+/* Multilevel fly-outs */
+     
+.flexinav .dropdown_flyout, .flexinav .dropdown_flyout .dropdown_flyout_level, .flexinav .dropdown_flyout .dropdown_flyout_level_left {
+	position: relative;
+	left: auto;
+	right: auto;
+	top: auto;
+	padding: 0 0px;
+	width: 100%;
+	margin: 0;
+	border: none;
+}
+.flexinav .dropdown_flyout .dropdown_flyout_level {
+	padding: 0 0 0 2%;
+}
+.flexinav .dropdown_flyout li, .flexinav .dropdown_flyout .dropdown_flyout_level li {
+	width: 100%;
+	padding: 0;
+}
+.flexinav .dropdown_flyout li > a, .flexinav .dropdown_flyout li > span {
+	width: 100%;
+	padding: 6px 0;
+}
+.flexinav .dropdown_flyout .flyout_heading {
+	width: 100%;
+	margin-left: 0;
+}
+.flexinav .dropdown_flyout ul.flexinav_icons li {
+	margin-left: 0 !important;
+}
+.flexinav ul.flexinav_icons > li > .dropdown_flyout_level > li {
+	padding-left: 18px !important;
+}
+.flexinav .dropdown_parent > span:after, .flexinav .dropdown_parent_left > span:after, .flexinav .dropdown_parent.noactive > span:after, .flexinav .dropdown_parent_left.noactive > span:after {
+	content: '\f107';
+}
+.flexinav .dropdown_parent.active > span:after, .flexinav .dropdown_parent_left.active > span:after {
+	content: '\f106';
+}
+}
+ @media only screen and (max-width: 999px) {
+.flexinav_btn {
+	display: none;
+}
+.flexinav_fixed {
+	position: relative;
+	top: auto;
+	left: auto;
+	margin: 0 auto 30px auto;
+}
+.flexinav {
+	height: auto;
+}
+.flexinav .flexinav_wrapper .flexinav_menu_right {
+	float: left;
+	width: 100%;
+}
+.flexinav .flexinav_wrapper .flexinav_menu {
+	width: 100%;
+}
+.flexinav .flexinav_wrapper .flexinav_menu > li {
+	width: 100%;
+	display: none;
+	float: left;
+}
+.flexinav .flexinav_wrapper .flexinav_menu > li.flexinav_collapse {
+	width: 100%;
+	display: block;
+	float: left;
+}
+.flexinav .flexinav_wrapper .flexinav_menu > li.flexinav_collapse_active, .flexinav .flexinav_wrapper .flexinav_menu > li.flexinav_collapse_active:hover {
+	background: #002b5d;
+}
+.flexinav .flexinav_wrapper .flexinav_menu > li.flexinav_collapse_noactive, .flexinav .flexinav_wrapper .flexinav_menu > li.flexinav_collapse_noactive:hover {
+	background: #002b5d;
+}
+.flexinav .flexinav_wrapper .flexinav_menu > li.flexinav_collapse > span {
+	color: #dddddd !important;
+}
+.flexinav .flexinav_wrapper .flexinav_menu > li:hover {
+	box-shadow: none;
+}
+.flexinav .flexinav_wrapper .flexinav_menu > li:first-child {
+	margin-left: 0;
+}
+.flexinav .flexinav_wrapper .flexinav_menu .flexinav_ddown {
+	width: 100%;
+	left: 0;
+	margin-left: 0;
+}
+.flexinav .flexinav_wrapper .flexinav_menu .flexinav_ddown .col1, .flexinav .flexinav_wrapper .flexinav_menu .flexinav_ddown .col2, .flexinav .flexinav_wrapper .flexinav_menu .flexinav_ddown .col3, .flexinav .flexinav_wrapper .flexinav_menu .flexinav_ddown .col4, .flexinav .flexinav_wrapper .flexinav_menu .flexinav_ddown .col5, .flexinav .flexinav_wrapper .flexinav_menu .flexinav_ddown .col6, .flexinav .flexinav_wrapper .flexinav_menu .flexinav_ddown .col7, .flexinav .flexinav_wrapper .flexinav_menu .flexinav_ddown .col8, .flexinav .flexinav_wrapper .flexinav_menu .flexinav_ddown .col9, .flexinav .flexinav_wrapper .flexinav_menu .flexinav_ddown .col10, .flexinav .flexinav_wrapper .flexinav_menu .flexinav_ddown .col11, .flexinav .flexinav_wrapper .flexinav_menu .flexinav_ddown .col12 {
+	width: 100%;
+}
+.flexinav .flexinav_menu .flexinav_ddown {
+	background: #fff;
+	margin-top: -1px;
+}
+.flexinav .dropdown_flyout li > a, .flexinav .dropdown_flyout li > span {
+	padding: 7px 20px;
+}
+.flexinav .flexinav_wrapper .flexinav_menu > li > a, .flexinav .flexinav_wrapper .flexinav_menu > li > span {
+	color: #fff;
+	border-bottom: 1px solid #01234A;
+}
+}
+/*  _______________________________________________
+
+    09 COLORS
+    _______________________________________________  */
+
+
+
+
+/* Black */
+
+.flexinav_black, .flexinav_black .flexinav_wrapper .flexinav_menu > li, .flexinav_black .flexinav_wrapper .flexinav_menu > li.noactive, .flexinav_black + .flexinav_btn {
+	background: #272727;
+}
+.flexinav_black .flexinav_ddown a, .flexinav_black .dropdown_flyout li span {
+	color: #999999;
+}
+.flexinav_black .flexinav_ddown a:hover, .flexinav_black .dropdown_flyout li span:hover {
+	color: #666666;
+}
+.flexinav_black .flexinav_wrapper .flexinav_menu > li.flexinav_collapse_active, .flexinav_black .flexinav_wrapper .flexinav_menu > li.flexinav_collapse_active:hover {
+	background: #111111;
+}
+.flexinav_black .flexinav_wrapper .flexinav_menu > li.flexinav_collapse_noactive, .flexinav_black .flexinav_wrapper .flexinav_menu > li.flexinav_collapse_noactive:hover {
+	background: #272727;
+}
+/* Blue */
+
+.flexinav_blue, .flexinav_blue .flexinav_wrapper .flexinav_menu > li, .flexinav_blue .flexinav_wrapper .flexinav_menu > li.noactive, .flexinav_blue + .flexinav_btn {
+	background: #233d4d;
+}
+.flexinav_blue .flexinav_ddown a, .flexinav_blue .dropdown_flyout li span {
+	color: #38627c;
+}
+.flexinav_blue .flexinav_ddown a:hover, .flexinav_blue .dropdown_flyout li span:hover {
+	color: #4d88ab;
+}
+.flexinav_blue .flexinav_wrapper .flexinav_menu > li.flexinav_collapse_active, .flexinav_blue .flexinav_wrapper .flexinav_menu > li.flexinav_collapse_active:hover {
+	background: #182b36;
+}
+.flexinav_blue .flexinav_wrapper .flexinav_menu > li.flexinav_collapse_noactive, .flexinav_blue .flexinav_wrapper .flexinav_menu > li.flexinav_collapse_noactive:hover {
+	background: #233d4d;
+}
+/* Brown */
+
+.flexinav_brown, .flexinav_brown .flexinav_wrapper .flexinav_menu > li, .flexinav_brown .flexinav_wrapper .flexinav_menu > li.noactive, .flexinav_brown + .flexinav_btn {
+	background: #4a443b;
+}
+.flexinav_brown .flexinav_ddown a, .flexinav_brown .dropdown_flyout li span {
+	color: #5d554a;
+}
+.flexinav_brown .flexinav_ddown a:hover, .flexinav_brown .dropdown_flyout li span:hover {
+	color: #796f61;
+}
+.flexinav_brown .flexinav_wrapper .flexinav_menu > li.flexinav_collapse_active, .flexinav_brown .flexinav_wrapper .flexinav_menu > li.flexinav_collapse_active:hover {
+	background: #37332c;
+}
+.flexinav_brown .flexinav_wrapper .flexinav_menu > li.flexinav_collapse_noactive, .flexinav_brown .flexinav_wrapper .flexinav_menu > li.flexinav_collapse_noactive:hover {
+	background: #4a443b;
+}
+/* Green */
+
+.flexinav_green, .flexinav_green .flexinav_wrapper .flexinav_menu > li, .flexinav_green .flexinav_wrapper .flexinav_menu > li.noactive, .flexinav_green + .flexinav_btn {
+	background: #3e503e;
+}
+.flexinav_green .flexinav_ddown a, .flexinav_green .dropdown_flyout li span {
+	color: #5c765c;
+}
+.flexinav_green .flexinav_ddown a:hover, .flexinav_green .dropdown_flyout li span:hover {
+	color: #7d997d;
+}
+.flexinav_green .flexinav_wrapper .flexinav_menu > li.flexinav_collapse_active, .flexinav_green .flexinav_wrapper .flexinav_menu > li.flexinav_collapse_active:hover {
+	background: #2f3d2f;
+}
+.flexinav_green .flexinav_wrapper .flexinav_menu > li.flexinav_collapse_noactive, .flexinav_green .flexinav_wrapper .flexinav_menu > li.flexinav_collapse_noactive:hover {
+	background: #3e503e;
+}
+/* Grey */
+
+.flexinav_grey, .flexinav_grey .flexinav_wrapper .flexinav_menu > li, .flexinav_grey .flexinav_wrapper .flexinav_menu > li.noactive, .flexinav_grey + .flexinav_btn {
+	background: #444444;
+}
+.flexinav_grey .flexinav_ddown a, .flexinav_grey .dropdown_flyout li span {
+	color: #777777;
+}
+.flexinav_grey .flexinav_ddown a:hover, .flexinav_grey .dropdown_flyout li span:hover {
+	color: #909090;
+}
+.flexinav_grey .flexinav_wrapper .flexinav_menu > li.flexinav_collapse_active, .flexinav_grey .flexinav_wrapper .flexinav_menu > li.flexinav_collapse_active:hover {
+	background: #333;
+}
+.flexinav_grey .flexinav_wrapper .flexinav_menu > li.flexinav_collapse_noactive, .flexinav_grey .flexinav_wrapper .flexinav_menu > li.flexinav_collapse_noactive:hover {
+	background: #444444;
+}
+/* Ocean */
+
+.flexinav_ocean, .flexinav_ocean .flexinav_wrapper .flexinav_menu > li, .flexinav_ocean .flexinav_wrapper .flexinav_menu > li.noactive, .flexinav_ocean + .flexinav_btn {
+	background: #3e586c;
+}
+.flexinav_ocean .flexinav_ddown a, .flexinav_ocean .dropdown_flyout li span {
+	color: #4a6a82;
+}
+.flexinav_ocean .flexinav_ddown a:hover, .flexinav_ocean .dropdown_flyout li span:hover {
+	color: #5d84a2;
+}
+.flexinav_ocean .flexinav_wrapper .flexinav_menu > li.flexinav_collapse_active, .flexinav_ocean .flexinav_wrapper .flexinav_menu > li.flexinav_collapse_active:hover {
+	background: #324757;
+}
+.flexinav_ocean .flexinav_wrapper .flexinav_menu > li.flexinav_collapse_noactive, .flexinav_ocean .flexinav_wrapper .flexinav_menu > li.flexinav_collapse_noactive:hover {
+	background: #3e586c;
+}
+/* Orange */
+
+.flexinav_orange, .flexinav_orange .flexinav_wrapper .flexinav_menu > li, .flexinav_orange .flexinav_wrapper .flexinav_menu > li.noactive, .flexinav_orange + .flexinav_btn {
+	background: #b34100;
+}
+.flexinav_orange .flexinav_ddown a, .flexinav_orange .dropdown_flyout li span {
+	color: #a23a00;
+}
+.flexinav_orange .flexinav_ddown a:hover, .flexinav_orange .dropdown_flyout li span:hover {
+	color: #d54d00;
+}
+.flexinav_orange .flexinav_wrapper .flexinav_menu > li.flexinav_collapse_active, .flexinav_orange .flexinav_wrapper .flexinav_menu > li.flexinav_collapse_active:hover {
+	background: #913500;
+}
+.flexinav_orange .flexinav_wrapper .flexinav_menu > li.flexinav_collapse_noactive, .flexinav_orange .flexinav_wrapper .flexinav_menu > li.flexinav_collapse_noactive:hover {
+	background: #b34100;
+}
+/* Pink */
+
+.flexinav_pink, .flexinav_pink .flexinav_wrapper .flexinav_menu > li, .flexinav_pink .flexinav_wrapper .flexinav_menu > li.noactive, .flexinav_pink + .flexinav_btn {
+	background: #831a39;
+}
+.flexinav_pink .flexinav_ddown a, .flexinav_pink .dropdown_flyout li span {
+	color: #831a39;
+}
+.flexinav_pink .flexinav_ddown a:hover, .flexinav_pink .dropdown_flyout li span:hover {
+	color: #ad234b;
+}
+.flexinav_pink .flexinav_wrapper .flexinav_menu > li.flexinav_collapse_active, .flexinav_pink .flexinav_wrapper .flexinav_menu > li.flexinav_collapse_active:hover {
+	background: #67142d;
+}
+.flexinav_pink .flexinav_wrapper .flexinav_menu > li.flexinav_collapse_noactive, .flexinav_pink .flexinav_wrapper .flexinav_menu > li.flexinav_collapse_noactive:hover {
+	background: #831a39;
+}
+/* Purple */
+
+.flexinav_purple, .flexinav_purple .flexinav_wrapper .flexinav_menu > li, .flexinav_purple .flexinav_wrapper .flexinav_menu > li.noactive, .flexinav_purple + .flexinav_btn {
+	background: #40364b;
+}
+.flexinav_purple .flexinav_ddown a, .flexinav_purple .dropdown_flyout li span {
+	color: #625273;
+}
+.flexinav_purple .flexinav_ddown a:hover, .flexinav_purple .dropdown_flyout li span:hover {
+	color: #7b6790;
+}
+.flexinav_purple .flexinav_wrapper .flexinav_menu > li.flexinav_collapse_active, .flexinav_purple .flexinav_wrapper .flexinav_menu > li.flexinav_collapse_active:hover {
+	background: #2f2837;
+}
+.flexinav_purple .flexinav_wrapper .flexinav_menu > li.flexinav_collapse_noactive, .flexinav_purple .flexinav_wrapper .flexinav_menu > li.flexinav_collapse_noactive:hover {
+	background: #40364b;
+}
+/* Red */
+
+.flexinav_red, .flexinav_red .flexinav_wrapper .flexinav_menu > li, .flexinav_red .flexinav_wrapper .flexinav_menu > li.noactive, .flexinav_red + .flexinav_btn {
+	background: #5f0609;
+}
+.flexinav_red .flexinav_ddown a, .flexinav_red .dropdown_flyout li span {
+	color: #7f080c;
+}
+.flexinav_red .flexinav_ddown a:hover, .flexinav_red .dropdown_flyout li span:hover {
+	color: #af0b11;
+}
+.flexinav_red .flexinav_wrapper .flexinav_menu > li.flexinav_collapse_active, .flexinav_red .flexinav_wrapper .flexinav_menu > li.flexinav_collapse_active:hover {
+	background: #3f0406;
+}
+.flexinav_red .flexinav_wrapper .flexinav_menu > li.flexinav_collapse_noactive, .flexinav_red .flexinav_wrapper .flexinav_menu > li.flexinav_collapse_noactive:hover {
+	background: #5f0609;
+}
+/* Yellow */
+
+.flexinav_yellow, .flexinav_yellow .flexinav_wrapper .flexinav_menu > li, .flexinav_yellow .flexinav_wrapper .flexinav_menu > li.noactive, .flexinav_yellow + .flexinav_btn {
+	background: #bb8003;
+}
+.flexinav_yellow .flexinav_ddown a, .flexinav_yellow .dropdown_flyout li span {
+	color: #bb8003;
+}
+.flexinav_yellow .flexinav_ddown a:hover, .flexinav_yellow .dropdown_flyout li span:hover {
+	color: #eda304;
+}
+.flexinav_yellow .flexinav_wrapper .flexinav_menu > li.flexinav_collapse_active, .flexinav_yellow .flexinav_wrapper .flexinav_menu > li.flexinav_collapse_active:hover {
+	background: #996903;
+}
+.flexinav_yellow .flexinav_wrapper .flexinav_menu > li.flexinav_collapse_noactive, .flexinav_yellow .flexinav_wrapper .flexinav_menu > li.flexinav_collapse_noactive:hover {
+	background: #bb8003;
+}
+.flexinav img.image_left2 {
+	padding: 0px;
+	margin: 0px;
+	margin-right: 20px;
+	-moz-box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.3);
+	-webkit-box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.3);
+	box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.3);
+}
+ @media only screen and (min-width: 1000px) and (max-width: 1169px) {
+.flexinav .flexinav_menu .flexinav_ddown_mega {
+	width: 860px;
+}
+.flexinav .flexinav_wrapper .flexinav_menu > li > span, .flexinav .flexinav_wrapper .flexinav_menu > li > a {
+	padding: 0 13px;
+}
+}
+ @media only screen and (min-width: 768px) and (max-width: 999px) {
+.flexinav .flexinav_wrapper .flexinav_menu > li > span, .flexinav .flexinav_wrapper .flexinav_menu > li > a {
+	padding: 0 18px;
+}
+.flexinav .flexinav_wrapper .flexinav_menu > li > a, .flexinav .flexinav_wrapper .flexinav_menu > li > span, .flexinav .flexinav_wrapper .flexinav_menu > li > span > a {
+	font-size: 13px;
+}
+.flexinav .flexinav_wrapper .flexinav_menu > li i {
+	margin-right: 0px;
+	margin-left: 0px;
+}
+}
+ @media only screen and (max-width: 999px) {
+.flexinav {
+	margin-bottom: 10px;
+}
+.flexinav .flexinav_wrapper .flexinav_menu > li {
+	background: #002b5d;
+}
+.flexinav .flexinav_wrapper .flexinav_menu > li > span, .flexinav .flexinav_wrapper .flexinav_menu > li > a {
+	line-height: 50px;
+}
+.flexinav .flexinav_wrapper .flexinav_menu > li.flexinav_collapse_noactive i, .flexinav .flexinav_wrapper .flexinav_menu > li.flexinav_collapse_active i {
+	margin-right: 8px;
+}
+.flexinav .flexinav_wrapper .flexinav_menu > li:hover, .flexinav .flexinav_wrapper .flexinav_menu > li.active {
+	background: rgba(255, 255, 255, 0.06);
+}
+}

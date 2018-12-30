@@ -1,0 +1,69 @@
+﻿@{
+    var mlist = Session["mList"]; // Cast the list
+    var homemenu = ViewBag.homeMenu;
+
+}
+
+<div id="flexinav1" class="flexinav">
+    <div class="flexinav_wrapper">
+
+        <ul class="flexinav_menu">
+            <li class="flexinav_collapse"><span><i class="icon icon-bars"></i>Navigation</span></li>
+            @if (Session["mList"] != null)
+            {
+                var MenuMaster = (List<Ashyana.UI.Web.ViewModel.MenuList>)Session["mList"];
+                var groupByMenu = MenuMaster.GroupBy(x => x.linkName).ToList();
+                foreach (var item in groupByMenu)
+                {
+                    <li>
+                        @if (item.Key == "changepassword")
+                        {
+                            @Html.ActionLink("CHANGE PASSWORD", "ChangePassword", "Account")
+                            @*<i class=" glyphicon  glyphicon-asterisk" aria-hidden="true"></i>*@
+                        }
+                        else
+                        {
+                            <span>@item.Key</span>
+                            <div class="flexinav_ddown flexinav_ddown_fly_out flexinav_ddown_180">
+                                <ul class="dropdown_flyout">
+                                    @*<li class="flexinav_collapse"><span><i class="icon icon-bars"></i></span></li>*@
+                                    @foreach (var subitem in item)
+                                    {
+                                        if (subitem.subLinkName != null)
+                                        {
+                                            <li><a href="~/@subitem.subLinkPath">@subitem.subLinkName</a></li>
+                                        }
+                                    }
+                                </ul>
+                            </div>
+                        }
+                    </li>
+                }
+            }
+            else
+            {
+                <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                <li>
+                    @using (Html.BeginForm("Register", "Account", FormMethod.Post))
+                    {
+                        @Html.ActionLink("Register", "Register", "Account")
+                    }
+                </li>
+                <li><a href="#" data-toggle="modal" data-target="#myModal"> login</a></li>
+            }
+        </ul>
+    </div>
+</div>
+
+
+@if (Session["Username"] == null)
+{
+    <p>@Html.Partial("~/Views/Account/Login.cshtml")</p>
+
+
+
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,25 @@
+﻿<div class="container">
+    <div class="copy text-center">
+        <div class="navbar-buttons navbar-header " role="navigation">
+            <ul class="nav navbar-nav">
+                @if (ViewBag.homeMenu != null)
+                {
+                    foreach (var a in ViewBag.homeMenu)
+                    {
+                        <li style="padding:5px;font-weight:100">@a.linkName</li>
+                    }
+                }
+            </ul>
+            <p>
+                <a href="#" class="fotterlink">Disclaimer</a> | <a href="#" class="fotterlink">Privacy</a>
+                | <a href="#" class="fotterlink">Legal</a> | <a href="#" class="fotterlink">CopyRight</a>
+                | <a href="#" class="fotterlink">Site Map</a> | <a href="#" class="fotterlink"> Terms and Conditions  </a>
+
+            </p>
+            <p>
+                Copyright © 2048 <strong>Ashyana</strong>by
+                &copy; @DateTime.Now.Year -Designed and developed by Shashi
+            </p></p>
+        </div>
+    </div>
+</div>

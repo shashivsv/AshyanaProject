@@ -1,0 +1,183 @@
+﻿@model IEnumerable<Ashyana.UI.Web.Models.Property>
+
+
+<link href="~/Content/Search.css" rel="stylesheet" />
+<link href="~/Content/Site.css" rel="stylesheet" />
+
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog " style="width:850px;">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+
+                <h4 class="modal-title">Property Details </h4>
+                <p style="float:right;">
+                <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"> close</span></button></p>
+            </div>
+            <div class="modal-body">
+                <p>
+                    <span>
+                        @Html.ActionLink("Post New", "Create", null, new { @class = "btn btn-default glyphicon glyphicon-pencil" })
+                    </span>
+                    <span>@Html.ActionLink("Search", "Search", null, new { @class = "btn btn-default glyphicon glyphicon-search" })</span>
+                </p>
+
+                <div id="container-inner" style="max-height:800px;overflow-y:auto;">
+                    <div id="search-result">
+                        <div id="content_area">
+
+                            @using (Html.BeginForm())
+                            {
+
+                                foreach (var items in Model)
+                                {
+
+                                    <div class="result_box_nw">
+                                        <div class="inner_spacer">
+                                            <div class="check">
+                                                <input type="checkbox" id="multiple-eoi-checkbox-ySH03711949" value="ySH03711949" />
+                                                @Html.ActionLink("Edit", "Edit", new { id = items.propertyID }) |
+                                                <a href="#">
+                                                    <span class="glyphicon glyphicon-remove-circle"></span>
+                                                </a>
+                                                @Html.ActionLink("Details", "Details", new { id = items.propertyID }) |
+                                                @Html.ActionLink("Delete", "Delete", new { id = items.propertyID })
+                                            </div>
+                                            <div class="fl">
+                                                <div class="profile_title_wrap">
+                                                    <br clear="all" />
+                                                    <span class="online_msg">
+                                                        <span>Property created by Agent / Owner</span>
+                                                        <span class="notification_pipe">Online now, <a class="stop_propagation" href="" onclick="return mediator_login_page(this,'url');">Click to Chat<span title="Chat Now" class="pro_chat_icon"></span></a></span>
+                                                    </span>
+                                                </div>
+                                                <div class="photo_section">
+                                                    <div class='photo_normal'>
+                                                        <a class="photo_tooltip_icn" href="javascript:void(0);" onclick="showPhotoFaq();"></a><div id="photofaq_div">
+                                                            <div class="photo_tooltip_wrap message_layer_main" style="display: block;">
+                                                                <div class="message_layer_header_bg">
+
+                                                                    <div class="layerCloe fr">
+                                                                        @if (items.propertyImage != null)
+                                                                        {
+                                                                            <img id="user_img" src="@Url.Content("../images/uploads/" + @items.propertyImage)" style="width:auto;" alt="" class="img-thumbnail" />
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            <img id="user_img" src="../uploads/House.jpg" style="width:auto;" alt="" class="img-thumbnail" />
+
+                                                                        }
+                                                                    </div>
+                                                                    <div class="clear_fixed"></div>
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+
+                                                        <div class='photo_ribbon'></div>
+                                                        <a href="" onclick="return mediator_login_page(this,'url');" style="cursor:crosshair">
+                                                            <span class="photo_count_holder"> 1 of 2</span>
+                                                        </a>
+
+
+                                                    </div>
+                                                    <!-- this link set from photograph helper -->
+                                                    <div class="photo_navigation">
+                                                        <a href="#" onclick="popup_7ce=window.open('https://www.shaadi.com/profile/index/view-album-photos/profileid/ySH03711949/navigation/1/profileNumber/1/evt_ref//pg_searchresults_id/F=098ffaa129fb7202415bd0832b51ae74', 'popup_7ce', 'width=' + 750 + ', height=' + 581 + ', scrollbars=yes, left=' + ((screen.availWidth / 2) - (750 / 2)) + ', top=' + ((screen.availHeight / 2) - (581 / 2)) + ''); popup_7ce.focus(); return false;" class="secondary_link" target="_blank">View Full Photo</a>
+                                                    </div>
+                                                </div>
+                                                <div class="profile_container">
+                                                    <!-- Basic ST -->
+                                                    <div class="profile_basic">
+
+                                                        <label class="label">Price</label><div class="info">@items.propertyPrice </div>
+                                                        <div class="clearfix"></div><div class="spacer_4"></div>
+                                                        <label class="label">Address</label><div class="info">@items.propertyAddress</div>
+                                                        <div class="clearfix"></div><div class="spacer_4"></div>
+                                                        <label class="label">metro</label><div class="info">@items.metro</div>
+                                                        <div class="clearfix"></div><div class="spacer_4"></div>
+                                                        <label class="label">propertyArea</label><div class="info">@items.propertyArea</div>
+                                                        <div class="clearfix"></div><div class="spacer_4"></div>
+                                                        <label class="label">propertyLocality</label><div class="info">@items.purchaseType</div>
+                                                        <div class="clearfix"></div><div class="spacer_4"></div>
+                                                        <label class="label">Description</label><div class="info">@items.propertyDesc ...</div>
+                                                        <div class="clearfix"></div><div class="spacer_4"></div>
+
+                                                    </div>
+                                                    <!-- Basic EN -->
+                                                    <!-- Activity ST -->
+                                                    <div class="profile_activity_b" id="profile_ySH03711949">
+
+                                                        <!-- Express interest button -->
+
+                                                        <div id="header"><span class="like_txt"></span></div><a href="/registration/user/login?" onclick="return mediator_login_page(this,'url');" id="link_change_id_ySH03711949" class="green_btn_interested">Are you Interested</a><div>
+                                                            <div id="shortlist_container" class="search_maybe_btn">
+                                                                <div id="shortlist_wrapper" class="pos_rel">
+                                                                    <span id="fav_link9">
+                                                                        <div class="search_maybe_btn" id="shortlist_container">
+                                                                            <div class="pos_rel" id="shortlist_wrapper">
+                                                                                <span id="fav_link">
+                                                                                    <a title="Not sure? Shortlist this Profile now and decide later." alt="Shortlist" class="gray_1 light_blue" href="/registration/user/login?r" onclick="return mediator_login_page(this,'url');">
+                                                                                        <div id="shortlist_title" class="gray_1 light_blue">
+                                                                                            <span class="shortlist_ic" id="shortlist_ic"></span>
+                                                                                            <span class="pro_lightblue_btn">Yes</span>
+                                                                                        </div>
+                                                                                    </a>
+                                                                                </span>
+                                                                            </div>
+                                                                        </div>
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                            <a class="no light_blue" id="ignore_profile_ySH03711949" href="/registration/user/login?go=https%3A%2F%2Fwww.shaadi.com%2Fsearch%2Fmatrimonial%2Fresult%3Fpg_searchresults_id%3DF%253D098ffaa129fb7202415bd0832b51ae74&vcase=express_interest" onclick="return mediator_login_page(this,'url');" title="This Profile will not be shown again in your Search Results">
+                                                                <span class="ignore_profile_icon ignore_profile_icon_normal"></span>No
+                                                            </a>
+                                                            <div class="clearfix"></div>
+                                                        </div>                <span><a onclick="return mediator_login_page(this,'url');" href="/registration/user/login?go=https%3A%2F%2Fwww.shaadi.com%2Fprofile%3Fprofileid%3DySH03711949%26pg_searchresults_id%3DF%253D098ffaa129fb7202415bd0832b51ae74%26np%3Dsearch-result%26evt_ref%3D%26navigation%3D1%26profileNumber%3D1&vcase=view_full_profile" class="gray_1" id="view_profile_ySH03711949" data-shajx="true"><span class="viewprofile_icon"></span>View details</a></span>
+
+
+                                                    </div>
+                                                    <!-- Activity ST -->
+
+                                                    <div class="clearfix"></div>
+                                                    <div class="profile_content">
+                                                        @items.propertyDesc ...
+                                                        <a onclick="return mediator_login_page(this,'url');" href="/registration/user/login?go=https%3A%2F%2Fwww.shaadi.com%2Fprofile%3Fprofileid%3DySH03711949%26pg_searchresults_id%3DF%253D098ffaa129fb7202415bd0832b51ae74%26np%3Dsearch-result%26evt_ref%3D%26navigation%3D1%26profileNumber%3D1&vcase=view_full_profile#top" class="secondary_link" data-shajx="true">
+                                                            Read more
+                                                        </a><img src="https://img.shaadi.com/community/search-result/view-arrow.gif" width="" height="9" alt="Read more" title="Read more" style="margin-left:3px" />
+
+                                                    </div>
+                                                </div>
+                                                <div class="clearfix"></div>
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+                                }
+                            }
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#myModal").modal('show');
+    });
+    function show(input) {
+        if (input.files && input.files[0]) {
+            var filerdr = new FileReader();
+            filerdr.onload = function (e) {
+                $('#user_img').attr('src', e.target.result);
+            }
+            filerdr.readAsDataURL(input.files[0]);
+        }
+
+    }
+</script>

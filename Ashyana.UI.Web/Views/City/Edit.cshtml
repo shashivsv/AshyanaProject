@@ -1,0 +1,140 @@
+﻿@model Ashyana.UI.Web.Models.City
+
+@using (Html.BeginForm("Edit", "City", FormMethod.Post, new { enctype="multipart/form-data"}))
+{
+    @Html.AntiForgeryToken()
+
+
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog " style="width:750px;">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Edit City</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-horizontal">
+
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        @Html.HiddenFor(model => model.CityID)
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.CityName, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.CityName, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.CityName, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.CityDesc, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.CityDesc, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.CityDesc, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                       
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.CityImage, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-sm-8">
+
+                                @if (TempData["cityimage"] != null)
+                                { <img id="user_img" src=@TempData["cityimage"] style="width:100px;" alt="" />
+                                }
+                                else
+                                {  <img id="user_img" src="../images/uploads/upload.jpg" style="width:100px;" alt="" />
+                                }
+                            </div>
+
+                            <div class="col-md-10">
+                              
+                                <input type="file" title="search image" id="img_file" name="file" onchange="show(this)" />
+                                @Html.ValidationMessageFor(model => model.CityImage, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.countryID, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @if (ViewBag.countryDetails != null)
+                                {
+                                    @Html.DropDownListFor(m => m.countryID, new SelectList(ViewBag.countryDetails, "Value", "Text", ViewBag.countryid), "-Select", new { id = "countryID", @class = "form-control", @onchange = "GetState();" })
+                                }
+                                else
+                                {
+                                    @Html.DropDownListFor(m => m.countryID, new SelectList(string.Empty, "Value", "Text"), "", new { @class = "form-control", id = "countryID" })
+                                }
+                                @Html.ValidationMessageFor(model => model.countryID, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.StateID, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+
+                                @Html.DropDownListFor(m => m.StateID, new SelectList(string.Empty, "Value", "Text", 2), "-Select", new { id = "stateID", @class = "form-control" })
+
+                                @Html.ValidationMessageFor(model => model.StateID, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <input type="submit" value="Save" class="btn btn-default" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        @Html.ActionLink("Back to List", "Index")
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $('#myModal').modal("show");
+    });
+
+    function show(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $('#user_img').attr('src', e.target.result);
+            }
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+    $("#user_img").change(function () {
+        show(this);
+    });
+
+    function GetState() {
+        var countryID = $('#countryID').val();
+
+        $.ajax(
+        {
+            type: "POST",
+            url: '@Url.Action("GetState","City")',
+            datatype: 'application/json',
+            contentType: "application/json; charset=utf-8",
+            data: '{countryID: "' + countryID + '"}',
+
+            success: function (result) {
+                $("#stateID").html("");
+                $.each(result, function (i, state) {
+                    $("#stateID").append('<option value="' + state.Value + '">' + state.Text + '</option>');
+                });
+            }
+        });
+    }
+
+
+</script>

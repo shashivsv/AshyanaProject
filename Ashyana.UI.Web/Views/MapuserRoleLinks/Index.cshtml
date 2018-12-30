@@ -1,0 +1,290 @@
+﻿@model IEnumerable<Ashyana.UI.Web.ViewModel.MapLinks>
+
+@{
+    int counter = 1;
+}
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog" style="width:1300px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title"> Map User Roles</h4>
+            </div>
+
+            <div class="modal-body">
+
+                @using (Html.BeginForm())
+                {     <a href="@Url.Action("Create New", "Home")" class="btn btn-default">
+                    <i class="glyphicon glyphicon-new-window"></i>
+                    <span>
+                        <strong>Create</strong>
+                    </span>
+                </a>
+                    <a href="@Url.Action("Update All", "Home", new { onclick = "saveList" })" class="btn btn-default">
+                        <i class="glyphicon glyphicon-refresh"></i>
+                        <span>
+                            <strong>Update All</strong>
+                        </span>
+                    </a>
+
+                    @*<a href='#' onclick="saveList();" class="btn btn-info">Update All records</a>*@
+
+
+
+                    <table class=" table table-striped table-bordered datatable">
+
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.userID)
+
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.roleID)
+
+                            </th>
+
+                            <th>
+
+                                @Html.DisplayNameFor(model => model.linkID)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.subLinkID)
+                            </th>
+                            <th>
+                                <i class="glyphicon glyphicon-eye-open"></i>
+                                @Html.DisplayNameFor(model => model.sublinkView)
+                            </th>
+                            <th>
+                                <i class="glyphicon glyphicon-edit"></i>
+                                @Html.DisplayNameFor(model => model.sublinkAdd)
+                            </th>
+                            <th>
+                                <i class="glyphicon glyphicon-refresh"></i>
+                                @Html.DisplayNameFor(model => model.sublinkUpdate)
+                            </th>
+                            <th>
+                                <i class="glyphicon glyphicon-remove"></i>
+                                @Html.DisplayNameFor(model => model.sublinkDelete)
+                            </th>
+                            <th>
+                                <i class="glyphicon glyphicon-print"></i>
+                                @Html.DisplayNameFor(model => model.sublinkPrint)
+                            </th>
+                            <th>
+                                <i class="glyphicon glyphicon-check"></i>
+                                @Html.DisplayNameFor(model => model.linkCheck)
+                            </th>
+                            <th>
+                                <i class="glyphicon glyphicon-check"></i>
+                                @Html.DisplayNameFor(model => model.subLinkcheck)
+                            </th>
+
+
+                        </tr>
+
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.userName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.roleName)
+
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.linkName)
+
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.subLinkName)
+                                </td>
+                                <td>
+                                    @if (item.sublinkView == 1)
+                                    {
+                                        @*@Html.CheckBox("View_" + counter, true, new { Name = "View" })*@
+                                        @Html.CheckBox("View_" + counter, true, new { @class = "View" })
+                                    }
+                                    else
+                                    {
+                                        @Html.CheckBox("View_" + counter, false, new { @class = "View" })
+                                    }
+
+                                </td>
+                                <td>
+                                    @if (item.sublinkAdd == 1)
+                                    {
+                                        @Html.CheckBox("Add_" + counter, true, new { @class = "Add" })
+                                    }
+                                    else
+                                    {
+                                        @Html.CheckBox("Add_" + counter, false, new { @class = "Add" })
+                                    }
+
+
+
+                                </td>
+                                <td>
+                                    @if (item.sublinkUpdate == 1)
+                                    {
+                                        @Html.CheckBox("Update_" + counter, true, new { @class = "Update" })
+                                    }
+                                    else
+                                    {
+                                        @Html.CheckBox("Update_" + counter, false, new { @class = "Update" })
+                                    }
+
+                                </td>
+                                <td>
+
+                                    @if (item.sublinkDelete == 1)
+                                    {
+                                        @Html.CheckBox("Delete_" + counter, true, new { @class = "Delete" })
+                                    }
+                                    else
+                                    {
+                                        @Html.CheckBox("Delete_" + counter, false, new { @class = "Delete" })
+                                    }
+
+
+                                </td>
+                                <td>
+                                    @if (item.sublinkPrint == 1)
+                                    {
+                                        @Html.CheckBox("Print_" + counter, true, new { @class = "Print" })
+                                    }
+                                    else if (item.sublinkPrint == 0)
+                                    {
+                                        @Html.CheckBox("Print_" + counter, false, new { @class = "Print" })
+
+                                    }
+
+                                </td>
+                                <td>
+                                    @if (item.linkCheck == 1)
+                                    {
+                                        @Html.CheckBox("linkCheck_" + counter, true, new { @class = "linkCheck" })
+                                    }
+                                    else if (item.linkCheck == 0)
+                                    {
+                                        @Html.CheckBox("linkCheck_" + counter, false, new { @class = "LinkCheck" })
+
+                                    }
+
+                                </td>
+                                <td>
+                                    @if (item.subLinkcheck == 1)
+                                    {
+                                        @Html.CheckBox("SublinkCheck_" + counter, true, new { @class = "SubLinkCheck" })
+                                    }
+                                    else if (item.subLinkcheck == 0)
+                                    {
+                                        @Html.CheckBox("SublinkCheck-" + counter, false, new { @class = "SubLinkCheck" })
+
+                                    }
+                                </td>
+
+
+                                <td>
+                                    <a class="btn btn-default" href="@Url.Action("Create New", "Home" ,new { id = item.roleLinkMapID})">
+                                        <i class="glyphicon glyphicon-refresh"></i>
+                                        update
+                                    </a>
+                                    <a class="btn btn-default" href="@Url.Action("Create New", "Home" ,new { id = item.roleLinkMapID})">
+                                        <i class="glyphicon glyphicon-pencil"></i>
+                                        Edit
+                                    </a>
+                                    <a class="btn btn-default" href="@Url.Action("Create New", "Home" ,new { id = item.roleLinkMapID})">
+                                        <i class="glyphicon glyphicon-remove"></i>
+                                        Delete
+                                    </a>
+
+                                </td>
+                            </tr>
+                                    counter = counter + 1;
+                        }
+
+                    </table>
+                }
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#myModal").modal('show');
+    });
+    function saveList() {
+        var totalList = [];
+        var selectedViews = [];
+        var selectedAdd = [];
+        var selectedUpdate = [];
+        var selectedDelete = [];
+        var selectedPrint = [];
+        var selectedLinkCheck = [];
+        var selectedSubLinkCheck = [];
+        $.each($("input[class=View]:checked"), function () {
+            selectedViews.push($(this).attr("id"));
+        })
+
+
+        $.each($("input[class=Add]:checked"), function () {
+            selectedAdd.push($(this).attr("id"));
+        })
+        $.each($("input[class=Update]:checked"), function () {
+            selectedUpdate.push($(this).attr("id"));
+        })
+        $.each($("input[class=Delete]:checked"), function () {
+            selectedDelete.push($(this).attr("id"));
+        })
+        $.each($("input[class=Print]:checked"), function () {
+            selectedPrint.push($(this).attr("id"));
+        })
+        $.each($("input[class=LinkCheck]:checked"), function () {
+            selectedLinkCheck.push($(this).attr("id"));
+
+        })
+        $.each($("input[class=SubLinkCheck]:checked"), function () {
+            selectedSubLinkCheck.push($(this).attr("id"));
+
+        })
+
+
+
+        $.ajax({
+            type: "Post",
+            contentType: "application/json; charset=utf-8",
+            url: "MapuserRoleLinks/updateAll",
+            data: JSON.stringify({
+                "selectedViews": selectedViews,
+                "selectedAdd": selectedAdd,
+                "selectedUpdate": selectedUpdate,
+                "selectedDelete": selectedDelete,
+                "selectedPrint": selectedPrint,
+                "selectedLinkCheck": selectedLinkCheck,
+                "selectedSubLinkCheck": selectedSubLinkCheck
+            }),
+            dataType: "json",
+            success: function (response) {
+                if (response != 0) {
+                    alert(response);
+                    location.reload();
+                }
+            },
+            error: function (response) {
+                if (response != 1) {
+                    alert("Error!!!!");
+                }
+            }
+        });
+    }
+
+</script>

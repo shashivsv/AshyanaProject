@@ -1,0 +1,154 @@
+﻿@model Ashyana.UI.Web.ViewModel.MyUserModel
+
+<body data-title="create_user">
+
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog " style="width:600px;">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Add New User </h4>
+                </div>
+                <div class="modal-body">
+
+
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <div class="form-horizontal">
+
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            @Html.HiddenFor(model => model.userID)
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.userFirstname, htmlAttributes: new { @class = "control-label col-md-4" })
+                                <div class="col-md-6">
+                                    @Html.EditorFor(model => model.userFirstname, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.userFirstname, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.userLastname, htmlAttributes: new { @class = "control-label col-md-4" })
+                                <div class="col-md-6">
+                                    @Html.EditorFor(model => model.userLastname, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.userLastname, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.userEmailID, htmlAttributes: new { @class = "control-label col-md-4" })
+                                <div class="col-md-6">
+                                    @Html.EditorFor(model => model.userEmailID, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.userEmailID, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.userContactno, htmlAttributes: new { @class = "control-label col-md-4" })
+                                <div class="col-md-6">
+                                    @Html.EditorFor(model => model.userContactno, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.userContactno, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.userName, htmlAttributes: new { @class = "control-label col-md-4" })
+                                <div class="col-md-6">
+                                    @Html.EditorFor(model => model.userName, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.userName, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.RoleID, htmlAttributes: new { @class = "control-label col-md-4" })
+                                <div class="col-md-6">
+                                    <select class="form-control" id="ddlRole"></select><br />
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.countryID, htmlAttributes: new { @class = "control-label col-md-4" })
+                                <div class="col-md-6">
+                                    <select class="form-control" id="ddlCountry"></select><br />
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.StateID, htmlAttributes: new { @class = "control-label col-md-4" })
+                                <div class="col-md-6">
+                                    <select class="form-control" id="ddlState"></select><br />
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.cityID, htmlAttributes: new { @class = "control-label col-md-4" })
+                                <div class="col-md-6">
+                                    <select class="form-control" id="ddlCity"></select><br />
+
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.userPassword, htmlAttributes: new { @class = "control-label col-md-4" })
+                                <div class="col-md-6">
+                                    @Html.PasswordFor(model => model.userPassword, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.userPassword, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="modal-footer">
+                            <div class=" col-md-4">
+                                <input type="submit" value="Save" class="btn btn-default" />
+                            </div>
+
+                            <div class="col-md-6">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            </div>
+                        </div> 
+                    }
+                    </div>
+                  
+                </div>
+            </div>
+        </div>
+
+    </body>
+
+    <script type="text/javascript">
+
+        //$(document).ready(function () {
+
+        //    $("#myModal").modal('show');
+
+        //});
+
+
+
+
+
+        @*function GetCity() {
+        var stateID = $('#stateID').val();
+
+        $.ajax(
+        {
+            type: "POST",
+            url: '@Url.Action("GetCity","Users")',
+            datatype: 'application/json',
+            contentType: "application/json; charset=utf-8",
+            data: '{stateID: "' + stateID + '"}',
+
+            success: function (result) {
+                $("#cityID").html("");
+                $.each(result, function (i, state) {
+                    $("#cityID").append('<option value="' + state.Value + '">' + state.Text + '</option>');
+                });
+            }
+        });*@
+
+
+    </script>
+
