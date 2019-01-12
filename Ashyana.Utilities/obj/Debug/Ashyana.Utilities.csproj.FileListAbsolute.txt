@@ -1,0 +1,5 @@
+E:\AshyanaProject\Ashyana.Utilities\bin\Debug\Ashyana.Utilities.dll
+E:\AshyanaProject\Ashyana.Utilities\bin\Debug\Ashyana.Utilities.pdb
+E:\AshyanaProject\Ashyana.Utilities\obj\Debug\Ashyana.Utilities.csprojResolveAssemblyReference.cache
+E:\AshyanaProject\Ashyana.Utilities\obj\Debug\Ashyana.Utilities.dll
+E:\AshyanaProject\Ashyana.Utilities\obj\Debug\Ashyana.Utilities.pdb

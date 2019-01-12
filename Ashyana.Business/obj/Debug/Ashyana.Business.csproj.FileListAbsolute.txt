@@ -1,0 +1,11 @@
+E:\AshyanaProject\Ashyana.Business\bin\Debug\Ashyana.Business.dll
+E:\AshyanaProject\Ashyana.Business\bin\Debug\Ashyana.Business.pdb
+E:\AshyanaProject\Ashyana.Business\bin\Debug\Ashyana.Data.dll
+E:\AshyanaProject\Ashyana.Business\bin\Debug\Ashyana.Repository.dll
+E:\AshyanaProject\Ashyana.Business\bin\Debug\Ashyana.Data.pdb
+E:\AshyanaProject\Ashyana.Business\bin\Debug\Ashyana.Repository.pdb
+E:\AshyanaProject\Ashyana.Business\obj\Debug\Ashyana.Business.csprojResolveAssemblyReference.cache
+E:\AshyanaProject\Ashyana.Business\obj\Debug\Ashyana.Business.dll
+E:\AshyanaProject\Ashyana.Business\obj\Debug\Ashyana.Business.pdb
+E:\AshyanaProject\Ashyana.Business\bin\Debug\Ashyana.Common.dll
+E:\AshyanaProject\Ashyana.Business\bin\Debug\Ashyana.Common.pdb

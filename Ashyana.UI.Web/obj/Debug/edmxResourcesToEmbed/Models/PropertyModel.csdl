@@ -1,0 +1,1295 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="PropertyModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <ComplexType Name="Split_Result">
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Value" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </ComplexType>
+  <EntityType Name="Agent">
+    <Key>
+      <PropertyRef Name="agentID" />
+    </Key>
+    <Property Name="agentID" Type="Int32" Nullable="false" />
+    <Property Name="dealingIn" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="cityID" Type="Int32" />
+    <Property Name="propertyHandled" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="locality" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="agentDelete" Type="Int32" />
+    <Property Name="agentCreatedOn" Type="DateTime" Precision="3" />
+    <Property Name="agentCreatedBy" Type="Int32" />
+    <Property Name="agentDeletedOn" Type="DateTime" Precision="3" />
+    <Property Name="agentDeletedBy" Type="Int32" />
+    <Property Name="agentUpdatedOn" Type="DateTime" Precision="3" />
+    <Property Name="agentUpdatedBy" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Building">
+    <Key>
+      <PropertyRef Name="buildingTypeID" />
+    </Key>
+    <Property Name="buildingTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="buildingType" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="buildingDesc" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="buildingImage" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="buildingDelete" Type="Int32" />
+    <Property Name="buildingDeletedon" Type="DateTime" Precision="3" />
+    <Property Name="buildingCreatedby" Type="Int32" />
+    <Property Name="buildingCreatedon" Type="DateTime" Precision="3" />
+    <Property Name="buildingDeletedby" Type="Int32" />
+    <Property Name="buildingUpdatedby" Type="Int32" />
+    <Property Name="buildingUpdatedon" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="City">
+    <Key>
+      <PropertyRef Name="CityID" />
+    </Key>
+    <Property Name="CityID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CityName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="CityDesc" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CityForHome" Type="Int32" />
+    <Property Name="CityImage" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="CityDelete" Type="Int32" />
+    <Property Name="CityCreatedby" Type="Int32" />
+    <Property Name="CityCreatedon" Type="DateTime" Precision="3" />
+    <Property Name="CityDeletedby" Type="Int32" />
+    <Property Name="CityDeletedon" Type="DateTime" Precision="3" />
+    <Property Name="CityUpdatedby" Type="Int32" />
+    <Property Name="CityUpdatedon" Type="DateTime" Precision="3" />
+    <Property Name="countryID" Type="Int32" />
+    <Property Name="StateID" Type="Int32" />
+    <NavigationProperty Name="Users" Relationship="PropertyModel.FK_Users_City" FromRole="City" ToRole="User" />
+  </EntityType>
+  <EntityType Name="ContactInfo">
+    <Key>
+      <PropertyRef Name="contactID" />
+    </Key>
+    <Property Name="contactID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="contact_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="contact_EmailID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="contact_No" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="contact_desc" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="contactCreatedOn" Type="DateTime" Precision="3" />
+    <Property Name="contactDeletedOn" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="Country">
+    <Key>
+      <PropertyRef Name="CountryID" />
+    </Key>
+    <Property Name="CountryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CountryName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="CountryDesc" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CountryImage" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="CountryDelete" Type="Int32" />
+    <Property Name="CountryCreatedby" Type="Int32" />
+    <Property Name="CountryCreatedon" Type="DateTime" Precision="3" />
+    <Property Name="CountryDeletedby" Type="Int32" />
+    <Property Name="CountryDeletedon" Type="DateTime" Precision="3" />
+    <Property Name="CountryUpdatedby" Type="Int32" />
+    <Property Name="CountryUpdatedon" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Users" Relationship="PropertyModel.FK_Users_Country" FromRole="Country" ToRole="User" />
+  </EntityType>
+  <EntityType Name="Floor">
+    <Key>
+      <PropertyRef Name="floorTypeID" />
+    </Key>
+    <Property Name="floorTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="floorType" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="floorDesc" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="floorImage" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="floorDelete" Type="Int32" />
+    <Property Name="floorDeletedon" Type="DateTime" Precision="3" />
+    <Property Name="floorCreatedby" Type="Int32" />
+    <Property Name="floorCreatedon" Type="DateTime" Precision="3" />
+    <Property Name="floorDeletedby" Type="Int32" />
+    <Property Name="floorUpdatedby" Type="Int32" />
+    <Property Name="floorUpdatedon" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="Link">
+    <Key>
+      <PropertyRef Name="linkID" />
+    </Key>
+    <Property Name="linkID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="linkName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="linkPath" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="linkRank" Type="Int32" />
+    <Property Name="linkforHome" Type="Int32" />
+    <Property Name="linkDesc" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="linkDelete" Type="Int32" />
+    <Property Name="linkCreatedBy" Type="Int32" />
+    <Property Name="linkCreatedOn" Type="DateTime" Precision="3" />
+    <Property Name="linkDeletedBy" Type="Int32" />
+    <Property Name="linkDeletedOn" Type="DateTime" Precision="3" />
+    <Property Name="linkUpdatedBy" Type="Int32" />
+    <Property Name="linkUpdatedOn" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="Mail">
+    <Key>
+      <PropertyRef Name="mailID" />
+    </Key>
+    <Property Name="mailID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="mailDesc" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="userID" Type="Int32" />
+    <Property Name="PropertyID" Type="Int32" />
+    <Property Name="scheduleDate" Type="DateTime" Precision="3" />
+    <Property Name="mailDelete" Type="Int32" />
+    <Property Name="mailCreatedBy" Type="Int32" />
+    <Property Name="mailCreatedOn" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="MainMenu">
+    <Key>
+      <PropertyRef Name="MainMenuId" />
+    </Key>
+    <Property Name="MainMenuId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MainMenuName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="SubMenus" Relationship="Self.FK_tblSubMenu_tblRoles1" FromRole="MainMenu" ToRole="SubMenu" />
+  </EntityType>
+  <EntityType Name="MapRoleLink">
+    <Key>
+      <PropertyRef Name="roleLinkMapID" />
+    </Key>
+    <Property Name="roleLinkMapID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="roleID" Type="Int32" />
+    <Property Name="linkID" Type="Int32" />
+    <Property Name="subLinkID" Type="Int32" />
+    <Property Name="sublinkView" Type="Int32" />
+    <Property Name="sublinkAdd" Type="Int32" />
+    <Property Name="sublinkUpdate" Type="Int32" />
+    <Property Name="sublinkDelete" Type="Int32" />
+    <Property Name="sublinkPrint" Type="Int32" />
+    <Property Name="linkCheck" Type="Int32" Nullable="false" />
+    <Property Name="subLinkcheck" Type="Int32" Nullable="false" />
+    <Property Name="linkCreatedBy" Type="Int32" />
+    <Property Name="linkCreatedOn" Type="DateTime" Precision="3" />
+    <Property Name="linkDeletedBy" Type="Int32" />
+    <Property Name="linkDeletedOn" Type="DateTime" Precision="3" />
+    <Property Name="linkUpdatedBy" Type="Int32" />
+    <Property Name="linkUpdatedOn" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="MapuserRoleLink">
+    <Key>
+      <PropertyRef Name="userLinkMapID" />
+    </Key>
+    <Property Name="userLinkMapID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="roleID" Type="Int32" />
+    <Property Name="userID" Type="Int32" />
+    <Property Name="linkID" Type="Int32" />
+    <Property Name="subLinkID" Type="Int32" />
+    <Property Name="sublinkView" Type="Int32" />
+    <Property Name="sublinkAdd" Type="Int32" />
+    <Property Name="sublinkUpdate" Type="Int32" />
+    <Property Name="sublinkDelete" Type="Int32" />
+    <Property Name="sublinkPrint" Type="Int32" />
+    <Property Name="linkCheck" Type="Int32" Nullable="false" />
+    <Property Name="subLinkcheck" Type="Int32" Nullable="false" />
+    <Property Name="linkCreatedBy" Type="Int32" />
+    <Property Name="linkCreatedOn" Type="DateTime" Precision="3" />
+    <Property Name="linkDeletedBy" Type="Int32" />
+    <Property Name="linkDeletedOn" Type="DateTime" Precision="3" />
+    <Property Name="linkUpdatedBy" Type="Int32" />
+    <Property Name="linkUpdatedOn" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="News">
+    <Key>
+      <PropertyRef Name="NewsID" />
+    </Key>
+    <Property Name="NewsID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NewsType" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="NewsDesc" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="NewsImage" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="NewsDelete" Type="Int32" />
+    <Property Name="NewsDeletedon" Type="DateTime" Precision="3" />
+    <Property Name="NewsCreatedby" Type="Int32" />
+    <Property Name="NewsCreatedon" Type="DateTime" Precision="3" />
+    <Property Name="NewsDeletedby" Type="Int32" />
+    <Property Name="NewsUpdatedby" Type="Int32" />
+    <Property Name="NewsUpdatedon" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="Property">
+    <Key>
+      <PropertyRef Name="propertyID" />
+    </Key>
+    <Property Name="propertyID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="propertyTypeID" Type="Int32" />
+    <Property Name="propertyDesc" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="purchaseType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="propertyPrice" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="bedroom" Type="Int32" />
+    <Property Name="propertyArea" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="countryID" Type="Int32" />
+    <Property Name="stateID" Type="Int32" />
+    <Property Name="cityID" Type="Int32" />
+    <Property Name="metro" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="propertyAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="propertyLocality" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="pin" Type="Int32" />
+    <Property Name="propertyAge" Type="Int32" />
+    <Property Name="propertyTenure" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="propertyImage" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="propertyDelete" Type="Int32" Nullable="false" />
+    <Property Name="propertyDeletedon" Type="DateTime" Precision="3" />
+    <Property Name="propertyCreatedby" Type="Int32" />
+    <Property Name="propertyCreatedon" Type="DateTime" Precision="3" />
+    <Property Name="propertyDeletedby" Type="Int32" />
+    <Property Name="propertyUpdatedby" Type="Int32" />
+    <Property Name="propertyUpdatedon" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="PropertyType">
+    <Key>
+      <PropertyRef Name="propertyTypeID" />
+    </Key>
+    <Property Name="propertyTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="propertyType1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="propertyTypeDesc" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="propertyTypeDelete" Type="Int32" />
+    <Property Name="propertyTypeDeletedOn" Type="DateTime" Precision="3" />
+    <Property Name="propertyTypeCreatedBy" Type="Int32" />
+    <Property Name="propertyTypeCreatedOn" Type="DateTime" Precision="3" />
+    <Property Name="propertyTypeUpdatedBy" Type="Int32" />
+    <Property Name="propertyTypeUpdatedOn" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="roleID" />
+    </Key>
+    <Property Name="roleID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="roleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="roleDescription" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="roleDelete" Type="Int32" Nullable="false" />
+    <Property Name="roleCreatedBy" Type="Int32" />
+    <Property Name="roleCreatedOn" Type="DateTime" Precision="3" />
+    <Property Name="roleDeletedBy" Type="Int32" />
+    <Property Name="roleDeletedOn" Type="DateTime" Precision="3" />
+    <Property Name="roleUpdatedBy" Type="Int32" />
+    <Property Name="roleUpdatedOn" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="RoomType">
+    <Key>
+      <PropertyRef Name="RoomTypeID" />
+    </Key>
+    <Property Name="RoomTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RoomType1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="RoomDesc" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="RoomImage" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="RoomDelete" Type="Int32" />
+    <Property Name="RoomDeletedon" Type="DateTime" Precision="3" />
+    <Property Name="RoomCreatedby" Type="Int32" />
+    <Property Name="RoomCreatedon" Type="DateTime" Precision="3" />
+    <Property Name="RoomDeletedby" Type="Int32" />
+    <Property Name="RoomUpdatedby" Type="Int32" />
+    <Property Name="RoomUpdatedon" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="Search">
+    <Key>
+      <PropertyRef Name="searchID" />
+    </Key>
+    <Property Name="searchID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="propertyID" Type="Int32" />
+    <Property Name="searchCreatedBy" Type="Int32" />
+    <Property Name="searchCreatedOn" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="State">
+    <Key>
+      <PropertyRef Name="StateID" />
+    </Key>
+    <Property Name="StateID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="StateName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="StateDesc" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="StateImage" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="StateDelete" Type="Int32" />
+    <Property Name="StateCreatedby" Type="Int32" />
+    <Property Name="StateCreatedon" Type="DateTime" Precision="3" />
+    <Property Name="StateDeletedby" Type="Int32" />
+    <Property Name="StateDeletedon" Type="DateTime" Precision="3" />
+    <Property Name="StateUpdatedby" Type="Int32" />
+    <Property Name="StateUpdatedon" Type="DateTime" Precision="3" />
+    <Property Name="countryID" Type="Int32" />
+    <NavigationProperty Name="Users" Relationship="PropertyModel.FK_Users_State" FromRole="State" ToRole="User" />
+  </EntityType>
+  <EntityType Name="SubLink">
+    <Key>
+      <PropertyRef Name="subLinkID" />
+    </Key>
+    <Property Name="subLinkID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="linkID" Type="Int32" />
+    <Property Name="subLinkName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="subLinkPath" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="subLinkRank" Type="Int32" />
+    <Property Name="subLinkDelete" Type="Int32" />
+    <Property Name="subLinkView" Type="Int32" />
+    <Property Name="subLinkAdd" Type="Int32" />
+    <Property Name="sublinkUpdate" Type="Int32" />
+    <Property Name="sublinkPrint" Type="Int32" />
+    <Property Name="subLinkCreatedBy" Type="Int32" />
+    <Property Name="subLinkCreatedOn" Type="DateTime" Precision="3" />
+    <Property Name="subLinkDeletedBy" Type="Int32" />
+    <Property Name="subLinkDeletedOn" Type="DateTime" Precision="3" />
+    <Property Name="subLinkUpdatedBy" Type="Int32" />
+    <Property Name="subLinkUpdatedOn" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="SubMenu">
+    <Key>
+      <PropertyRef Name="SubMenuId" />
+    </Key>
+    <Property Name="SubMenuId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SubMenuName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Controller" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Action" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="MainMenuId" Type="Int32" />
+    <Property Name="RoleId" Type="Int32" />
+    <NavigationProperty Name="MainMenu" Relationship="Self.FK_tblSubMenu_tblRoles1" FromRole="SubMenu" ToRole="MainMenu" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="userID" />
+    </Key>
+    <Property Name="userID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="userFirstname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="userLastname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="userEmailID" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="userContactno" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="userName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="RoleID" Type="Int32" />
+    <Property Name="countryID" Type="Int32" />
+    <Property Name="StateID" Type="Int32" />
+    <Property Name="cityID" Type="Int32" />
+    <Property Name="userDelete" Type="Int32" Nullable="false" />
+    <Property Name="userPassword" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="userCreatedBy" Type="Int32" Nullable="false" />
+    <Property Name="userCreatedOn" Type="DateTime" Precision="3" />
+    <Property Name="userDeletedBy" Type="Int32" />
+    <Property Name="userDeletedOn" Type="DateTime" Precision="3" />
+    <Property Name="userUpdatedBy" Type="Int32" />
+    <Property Name="userUpdatedOn" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="City" Relationship="PropertyModel.FK_Users_City" FromRole="User" ToRole="City" />
+    <NavigationProperty Name="Country" Relationship="PropertyModel.FK_Users_Country" FromRole="User" ToRole="Country" />
+    <NavigationProperty Name="PhoneTypes" Relationship="PropertyModel.FK__PhoneType__UserI__3F865F66" FromRole="User" ToRole="PhoneType" />
+    <NavigationProperty Name="State" Relationship="PropertyModel.FK_Users_State" FromRole="User" ToRole="State" />
+  </EntityType>
+  <EntityType Name="master">
+    <Key>
+      <PropertyRef Name="userID" />
+      <PropertyRef Name="userDelete" />
+      <PropertyRef Name="userCreatedBy" />
+      <PropertyRef Name="userCreatedOn" />
+    </Key>
+    <Property Name="userID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="userFirstname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="userLastname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="userEmailID" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="userContactno" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="userName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="userType" Type="Int32" />
+    <Property Name="countryID" Type="Int32" />
+    <Property Name="StateID" Type="Int32" />
+    <Property Name="cityID" Type="Int32" />
+    <Property Name="userDelete" Type="Int32" Nullable="false" />
+    <Property Name="userPassword" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="userCreatedBy" Type="Int32" Nullable="false" />
+    <Property Name="userCreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="userDeletedBy" Type="Int32" />
+    <Property Name="userDeletedOn" Type="DateTime" Precision="3" />
+    <Property Name="userUpdatedBy" Type="Int32" />
+    <Property Name="userUpdatedOn" Type="DateTime" Precision="3" />
+  </EntityType>
+  <Association Name="FK_tblSubMenu_tblRoles1">
+    <End Role="MainMenu" Type="Self.MainMenu" Multiplicity="0..1" />
+    <End Role="SubMenu" Type="Self.SubMenu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MainMenu">
+        <PropertyRef Name="MainMenuId" />
+      </Principal>
+      <Dependent Role="SubMenu">
+        <PropertyRef Name="MainMenuId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="AshyanaDBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Agents" EntityType="Self.Agent" />
+    <EntitySet Name="Buildings" EntityType="Self.Building" />
+    <EntitySet Name="Cities" EntityType="Self.City" />
+    <EntitySet Name="ContactInfoes" EntityType="Self.ContactInfo" />
+    <EntitySet Name="Countries" EntityType="Self.Country" />
+    <EntitySet Name="Floors" EntityType="Self.Floor" />
+    <EntitySet Name="Links" EntityType="Self.Link" />
+    <EntitySet Name="Mails" EntityType="Self.Mail" />
+    <EntitySet Name="MainMenus" EntityType="Self.MainMenu" />
+    <EntitySet Name="MapRoleLinks" EntityType="Self.MapRoleLink" />
+    <EntitySet Name="MapuserRoleLinks" EntityType="Self.MapuserRoleLink" />
+    <EntitySet Name="News" EntityType="Self.News" />
+    <EntitySet Name="Properties" EntityType="Self.Property" />
+    <EntitySet Name="PropertyTypes" EntityType="Self.PropertyType" />
+    <EntitySet Name="Roles" EntityType="Self.Role" />
+    <EntitySet Name="RoomTypes" EntityType="Self.RoomType" />
+    <EntitySet Name="Searches" EntityType="Self.Search" />
+    <EntitySet Name="States" EntityType="Self.State" />
+    <EntitySet Name="SubLinks" EntityType="Self.SubLink" />
+    <EntitySet Name="SubMenus" EntityType="Self.SubMenu" />
+    <EntitySet Name="Users" EntityType="Self.User" />
+    <EntitySet Name="masters" EntityType="Self.master" />
+    <AssociationSet Name="FK_tblSubMenu_tblRoles1" Association="Self.FK_tblSubMenu_tblRoles1">
+      <End Role="MainMenu" EntitySet="MainMenus" />
+      <End Role="SubMenu" EntitySet="SubMenus" />
+    </AssociationSet>
+    <FunctionImport Name="Split" IsComposable="true" ReturnType="Collection(PropertyModel.Split_Result)">
+      <Parameter Name="List" Mode="In" Type="String" />
+      <Parameter Name="SplitOn" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="U_sp_ActiveUser" ReturnType="Collection(Int32)">
+      <Parameter Name="UserID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="U_sp_AdminLinkDisplay" ReturnType="Collection(PropertyModel.U_sp_AdminLinkDisplay_Result)">
+      <Parameter Name="userid" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="U_sp_AutoFillU" ReturnType="Collection(String)">
+      <Parameter Name="Text" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="U_sp_AutoFillUActive" ReturnType="Collection(String)">
+      <Parameter Name="Text" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="U_sp_BuildingDropDown" ReturnType="Collection(PropertyModel.U_sp_BuildingDropDown_Result)">
+      <Parameter Name="BuildingID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="U_sp_changePassword">
+      <Parameter Name="uid" Mode="In" Type="Int32" />
+      <Parameter Name="userpwd" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="U_sp_CheckRight" ReturnType="Collection(PropertyModel.U_sp_CheckRight_Result)">
+      <Parameter Name="userID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="U_sp_cityDropDown" ReturnType="Collection(PropertyModel.U_sp_cityDropDown_Result)">
+      <Parameter Name="cityid" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="U_sp_cityUpdateHome">
+      <Parameter Name="cityID" Mode="In" Type="Int32" />
+      <Parameter Name="cityforHome" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="U_sp_countryDropDown" ReturnType="Collection(PropertyModel.U_sp_countryDropDown_Result)">
+      <Parameter Name="countryid" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="U_sp_DefaultRightsMenu">
+      <Parameter Name="userID" Mode="In" Type="Int32" />
+      <Parameter Name="roleID" Mode="In" Type="Int32" />
+      <Parameter Name="linkID" Mode="In" Type="Int32" />
+      <Parameter Name="sublinkID" Mode="In" Type="Int32" />
+      <Parameter Name="sublinkAdd" Mode="In" Type="Int32" />
+      <Parameter Name="linkCheck" Mode="In" Type="Int32" />
+      <Parameter Name="linkCreatedBy" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="U_sp_DeleteUser" ReturnType="Collection(Int32)">
+      <Parameter Name="userID" Mode="In" Type="Int32" />
+      <Parameter Name="userDeletedBy" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="U_sp_floorDropDown" ReturnType="Collection(PropertyModel.U_sp_floorDropDown_Result)">
+      <Parameter Name="floortypeid" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="U_sp_GetEmailID" ReturnType="Collection(PropertyModel.U_sp_GetEmailID_Result)">
+      <Parameter Name="email" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="U_sp_GetLinksubLinkByUserID" ReturnType="Collection(PropertyModel.U_sp_GetLinksubLinkByUserID_Result)">
+      <Parameter Name="UserID" Mode="In" Type="Int32" />
+      <Parameter Name="RoleID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="U_sp_Getmenu" ReturnType="Collection(PropertyModel.U_sp_Getmenu_Result)">
+      <Parameter Name="uid" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="U_sp_GetUserDetails">
+      <Parameter Name="uid" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="U_sp_InsertAgent">
+      <Parameter Name="agentID" Mode="In" Type="Int32" />
+      <Parameter Name="dealingIn" Mode="In" Type="String" />
+      <Parameter Name="propertyHandled" Mode="In" Type="String" />
+      <Parameter Name="locality" Mode="In" Type="String" />
+      <Parameter Name="cityID" Mode="In" Type="Int32" />
+      <Parameter Name="agentCreatedby" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="U_sp_InsertContactInfo">
+      <Parameter Name="contactName" Mode="In" Type="String" />
+      <Parameter Name="contactEmail" Mode="In" Type="String" />
+      <Parameter Name="contactNo" Mode="In" Type="String" />
+      <Parameter Name="contactdesc" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="U_sp_InsertSearch">
+      <Parameter Name="propertyID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="U_sp_InsertUpdatebuilding" ReturnType="Collection(Int32)">
+      <Parameter Name="buildingTypeID" Mode="In" Type="Int32" />
+      <Parameter Name="buildingType" Mode="In" Type="String" />
+      <Parameter Name="buildingDesc" Mode="In" Type="String" />
+      <Parameter Name="buildingImage" Mode="In" Type="String" />
+      <Parameter Name="buildingCreatedBy" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="U_sp_InsertUpdateCity" ReturnType="Collection(Int32)">
+      <Parameter Name="cityID" Mode="In" Type="Int32" />
+      <Parameter Name="cityname" Mode="In" Type="String" />
+      <Parameter Name="citydesc" Mode="In" Type="String" />
+      <Parameter Name="cityforHome" Mode="In" Type="Int32" />
+      <Parameter Name="cityimage" Mode="In" Type="String" />
+      <Parameter Name="countryID" Mode="In" Type="Int32" />
+      <Parameter Name="stateID" Mode="In" Type="Int32" />
+      <Parameter Name="citycreatedby" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="U_sp_InsertUpdateCountry" ReturnType="Collection(Int32)">
+      <Parameter Name="countryid" Mode="In" Type="Int32" />
+      <Parameter Name="COUNTRYNAME" Mode="In" Type="String" />
+      <Parameter Name="countrydesc" Mode="In" Type="String" />
+      <Parameter Name="countryimage" Mode="In" Type="String" />
+      <Parameter Name="CountryCreatedby" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="U_sp_InsertUpdateFloor" ReturnType="Collection(Decimal)">
+      <Parameter Name="floorTypeID" Mode="In" Type="String" />
+      <Parameter Name="floorType" Mode="In" Type="String" />
+      <Parameter Name="floorDesc" Mode="In" Type="String" />
+      <Parameter Name="floorImage" Mode="In" Type="String" />
+      <Parameter Name="floorCreatedBy" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="U_sp_InsertUpdateLink" ReturnType="Collection(Decimal)">
+      <Parameter Name="linkID" Mode="In" Type="Int32" />
+      <Parameter Name="linkName" Mode="In" Type="String" />
+      <Parameter Name="linkPath" Mode="In" Type="String" />
+      <Parameter Name="linkForHome" Mode="In" Type="Int32" />
+      <Parameter Name="linkDesc" Mode="In" Type="String" />
+      <Parameter Name="linkCreatedBy" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="U_sp_InsertUpdateMapRoleLinkMap" ReturnType="Collection(Int32)">
+      <Parameter Name="roleID" Mode="In" Type="Int32" />
+      <Parameter Name="linkID" Mode="In" Type="Int32" />
+      <Parameter Name="subLinkID" Mode="In" Type="Int32" />
+      <Parameter Name="sublinkAdd" Mode="In" Type="Int32" />
+      <Parameter Name="sublinkUpdate" Mode="In" Type="Int32" />
+      <Parameter Name="sublinkDelete" Mode="In" Type="Int32" />
+      <Parameter Name="sublinkCheck" Mode="In" Type="Int32" />
+      <Parameter Name="sublinkPrint" Mode="In" Type="Int32" />
+      <Parameter Name="linkCreatedBy" Mode="In" Type="Int32" />
+      <Parameter Name="linkCheck" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="U_sp_Insertupdateproperty" ReturnType="Collection(Decimal)">
+      <Parameter Name="propertyID" Mode="In" Type="Int32" />
+      <Parameter Name="propertyTypeID" Mode="In" Type="Int32" />
+      <Parameter Name="purchaseType" Mode="In" Type="String" />
+      <Parameter Name="propertyprice" Mode="In" Type="Decimal" />
+      <Parameter Name="propertyarea" Mode="In" Type="String" />
+      <Parameter Name="bedroom" Mode="In" Type="Int32" />
+      <Parameter Name="countryid" Mode="In" Type="Int32" />
+      <Parameter Name="stateid" Mode="In" Type="Int32" />
+      <Parameter Name="cityid" Mode="In" Type="Int32" />
+      <Parameter Name="metro" Mode="In" Type="String" />
+      <Parameter Name="propertyaddress" Mode="In" Type="String" />
+      <Parameter Name="propertylocality" Mode="In" Type="String" />
+      <Parameter Name="pin" Mode="In" Type="Int32" />
+      <Parameter Name="propertyage" Mode="In" Type="Int32" />
+      <Parameter Name="propertytenure" Mode="In" Type="Decimal" />
+      <Parameter Name="propertydesc" Mode="In" Type="String" />
+      <Parameter Name="propertyimage" Mode="In" Type="String" />
+      <Parameter Name="propertycreatedby" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="U_sp_InsertUpdatePropertyType" ReturnType="Collection(Decimal)">
+      <Parameter Name="PropertyTypeID" Mode="In" Type="Int32" />
+      <Parameter Name="PropertyType" Mode="In" Type="String" />
+      <Parameter Name="PropertyTypeDesc" Mode="In" Type="String" />
+      <Parameter Name="PropertyTypeCreatedby" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="U_sp_InsertUpdateRegistration">
+      <Parameter Name="userID" Mode="In" Type="Int32" />
+      <Parameter Name="userName" Mode="In" Type="String" />
+      <Parameter Name="userPassword" Mode="In" Type="String" />
+      <Parameter Name="userFirstname" Mode="In" Type="String" />
+      <Parameter Name="userLastname" Mode="In" Type="String" />
+      <Parameter Name="countryid" Mode="In" Type="Int32" />
+      <Parameter Name="stateid" Mode="In" Type="Int32" />
+      <Parameter Name="cityid" Mode="In" Type="Int32" />
+      <Parameter Name="userContactno" Mode="In" Type="String" />
+      <Parameter Name="userEmailID" Mode="In" Type="String" />
+      <Parameter Name="RoleID" Mode="In" Type="Int32" />
+      <Parameter Name="usercreatedby" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="U_sp_InsertUpdateRole">
+      <Parameter Name="roleID" Mode="In" Type="Int32" />
+      <Parameter Name="roleName" Mode="In" Type="String" />
+      <Parameter Name="roleDescription" Mode="In" Type="String" />
+      <Parameter Name="roleCreatedBy" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="U_sp_InsertUpdateState">
+      <Parameter Name="stateID" Mode="In" Type="Int32" />
+      <Parameter Name="statename" Mode="In" Type="String" />
+      <Parameter Name="statedesc" Mode="In" Type="String" />
+      <Parameter Name="stateimage" Mode="In" Type="String" />
+      <Parameter Name="statecreatedby" Mode="In" Type="Int32" />
+      <Parameter Name="countryID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="U_sp_InsertUpdateSubLink" ReturnType="Collection(Decimal)">
+      <Parameter Name="linkID" Mode="In" Type="Int32" />
+      <Parameter Name="subLinkName" Mode="In" Type="String" />
+      <Parameter Name="subLinkPath" Mode="In" Type="String" />
+      <Parameter Name="sublinkRank" Mode="In" Type="Int32" />
+      <Parameter Name="subLinkAdd" Mode="In" Type="Int32" />
+      <Parameter Name="subLinkUpdate" Mode="In" Type="Int32" />
+      <Parameter Name="subLinkDelete" Mode="In" Type="Int32" />
+      <Parameter Name="sublinkPrint" Mode="In" Type="Int32" />
+      <Parameter Name="sublinkCreatedBy" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="U_sp_InsertUpdateUser" ReturnType="Collection(Decimal)">
+      <Parameter Name="userID" Mode="In" Type="Int32" />
+      <Parameter Name="userName" Mode="In" Type="String" />
+      <Parameter Name="userFirstname" Mode="In" Type="String" />
+      <Parameter Name="userLastname" Mode="In" Type="String" />
+      <Parameter Name="countryid" Mode="In" Type="Int32" />
+      <Parameter Name="stateid" Mode="In" Type="Int32" />
+      <Parameter Name="cityid" Mode="In" Type="Int32" />
+      <Parameter Name="userEmailID" Mode="In" Type="String" />
+      <Parameter Name="userContactno" Mode="In" Type="String" />
+      <Parameter Name="RoleID" Mode="In" Type="Int32" />
+      <Parameter Name="userPassword" Mode="In" Type="String" />
+      <Parameter Name="userCreatedBy" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="U_sp_InsertUpdateUserRoleLinkMap" ReturnType="Collection(Int32)">
+      <Parameter Name="roleID" Mode="In" Type="Int32" />
+      <Parameter Name="linkID" Mode="In" Type="Int32" />
+      <Parameter Name="subLinkID" Mode="In" Type="Int32" />
+      <Parameter Name="sublinkAdd" Mode="In" Type="Int32" />
+      <Parameter Name="sublinkUpdate" Mode="In" Type="Int32" />
+      <Parameter Name="sublinkDelete" Mode="In" Type="Int32" />
+      <Parameter Name="sublinkCheck" Mode="In" Type="Int32" />
+      <Parameter Name="sublinkPrint" Mode="In" Type="Int32" />
+      <Parameter Name="linkCreatedBy" Mode="In" Type="Int32" />
+      <Parameter Name="linkCheck" Mode="In" Type="Int32" />
+      <Parameter Name="UID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="U_sp_linkDropDown" ReturnType="Collection(PropertyModel.U_sp_linkDropDown_Result)">
+      <Parameter Name="linkid" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="U_sp_linkUpdateHome">
+      <Parameter Name="linkID" Mode="In" Type="Int32" />
+      <Parameter Name="linkforHome" Mode="In" Type="Int32" />
+      <Parameter Name="linkCreatedBy" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="U_sp_Login" ReturnType="Collection(PropertyModel.U_sp_Login_Result)">
+      <Parameter Name="UserName" Mode="In" Type="String" />
+      <Parameter Name="Password" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="U_sp_RoleDropDown">
+      <Parameter Name="RoleID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="U_sp_SearchAgent">
+      <Parameter Name="dealingIn" Mode="In" Type="String" />
+      <Parameter Name="propertyHandled" Mode="In" Type="String" />
+      <Parameter Name="locality" Mode="In" Type="String" />
+      <Parameter Name="city" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="U_sp_SearchByCity">
+      <Parameter Name="cityID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="U_sp_SearchByUserFirstname" ReturnType="Collection(PropertyModel.U_sp_SearchByUserFirstname_Result)">
+      <Parameter Name="fname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="U_sp_SearchProperty">
+      <Parameter Name="purchaseType" Mode="In" Type="String" />
+      <Parameter Name="propertyType" Mode="In" Type="String" />
+      <Parameter Name="country" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="U_sp_SelectAllUser" ReturnType="Collection(PropertyModel.U_sp_SelectAllUser_Result)" />
+    <FunctionImport Name="U_sp_Selectbuilding" ReturnType="Collection(PropertyModel.U_sp_Selectbuilding_Result)">
+      <Parameter Name="buildingTypeID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="U_sp_Selectcities" ReturnType="Collection(PropertyModel.U_sp_Selectcities_Result)" />
+    <FunctionImport Name="U_sp_SelectCity" ReturnType="Collection(PropertyModel.U_sp_SelectCity_Result)">
+      <Parameter Name="cityID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="U_sp_SelectCountry" ReturnType="Collection(PropertyModel.U_sp_SelectCountry_Result)">
+      <Parameter Name="countryID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="U_sp_SelectDefaultMenu" ReturnType="Collection(PropertyModel.U_sp_SelectDefaultMenu_Result)" />
+    <FunctionImport Name="U_sp_SelectFloor" ReturnType="Collection(PropertyModel.U_sp_SelectFloor_Result)">
+      <Parameter Name="floorTypeID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="U_sp_SelectHomelink" ReturnType="Collection(PropertyModel.U_sp_SelectHomelink_Result)">
+      <Parameter Name="lID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="U_sp_SelectLink" ReturnType="Collection(PropertyModel.U_sp_SelectLink_Result)">
+      <Parameter Name="linkID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="U_sp_SelectMail" ReturnType="Collection(String)">
+      <Parameter Name="aID" Mode="In" Type="Int32" />
+      <Parameter Name="uID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="U_sp_SelectMapRoleUser" ReturnType="Collection(PropertyModel.U_sp_SelectMapRoleUser_Result)" />
+    <FunctionImport Name="U_sp_SelectMapUserRole">
+      <Parameter Name="userID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="U_sp_SelectProperty" ReturnType="Collection(PropertyModel.U_sp_SelectProperty_Result)">
+      <Parameter Name="propertyCreatedby" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="U_sp_SelectPropertyByID">
+      <Parameter Name="propertyID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="U_sp_SelectPropertyTypeDropDown" ReturnType="Collection(PropertyModel.U_sp_SelectPropertyTypeDropDown_Result)">
+      <Parameter Name="propertyTypeID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="U_sp_SelectPropetyType" ReturnType="Collection(PropertyModel.U_sp_SelectPropetyType_Result)">
+      <Parameter Name="propertyTypeID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="U_sp_SelectRegister" ReturnType="Collection(PropertyModel.U_sp_SelectRegister_Result)">
+      <Parameter Name="uid" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="U_sp_SelectRight" ReturnType="Collection(PropertyModel.U_sp_SelectRight_Result)">
+      <Parameter Name="userID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="U_sp_SelectRole" />
+    <FunctionImport Name="U_sp_SelectRoleLinkMap" ReturnType="Collection(PropertyModel.U_sp_SelectRoleLinkMap_Result)" />
+    <FunctionImport Name="U_sp_SelectRoleLinkMapDropDown">
+      <Parameter Name="linkID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="U_sp_SelectSearch" ReturnType="Collection(PropertyModel.U_sp_SelectSearch_Result)" />
+    <FunctionImport Name="U_sp_SelectState" ReturnType="Collection(PropertyModel.U_sp_SelectState_Result)">
+      <Parameter Name="stateID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="U_sp_SelectSubLink" ReturnType="Collection(PropertyModel.U_sp_SelectSubLink_Result)" />
+    <FunctionImport Name="U_sp_SelectUser">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="U_sp_SelectUserByID">
+      <Parameter Name="UserID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="U_sp_SelectUserRoleMap" ReturnType="Collection(PropertyModel.U_sp_SelectUserRoleMap_Result)">
+      <Parameter Name="UserID" Mode="In" Type="Int32" />
+      <Parameter Name="linkID" Mode="In" Type="Int32" />
+      <Parameter Name="Flag" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="U_sp_sendmail" ReturnType="Collection(Decimal)">
+      <Parameter Name="maildesc" Mode="In" Type="String" />
+      <Parameter Name="userid" Mode="In" Type="Int32" />
+      <Parameter Name="propertyid" Mode="In" Type="Int32" />
+      <Parameter Name="mailcreatedby" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="U_sp_stateDropDown" ReturnType="Collection(PropertyModel.U_sp_stateDropDown_Result)">
+      <Parameter Name="stateid" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="U_sp_SubLinkDropDown" ReturnType="Collection(PropertyModel.U_sp_SubLinkDropDown_Result)">
+      <Parameter Name="subLinkID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="U_sp_SubLinkFromRoleLinkMap" ReturnType="Collection(PropertyModel.U_sp_SubLinkFromRoleLinkMap_Result)">
+      <Parameter Name="Flag" Mode="In" Type="String" />
+      <Parameter Name="LinkID" Mode="In" Type="Int32" />
+      <Parameter Name="RoleID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="U_sp_updateLink">
+      <Parameter Name="linkID" Mode="In" Type="Int32" />
+      <Parameter Name="linkName" Mode="In" Type="String" />
+      <Parameter Name="linkPath" Mode="In" Type="String" />
+      <Parameter Name="linkForHome" Mode="In" Type="Int32" />
+      <Parameter Name="linkDesc" Mode="In" Type="String" />
+      <Parameter Name="linkCreatedBy" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="U_sp_UpdateRole">
+      <Parameter Name="roleID" Mode="In" Type="Int32" />
+      <Parameter Name="roleName" Mode="In" Type="String" />
+      <Parameter Name="roleDescription" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="U_sp_UpdateRoleLinkMap">
+      <Parameter Name="roleLinkMapID" Mode="In" Type="Int32" />
+      <Parameter Name="sublinkView" Mode="In" Type="Int32" />
+      <Parameter Name="sublinkAdd" Mode="In" Type="Int32" />
+      <Parameter Name="sublinkUpdate" Mode="In" Type="Int32" />
+      <Parameter Name="sublinkDelete" Mode="In" Type="Int32" />
+      <Parameter Name="sublinkPrint" Mode="In" Type="Int32" />
+      <Parameter Name="linkCheck" Mode="In" Type="Int32" />
+      <Parameter Name="sublinkCheck" Mode="In" Type="Int32" />
+      <Parameter Name="linkCreatedBy" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="U_sp_UpdateRoleLinkMapDropDown">
+      <Parameter Name="linkName" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="U_sp_UpdateSubLink">
+      <Parameter Name="subLinkID" Mode="In" Type="Int32" />
+      <Parameter Name="subLinkView" Mode="In" Type="Int32" />
+      <Parameter Name="subLinkAdd" Mode="In" Type="Int32" />
+      <Parameter Name="subLinkUpdate" Mode="In" Type="Int32" />
+      <Parameter Name="subLinkDelete" Mode="In" Type="Int32" />
+      <Parameter Name="sublinkPrint" Mode="In" Type="Int32" />
+      <Parameter Name="sublinkCreatedBy" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="U_sp_UpdateUserRoleLinkMap">
+      <Parameter Name="sublinkView" Mode="In" Type="Int32" />
+      <Parameter Name="sublinkAdd" Mode="In" Type="Int32" />
+      <Parameter Name="sublinkUpdate" Mode="In" Type="Int32" />
+      <Parameter Name="sublinkDelete" Mode="In" Type="Int32" />
+      <Parameter Name="linkCheck" Mode="In" Type="Int32" />
+      <Parameter Name="sublinkCheck" Mode="In" Type="Int32" />
+      <Parameter Name="sublinkPrint" Mode="In" Type="Int32" />
+      <Parameter Name="linkCreatedBy" Mode="In" Type="Int32" />
+      <Parameter Name="userlinkMapID" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="U_spUpdateRole">
+      <Parameter Name="roleid" Mode="In" Type="Int32" />
+      <Parameter Name="roleName" Mode="In" Type="String" />
+      <Parameter Name="roleDescription" Mode="In" Type="String" />
+      <Parameter Name="rolecreatedby" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="UM_sp_GetSublinkPermissions" ReturnType="Collection(PropertyModel.UM_sp_GetSublinkPermissions_Result)">
+      <Parameter Name="UserID" Mode="In" Type="String" />
+      <Parameter Name="SubLinkID" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="UM_sp_roleCreate">
+      <Parameter Name="roleName" Mode="In" Type="String" />
+      <Parameter Name="roleDescription" Mode="In" Type="String" />
+      <Parameter Name="roleCreatedBy" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <EntitySet Name="Purchases" EntityType="PropertyModel.Purchase" />
+    <EntitySet Name="logErrors" EntityType="PropertyModel.logError" />
+    <EntitySet Name="PhoneTypes" EntityType="PropertyModel.PhoneType" />
+    <AssociationSet Name="FK_Users_City" Association="PropertyModel.FK_Users_City">
+      <End Role="City" EntitySet="Cities" />
+      <End Role="User" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Users_Country" Association="PropertyModel.FK_Users_Country">
+      <End Role="Country" EntitySet="Countries" />
+      <End Role="User" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PhoneType__UserI__3F865F66" Association="PropertyModel.FK__PhoneType__UserI__3F865F66">
+      <End Role="User" EntitySet="Users" />
+      <End Role="PhoneType" EntitySet="PhoneTypes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Users_State" Association="PropertyModel.FK_Users_State">
+      <End Role="State" EntitySet="States" />
+      <End Role="User" EntitySet="Users" />
+    </AssociationSet>
+  </EntityContainer>
+  <ComplexType Name="U_sp_AdminLinkDisplay_Result">
+    <Property Type="Int32" Name="roleID" Nullable="true" />
+    <Property Type="Int32" Name="userID" Nullable="true" />
+    <Property Type="Int32" Name="subLinkID" Nullable="true" />
+    <Property Type="Int32" Name="sublinkView" Nullable="true" />
+    <Property Type="Int32" Name="sublinkAdd" Nullable="true" />
+    <Property Type="Int32" Name="sublinkUpdate" Nullable="true" />
+    <Property Type="Int32" Name="sublinkDelete" Nullable="true" />
+    <Property Type="Int32" Name="sublinkPrint" Nullable="true" />
+    <Property Type="Int32" Name="linkCheck" Nullable="false" />
+    <Property Type="Int32" Name="subLinkcheck" Nullable="false" />
+    <Property Type="Int32" Name="linkID" Nullable="true" />
+    <Property Type="String" Name="linkName" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="linkPath" Nullable="true" MaxLength="200" />
+    <Property Type="Int32" Name="linkRank" Nullable="true" />
+    <Property Type="Int32" Name="linkDelete" Nullable="true" />
+    <Property Type="String" Name="subLinkName" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="subLinkPath" Nullable="true" MaxLength="200" />
+    <Property Type="Int32" Name="subLinkRank" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="U_sp_BuildingDropDown_Result">
+    <Property Type="Int32" Name="buildingTypeid" Nullable="false" />
+    <Property Type="String" Name="buildingType" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="buildingDesc" Nullable="true" />
+    <Property Type="String" Name="Active" Nullable="false" MaxLength="8" />
+  </ComplexType>
+  <ComplexType Name="U_sp_CheckRight_Result">
+    <Property Type="String" Name="subLinkName" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="sublinkAdd" Nullable="true" />
+    <Property Type="Int32" Name="sublinkUpdate" Nullable="true" />
+    <Property Type="Int32" Name="sublinkDelete" Nullable="true" />
+    <Property Type="Int32" Name="sublinkView" Nullable="true" />
+    <Property Type="Int32" Name="subLinkcheck" Nullable="false" />
+    <Property Type="Int32" Name="sublinkPrint" Nullable="true" />
+    <Property Type="String" Name="userName" Nullable="true" MaxLength="100" />
+  </ComplexType>
+  <ComplexType Name="U_sp_cityDropDown_Result">
+    <Property Type="Int32" Name="cityid" Nullable="false" />
+    <Property Type="String" Name="cityName" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="CityDesc" Nullable="true" />
+    <Property Type="String" Name="cityimage" Nullable="true" MaxLength="500" />
+    <Property Type="String" Name="Active" Nullable="false" MaxLength="8" />
+  </ComplexType>
+  <ComplexType Name="U_sp_countryDropDown_Result">
+    <Property Type="Int32" Name="countryid" Nullable="false" />
+    <Property Type="String" Name="countryName" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="countrydesc" Nullable="true" />
+    <Property Type="String" Name="countryimage" Nullable="true" MaxLength="500" />
+    <Property Type="String" Name="Active" Nullable="false" MaxLength="8" />
+  </ComplexType>
+  <ComplexType Name="U_sp_floorDropDown_Result">
+    <Property Type="Int32" Name="floortypeid" Nullable="false" />
+    <Property Type="String" Name="floorType" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="floorDesc" Nullable="true" />
+    <Property Type="String" Name="floorImage" Nullable="true" MaxLength="500" />
+    <Property Type="String" Name="Active" Nullable="false" MaxLength="8" />
+  </ComplexType>
+  <ComplexType Name="U_sp_GetEmailID_Result">
+    <Property Type="String" Name="username" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="userpassword" Nullable="true" MaxLength="100" />
+  </ComplexType>
+  <ComplexType Name="U_sp_GetLinksubLinkByUserID_Result">
+    <Property Type="Int32" Name="linkID" Nullable="true" />
+    <Property Type="Int32" Name="SubLinkID" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="U_sp_Getmenu_Result">
+    <Property Type="String" Name="linkName" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="linkforhome" Nullable="true" />
+    <Property Type="Int32" Name="linkID" Nullable="false" />
+    <Property Type="Int32" Name="LinkRank" Nullable="true" />
+    <Property Type="String" Name="LinkPath" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="subLinkName" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="subLinkID" Nullable="true" />
+    <Property Type="String" Name="subLinkPath" Nullable="true" MaxLength="200" />
+  </ComplexType>
+  <ComplexType Name="U_sp_linkDropDown_Result">
+    <Property Type="String" Name="linkName" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="linkID" Nullable="false" />
+    <Property Type="String" Name="linkpath" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="Active" Nullable="false" MaxLength="8" />
+  </ComplexType>
+  <ComplexType Name="U_sp_Login_Result">
+    <Property Type="Int32" Name="userID" Nullable="false" />
+    <Property Type="Int32" Name="RoleID" Nullable="true" />
+    <Property Type="String" Name="userName" Nullable="true" MaxLength="100" />
+  </ComplexType>
+  <ComplexType Name="U_sp_SearchByUserFirstname_Result">
+    <Property Type="String" Name="userFirstname" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="userLastname" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="userName" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="userEmailID" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="userContactno" Nullable="true" MaxLength="10" />
+    <Property Type="Int32" Name="countryID" Nullable="true" />
+    <Property Type="Int32" Name="StateID" Nullable="true" />
+    <Property Type="Int32" Name="cityID" Nullable="true" />
+    <Property Type="String" Name="CountryName" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Statename" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="CityName" Nullable="true" MaxLength="100" />
+  </ComplexType>
+  <ComplexType Name="U_sp_SelectAllUser_Result">
+    <Property Type="Int32" Name="userID" Nullable="false" />
+    <Property Type="String" Name="userName" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="roleName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="userPassword" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="userContactno" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="userFirstname" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="userLastname" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="RoleID" Nullable="true" />
+    <Property Type="String" Name="userEmailID" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="cityid" Nullable="true" />
+    <Property Type="Int32" Name="countryID" Nullable="true" />
+    <Property Type="Int32" Name="stateID" Nullable="true" />
+    <Property Type="String" Name="CityName" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="StateName" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="CountryName" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Active" Nullable="false" MaxLength="8" />
+  </ComplexType>
+  <ComplexType Name="U_sp_Selectbuilding_Result">
+    <Property Type="Int32" Name="buildingTypeid" Nullable="false" />
+    <Property Type="String" Name="buildingType" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="buildingImage" Nullable="true" MaxLength="500" />
+    <Property Type="String" Name="buildingDesc" Nullable="true" />
+    <Property Type="String" Name="Active" Nullable="false" MaxLength="8" />
+  </ComplexType>
+  <ComplexType Name="U_sp_Selectcities_Result">
+    <Property Type="Int32" Name="cityID" Nullable="false" />
+    <Property Type="String" Name="cityname" Nullable="true" MaxLength="100" />
+  </ComplexType>
+  <ComplexType Name="U_sp_SelectCity_Result">
+    <Property Type="Int32" Name="cityID" Nullable="false" />
+    <Property Type="String" Name="cityName" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="cityDesc" Nullable="true" />
+    <Property Type="Int32" Name="cityforHome" Nullable="true" />
+    <Property Type="Int32" Name="countryID" Nullable="true" />
+    <Property Type="Int32" Name="StateID" Nullable="true" />
+    <Property Type="String" Name="CountryName" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="StateName" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="cityImage" Nullable="true" MaxLength="500" />
+    <Property Type="String" Name="Active" Nullable="false" MaxLength="8" />
+  </ComplexType>
+  <ComplexType Name="U_sp_SelectCountry_Result">
+    <Property Type="Int32" Name="countryID" Nullable="false" />
+    <Property Type="String" Name="countryName" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="countryDesc" Nullable="true" />
+    <Property Type="String" Name="countryImage" Nullable="true" MaxLength="500" />
+    <Property Type="String" Name="Active" Nullable="false" MaxLength="8" />
+  </ComplexType>
+  <ComplexType Name="U_sp_SelectDefaultMenu_Result">
+    <Property Type="Int32" Name="linkID" Nullable="false" />
+    <Property Type="String" Name="linkname" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="sublinkname" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="subLinkID" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="U_sp_SelectFloor_Result">
+    <Property Type="Int32" Name="floorTypeID" Nullable="false" />
+    <Property Type="String" Name="floortype" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="floorDesc" Nullable="true" />
+    <Property Type="String" Name="floorimage" Nullable="true" MaxLength="500" />
+    <Property Type="String" Name="Active" Nullable="false" MaxLength="8" />
+  </ComplexType>
+  <ComplexType Name="U_sp_SelectHomelink_Result">
+    <Property Type="Int32" Name="linkid" Nullable="false" />
+    <Property Type="String" Name="linkdesc" Nullable="true" />
+    <Property Type="String" Name="linkpath" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="linkname" Nullable="true" MaxLength="100" />
+  </ComplexType>
+  <ComplexType Name="U_sp_SelectLink_Result">
+    <Property Type="Int32" Name="linkID" Nullable="false" />
+    <Property Type="String" Name="linkName" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="linkforhome" Nullable="true" />
+    <Property Type="String" Name="linkPath" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="linkdesc" Nullable="true" />
+    <Property Type="Int32" Name="linkRank" Nullable="true" />
+    <Property Type="String" Name="Active" Nullable="false" MaxLength="8" />
+  </ComplexType>
+  <ComplexType Name="U_sp_SelectMapRoleUser_Result">
+    <Property Type="Int32" Name="userLinkMapID" Nullable="false" />
+    <Property Type="String" Name="roleName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="linkName" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="userName" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="sublinkName" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="sublinkView" Nullable="true" />
+    <Property Type="Int32" Name="sublinkAdd" Nullable="true" />
+    <Property Type="Int32" Name="sublinkUpdate" Nullable="true" />
+    <Property Type="Int32" Name="sublinkDelete" Nullable="true" />
+    <Property Type="Int32" Name="sublinkPrint" Nullable="true" />
+    <Property Type="Int32" Name="linkCheck" Nullable="false" />
+    <Property Type="Int32" Name="subLinkcheck" Nullable="false" />
+    <Property Type="String" Name="subLinkPath" Nullable="true" MaxLength="200" />
+    <Property Type="Int32" Name="subLinkRank" Nullable="true" />
+    <Property Type="Int32" Name="linkRank" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="U_sp_SelectProperty_Result">
+    <Property Type="Int32" Name="PropertyID" Nullable="false" />
+    <Property Type="String" Name="propertyImage" Nullable="true" MaxLength="500" />
+    <Property Type="Int32" Name="propertyTypeID" Nullable="true" />
+    <Property Type="String" Name="metro" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="purchaseType" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="propertyType" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="propertyDesc" Nullable="true" />
+    <Property Type="Decimal" Name="propertyPrice" Nullable="true" Precision="18" Scale="0" />
+    <Property Type="Int32" Name="bedroom" Nullable="true" />
+    <Property Type="String" Name="propertyArea" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="countryID" Nullable="true" />
+    <Property Type="Int32" Name="stateID" Nullable="true" />
+    <Property Type="Int32" Name="cityID" Nullable="true" />
+    <Property Type="String" Name="CountryName" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="StateName" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="CityName" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="propertyAddress" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="propertyLocality" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="pin" Nullable="true" />
+    <Property Type="Int32" Name="propertyAge" Nullable="true" />
+    <Property Type="Decimal" Name="propertyTenure" Nullable="true" Precision="10" Scale="2" />
+    <Property Type="String" Name="Status" Nullable="true" MaxLength="8" />
+  </ComplexType>
+  <ComplexType Name="U_sp_SelectPropertyTypeDropDown_Result">
+    <Property Type="Int32" Name="propertyTypeID" Nullable="false" />
+    <Property Type="String" Name="propertyType" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="propertyTypeDesc" Nullable="true" />
+    <Property Type="Int32" Name="propertyTypeDelete" Nullable="true" />
+    <Property Type="String" Name="Active" Nullable="true" MaxLength="8" />
+  </ComplexType>
+  <ComplexType Name="U_sp_SelectPropetyType_Result">
+    <Property Type="Int32" Name="propertyTypeID" Nullable="false" />
+    <Property Type="String" Name="propertyType" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="propertyTypedesc" Nullable="true" />
+    <Property Type="String" Name="Active" Nullable="false" MaxLength="8" />
+  </ComplexType>
+  <ComplexType Name="U_sp_SelectRegister_Result">
+    <Property Type="String" Name="username" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="userFirstname" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="userLastname" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="userContactno" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="userEmailID" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="CountryName" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="statename" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="CityName" Nullable="true" MaxLength="100" />
+  </ComplexType>
+  <ComplexType Name="U_sp_SelectRight_Result">
+    <Property Type="String" Name="subLinkName" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="userID" Nullable="false" />
+    <Property Type="String" Name="userName" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="sublinkAdd" Nullable="true" />
+    <Property Type="Int32" Name="sublinkUpdate" Nullable="true" />
+    <Property Type="Int32" Name="sublinkDelete" Nullable="true" />
+    <Property Type="Int32" Name="sublinkView" Nullable="true" />
+    <Property Type="Int32" Name="subLinkcheck" Nullable="false" />
+    <Property Type="Int32" Name="sublinkPrint" Nullable="true" />
+    <Property Type="String" Name="subLinkName1" Nullable="true" MaxLength="100" />
+  </ComplexType>
+  <ComplexType Name="U_sp_SelectRoleLinkMap_Result">
+    <Property Type="Int32" Name="roleLinkMapID" Nullable="false" />
+    <Property Type="String" Name="roleName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="linkName" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="subLinkName" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="sublinkView" Nullable="true" />
+    <Property Type="Int32" Name="subLinkAdd" Nullable="true" />
+    <Property Type="Int32" Name="sublinkUpdate" Nullable="true" />
+    <Property Type="Int32" Name="sublinkDelete" Nullable="true" />
+    <Property Type="Int32" Name="sublinkPrint" Nullable="true" />
+    <Property Type="Int32" Name="subLinkcheck" Nullable="false" />
+    <Property Type="Int32" Name="linkCheck" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="U_sp_SelectSearch_Result">
+    <Property Type="Int32" Name="PropertyID" Nullable="false" />
+    <Property Type="String" Name="propertyImage" Nullable="true" MaxLength="500" />
+    <Property Type="Int32" Name="propertyTypeID" Nullable="true" />
+    <Property Type="String" Name="metro" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="purchaseType" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="propertyType" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="propertyDesc" Nullable="true" />
+    <Property Type="Decimal" Name="propertyPrice" Nullable="true" Precision="18" Scale="0" />
+    <Property Type="Int32" Name="bedroom" Nullable="true" />
+    <Property Type="String" Name="propertyArea" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="countryID" Nullable="true" />
+    <Property Type="Int32" Name="stateID" Nullable="true" />
+    <Property Type="Int32" Name="cityID" Nullable="true" />
+    <Property Type="String" Name="CountryName" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="StateName" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="CityName" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="propertyAddress" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="propertyLocality" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="pin" Nullable="true" />
+    <Property Type="Int32" Name="propertyAge" Nullable="true" />
+    <Property Type="Decimal" Name="propertyTenure" Nullable="true" Precision="10" Scale="2" />
+    <Property Type="String" Name="Status" Nullable="true" MaxLength="8" />
+  </ComplexType>
+  <ComplexType Name="U_sp_SelectState_Result">
+    <Property Type="Int32" Name="stateID" Nullable="false" />
+    <Property Type="String" Name="stateName" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="stateDesc" Nullable="true" />
+    <Property Type="String" Name="stateImage" Nullable="true" MaxLength="500" />
+    <Property Type="String" Name="Active" Nullable="false" MaxLength="8" />
+  </ComplexType>
+  <ComplexType Name="U_sp_SelectSubLink_Result">
+    <Property Type="Int32" Name="subLinkID" Nullable="false" />
+    <Property Type="String" Name="linkName" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="subLinkName" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="subLinkPath" Nullable="true" MaxLength="200" />
+    <Property Type="Int32" Name="subLinkRank" Nullable="true" />
+    <Property Type="Int32" Name="sublinkView" Nullable="true" />
+    <Property Type="Int32" Name="sublinkAdd" Nullable="true" />
+    <Property Type="Int32" Name="sublinkUpdate" Nullable="true" />
+    <Property Type="Int32" Name="subLinkPrint" Nullable="true" />
+    <Property Type="Int32" Name="subLinkDelete" Nullable="true" />
+    <Property Type="String" Name="Active" Nullable="false" MaxLength="8" />
+  </ComplexType>
+  <ComplexType Name="U_sp_SelectUserRoleMap_Result">
+    <Property Type="Int32" Name="userLinkMapID" Nullable="false" />
+    <Property Type="Int32" Name="roleID" Nullable="true" />
+    <Property Type="Int32" Name="userID" Nullable="true" />
+    <Property Type="Int32" Name="linkID" Nullable="true" />
+    <Property Type="Int32" Name="subLinkID" Nullable="true" />
+    <Property Type="Int32" Name="sublinkView" Nullable="true" />
+    <Property Type="Int32" Name="sublinkAdd" Nullable="true" />
+    <Property Type="Int32" Name="sublinkUpdate" Nullable="true" />
+    <Property Type="Int32" Name="sublinkDelete" Nullable="true" />
+    <Property Type="Int32" Name="sublinkPrint" Nullable="true" />
+    <Property Type="Int32" Name="linkCheck" Nullable="false" />
+    <Property Type="Int32" Name="subLinkcheck" Nullable="false" />
+    <Property Type="String" Name="subLinkName" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="subLinkPath" Nullable="true" MaxLength="200" />
+    <Property Type="Int32" Name="subLinkRank" Nullable="true" />
+    <Property Type="String" Name="linkName" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="linkRank" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="U_sp_stateDropDown_Result">
+    <Property Type="Int32" Name="stateid" Nullable="false" />
+    <Property Type="String" Name="stateName" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="statedesc" Nullable="true" />
+    <Property Type="String" Name="stateimage" Nullable="true" MaxLength="500" />
+    <Property Type="String" Name="Active" Nullable="false" MaxLength="8" />
+  </ComplexType>
+  <ComplexType Name="U_sp_SubLinkDropDown_Result">
+    <Property Type="Int32" Name="subLinkID" Nullable="false" />
+    <Property Type="String" Name="linkName" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="subLinkName" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="subLinkPath" Nullable="true" MaxLength="200" />
+    <Property Type="Int32" Name="subLinkRank" Nullable="true" />
+    <Property Type="Int32" Name="sublinkView" Nullable="true" />
+    <Property Type="Int32" Name="sublinkAdd" Nullable="true" />
+    <Property Type="Int32" Name="sublinkUpdate" Nullable="true" />
+    <Property Type="Int32" Name="subLinkPrint" Nullable="true" />
+    <Property Type="Int32" Name="subLinkDelete" Nullable="true" />
+    <Property Type="String" Name="Active" Nullable="false" MaxLength="8" />
+  </ComplexType>
+  <ComplexType Name="U_sp_SubLinkFromRoleLinkMap_Result">
+    <Property Type="Int32" Name="linkID" Nullable="true" />
+    <Property Type="String" Name="linkName" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="linkRank" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="UM_sp_GetSublinkPermissions_Result">
+    <Property Type="Int32" Name="sublinkView" Nullable="true" />
+    <Property Type="Int32" Name="sublinkAdd" Nullable="true" />
+    <Property Type="Int32" Name="sublinkUpdate" Nullable="true" />
+    <Property Type="Int32" Name="sublinkDelete" Nullable="true" />
+    <Property Type="Int32" Name="sublinkPrint" Nullable="true" />
+  </ComplexType>
+  <EntityType Name="Purchase">
+    <Key>
+      <PropertyRef Name="purchaseTypeID" />
+    </Key>
+    <Property Name="purchaseTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="purchaseType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="purchaseDesc" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="purchaseImage" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="purchaseDelete" Type="Int32" />
+    <Property Name="purchaseCreatedBy" Type="Int32" />
+    <Property Name="purchaseCreatedOn" Type="DateTime" Precision="3" />
+    <Property Name="purchaseDeletedBy" Type="Int32" />
+    <Property Name="purchaseDeletedOn" Type="DateTime" Precision="3" />
+    <Property Name="purchaseUpdatedBy" Type="Int32" />
+    <Property Name="purchaseUpdatedOn" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+  </EntityType>
+  <EntityType Name="logError">
+    <Key>
+      <PropertyRef Name="logID" />
+    </Key>
+    <Property Name="logID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="logDate" Type="DateTime" Precision="3" />
+    <Property Name="logErrorMsg" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="PhoneType">
+    <Key>
+      <PropertyRef Name="PhoneTypeID" />
+    </Key>
+    <Property Name="PhoneTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PhoneTypeName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="UserID" Type="Int32" />
+    <NavigationProperty Name="User" Relationship="PropertyModel.FK__PhoneType__UserI__3F865F66" FromRole="PhoneType" ToRole="User" />
+  </EntityType>
+  <Association Name="FK_Users_City">
+    <End Type="PropertyModel.City" Role="City" Multiplicity="0..1" />
+    <End Type="PropertyModel.User" Role="User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="City">
+        <PropertyRef Name="CityID" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="cityID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Users_Country">
+    <End Type="PropertyModel.Country" Role="Country" Multiplicity="0..1" />
+    <End Type="PropertyModel.User" Role="User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Country">
+        <PropertyRef Name="CountryID" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="countryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PhoneType__UserI__3F865F66">
+    <End Type="PropertyModel.User" Role="User" Multiplicity="0..1" />
+    <End Type="PropertyModel.PhoneType" Role="PhoneType" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="userID" />
+      </Principal>
+      <Dependent Role="PhoneType">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Users_State">
+    <End Type="PropertyModel.State" Role="State" Multiplicity="0..1" />
+    <End Type="PropertyModel.User" Role="User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="State">
+        <PropertyRef Name="StateID" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="StateID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

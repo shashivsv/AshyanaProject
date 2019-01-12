@@ -1,0 +1,4 @@
+E:\AshyanaProject\Ashyana.Data\bin\Release\Ashyana.Data.dll
+E:\AshyanaProject\Ashyana.Data\bin\Release\Ashyana.Data.pdb
+E:\AshyanaProject\Ashyana.Data\obj\Release\Ashyana.Data.dll
+E:\AshyanaProject\Ashyana.Data\obj\Release\Ashyana.Data.pdb

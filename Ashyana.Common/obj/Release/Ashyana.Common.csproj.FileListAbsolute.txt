@@ -1,0 +1,5 @@
+E:\AshyanaProject\Ashyana.Common\bin\Release\Ashyana.Common.dll
+E:\AshyanaProject\Ashyana.Common\bin\Release\Ashyana.Common.pdb
+E:\AshyanaProject\Ashyana.Common\obj\Release\Ashyana.Common.dll
+E:\AshyanaProject\Ashyana.Common\obj\Release\Ashyana.Common.pdb
+E:\AshyanaProject\Ashyana.Common\obj\Release\Ashyana.Common.csprojResolveAssemblyReference.cache

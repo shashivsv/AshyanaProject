@@ -1,0 +1,953 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="PropertyModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Agent">
+    <Key>
+      <PropertyRef Name="agentID" />
+    </Key>
+    <Property Name="agentID" Type="int" Nullable="false" />
+    <Property Name="dealingIn" Type="nvarchar" MaxLength="50" />
+    <Property Name="cityID" Type="int" />
+    <Property Name="propertyHandled" Type="nvarchar(max)" />
+    <Property Name="locality" Type="nvarchar" MaxLength="50" />
+    <Property Name="agentDelete" Type="int" />
+    <Property Name="agentCreatedOn" Type="datetime" />
+    <Property Name="agentCreatedBy" Type="int" />
+    <Property Name="agentDeletedOn" Type="datetime" />
+    <Property Name="agentDeletedBy" Type="int" />
+    <Property Name="agentUpdatedOn" Type="datetime" />
+    <Property Name="agentUpdatedBy" Type="int" />
+  </EntityType>
+  <EntityType Name="Building">
+    <Key>
+      <PropertyRef Name="buildingTypeID" />
+    </Key>
+    <Property Name="buildingTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="buildingType" Type="nvarchar" MaxLength="100" />
+    <Property Name="buildingDesc" Type="nvarchar(max)" />
+    <Property Name="buildingImage" Type="nvarchar" MaxLength="500" />
+    <Property Name="buildingDelete" Type="int" />
+    <Property Name="buildingDeletedon" Type="datetime" />
+    <Property Name="buildingCreatedby" Type="int" />
+    <Property Name="buildingCreatedon" Type="datetime" />
+    <Property Name="buildingDeletedby" Type="int" />
+    <Property Name="buildingUpdatedby" Type="int" />
+    <Property Name="buildingUpdatedon" Type="datetime" />
+  </EntityType>
+  <EntityType Name="City">
+    <Key>
+      <PropertyRef Name="CityID" />
+    </Key>
+    <Property Name="CityID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CityName" Type="nvarchar" MaxLength="100" />
+    <Property Name="CityDesc" Type="nvarchar(max)" />
+    <Property Name="CityForHome" Type="int" />
+    <Property Name="CityImage" Type="nvarchar" MaxLength="500" />
+    <Property Name="CityDelete" Type="int" />
+    <Property Name="CityCreatedby" Type="int" />
+    <Property Name="CityCreatedon" Type="datetime" />
+    <Property Name="CityDeletedby" Type="int" />
+    <Property Name="CityDeletedon" Type="datetime" />
+    <Property Name="CityUpdatedby" Type="int" />
+    <Property Name="CityUpdatedon" Type="datetime" />
+    <Property Name="countryID" Type="int" />
+    <Property Name="StateID" Type="int" />
+  </EntityType>
+  <EntityType Name="ContactInfo">
+    <Key>
+      <PropertyRef Name="contactID" />
+    </Key>
+    <Property Name="contactID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="contact_name" Type="nvarchar" MaxLength="50" />
+    <Property Name="contact_EmailID" Type="nvarchar" MaxLength="50" />
+    <Property Name="contact_No" Type="nvarchar" MaxLength="50" />
+    <Property Name="contact_desc" Type="nvarchar(max)" />
+    <Property Name="contactCreatedOn" Type="datetime" />
+    <Property Name="contactDeletedOn" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Country">
+    <Key>
+      <PropertyRef Name="CountryID" />
+    </Key>
+    <Property Name="CountryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CountryName" Type="nvarchar" MaxLength="100" />
+    <Property Name="CountryDesc" Type="nvarchar(max)" />
+    <Property Name="CountryImage" Type="nvarchar" MaxLength="500" />
+    <Property Name="CountryDelete" Type="int" />
+    <Property Name="CountryCreatedby" Type="int" />
+    <Property Name="CountryCreatedon" Type="datetime" />
+    <Property Name="CountryDeletedby" Type="int" />
+    <Property Name="CountryDeletedon" Type="datetime" />
+    <Property Name="CountryUpdatedby" Type="int" />
+    <Property Name="CountryUpdatedon" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Floor">
+    <Key>
+      <PropertyRef Name="floorTypeID" />
+    </Key>
+    <Property Name="floorTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="floorType" Type="nvarchar" MaxLength="100" />
+    <Property Name="floorDesc" Type="nvarchar(max)" />
+    <Property Name="floorImage" Type="nvarchar" MaxLength="500" />
+    <Property Name="floorDelete" Type="int" />
+    <Property Name="floorDeletedon" Type="datetime" />
+    <Property Name="floorCreatedby" Type="int" />
+    <Property Name="floorCreatedon" Type="datetime" />
+    <Property Name="floorDeletedby" Type="int" />
+    <Property Name="floorUpdatedby" Type="int" />
+    <Property Name="floorUpdatedon" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Link">
+    <Key>
+      <PropertyRef Name="linkID" />
+    </Key>
+    <Property Name="linkID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="linkName" Type="nvarchar" MaxLength="100" />
+    <Property Name="linkPath" Type="nvarchar" MaxLength="200" />
+    <Property Name="linkRank" Type="int" />
+    <Property Name="linkforHome" Type="int" />
+    <Property Name="linkDesc" Type="nvarchar(max)" />
+    <Property Name="linkDelete" Type="int" />
+    <Property Name="linkCreatedBy" Type="int" />
+    <Property Name="linkCreatedOn" Type="datetime" />
+    <Property Name="linkDeletedBy" Type="int" />
+    <Property Name="linkDeletedOn" Type="datetime" />
+    <Property Name="linkUpdatedBy" Type="int" />
+    <Property Name="linkUpdatedOn" Type="datetime" />
+  </EntityType>
+  <EntityType Name="logError">
+    <Key>
+      <PropertyRef Name="logID" />
+    </Key>
+    <Property Name="logID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="logDate" Type="datetime" />
+    <Property Name="logErrorMsg" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="Mail">
+    <Key>
+      <PropertyRef Name="mailID" />
+    </Key>
+    <Property Name="mailID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="mailDesc" Type="nvarchar(max)" />
+    <Property Name="userID" Type="int" />
+    <Property Name="PropertyID" Type="int" />
+    <Property Name="scheduleDate" Type="datetime" />
+    <Property Name="mailDelete" Type="int" />
+    <Property Name="mailCreatedBy" Type="int" />
+    <Property Name="mailCreatedOn" Type="datetime" />
+  </EntityType>
+  <EntityType Name="MainMenu">
+    <Key>
+      <PropertyRef Name="MainMenuId" />
+    </Key>
+    <Property Name="MainMenuId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MainMenuName" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="MapRoleLink">
+    <Key>
+      <PropertyRef Name="roleLinkMapID" />
+    </Key>
+    <Property Name="roleLinkMapID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="roleID" Type="int" />
+    <Property Name="linkID" Type="int" />
+    <Property Name="subLinkID" Type="int" />
+    <Property Name="sublinkView" Type="int" />
+    <Property Name="sublinkAdd" Type="int" />
+    <Property Name="sublinkUpdate" Type="int" />
+    <Property Name="sublinkDelete" Type="int" />
+    <Property Name="sublinkPrint" Type="int" />
+    <Property Name="linkCheck" Type="int" Nullable="false" />
+    <Property Name="subLinkcheck" Type="int" Nullable="false" />
+    <Property Name="linkCreatedBy" Type="int" />
+    <Property Name="linkCreatedOn" Type="datetime" />
+    <Property Name="linkDeletedBy" Type="int" />
+    <Property Name="linkDeletedOn" Type="datetime" />
+    <Property Name="linkUpdatedBy" Type="int" />
+    <Property Name="linkUpdatedOn" Type="datetime" />
+  </EntityType>
+  <EntityType Name="MapuserRoleLink">
+    <Key>
+      <PropertyRef Name="userLinkMapID" />
+    </Key>
+    <Property Name="userLinkMapID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="roleID" Type="int" />
+    <Property Name="userID" Type="int" />
+    <Property Name="linkID" Type="int" />
+    <Property Name="subLinkID" Type="int" />
+    <Property Name="sublinkView" Type="int" />
+    <Property Name="sublinkAdd" Type="int" />
+    <Property Name="sublinkUpdate" Type="int" />
+    <Property Name="sublinkDelete" Type="int" />
+    <Property Name="sublinkPrint" Type="int" />
+    <Property Name="linkCheck" Type="int" Nullable="false" />
+    <Property Name="subLinkcheck" Type="int" Nullable="false" />
+    <Property Name="linkCreatedBy" Type="int" />
+    <Property Name="linkCreatedOn" Type="datetime" />
+    <Property Name="linkDeletedBy" Type="int" />
+    <Property Name="linkDeletedOn" Type="datetime" />
+    <Property Name="linkUpdatedBy" Type="int" />
+    <Property Name="linkUpdatedOn" Type="datetime" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'PropertyDB.dbo.master' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="master">
+    <Key>
+      <PropertyRef Name="userID" />
+      <PropertyRef Name="userDelete" />
+      <PropertyRef Name="userCreatedBy" />
+      <PropertyRef Name="userCreatedOn" />
+    </Key>
+    <Property Name="userID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="userFirstname" Type="nvarchar" MaxLength="50" />
+    <Property Name="userLastname" Type="nvarchar" MaxLength="50" />
+    <Property Name="userEmailID" Type="nvarchar" MaxLength="100" />
+    <Property Name="userContactno" Type="varchar" MaxLength="10" />
+    <Property Name="userName" Type="nvarchar" MaxLength="100" />
+    <Property Name="userType" Type="int" />
+    <Property Name="countryID" Type="int" />
+    <Property Name="StateID" Type="int" />
+    <Property Name="cityID" Type="int" />
+    <Property Name="userDelete" Type="int" Nullable="false" />
+    <Property Name="userPassword" Type="varchar" MaxLength="100" />
+    <Property Name="userCreatedBy" Type="int" Nullable="false" />
+    <Property Name="userCreatedOn" Type="datetime" Nullable="false" />
+    <Property Name="userDeletedBy" Type="int" />
+    <Property Name="userDeletedOn" Type="datetime" />
+    <Property Name="userUpdatedBy" Type="int" />
+    <Property Name="userUpdatedOn" Type="datetime" />
+  </EntityType>
+  <EntityType Name="News">
+    <Key>
+      <PropertyRef Name="NewsID" />
+    </Key>
+    <Property Name="NewsID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NewsType" Type="nvarchar" MaxLength="100" />
+    <Property Name="NewsDesc" Type="nvarchar(max)" />
+    <Property Name="NewsImage" Type="nvarchar" MaxLength="500" />
+    <Property Name="NewsDelete" Type="int" />
+    <Property Name="NewsDeletedon" Type="datetime" />
+    <Property Name="NewsCreatedby" Type="int" />
+    <Property Name="NewsCreatedon" Type="datetime" />
+    <Property Name="NewsDeletedby" Type="int" />
+    <Property Name="NewsUpdatedby" Type="int" />
+    <Property Name="NewsUpdatedon" Type="datetime" />
+  </EntityType>
+  <EntityType Name="PhoneType">
+    <Key>
+      <PropertyRef Name="PhoneTypeID" />
+    </Key>
+    <Property Name="PhoneTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PhoneTypeName" Type="varchar" MaxLength="20" />
+    <Property Name="UserID" Type="int" />
+  </EntityType>
+  <EntityType Name="Property">
+    <Key>
+      <PropertyRef Name="propertyID" />
+    </Key>
+    <Property Name="propertyID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="propertyTypeID" Type="int" />
+    <Property Name="propertyDesc" Type="nvarchar(max)" />
+    <Property Name="purchaseType" Type="nvarchar" MaxLength="50" />
+    <Property Name="propertyPrice" Type="numeric" Precision="18" Scale="0" />
+    <Property Name="bedroom" Type="int" />
+    <Property Name="propertyArea" Type="nvarchar" MaxLength="50" />
+    <Property Name="countryID" Type="int" />
+    <Property Name="stateID" Type="int" />
+    <Property Name="cityID" Type="int" />
+    <Property Name="metro" Type="nvarchar" MaxLength="100" />
+    <Property Name="propertyAddress" Type="nvarchar" MaxLength="100" />
+    <Property Name="propertyLocality" Type="nvarchar" MaxLength="50" />
+    <Property Name="pin" Type="int" />
+    <Property Name="propertyAge" Type="int" />
+    <Property Name="propertyTenure" Type="numeric" Precision="10" Scale="2" />
+    <Property Name="propertyImage" Type="nvarchar" MaxLength="500" />
+    <Property Name="propertyDelete" Type="int" Nullable="false" />
+    <Property Name="propertyDeletedon" Type="datetime" />
+    <Property Name="propertyCreatedby" Type="int" />
+    <Property Name="propertyCreatedon" Type="datetime" />
+    <Property Name="propertyDeletedby" Type="int" />
+    <Property Name="propertyUpdatedby" Type="int" />
+    <Property Name="propertyUpdatedon" Type="datetime" />
+  </EntityType>
+  <EntityType Name="PropertyType">
+    <Key>
+      <PropertyRef Name="propertyTypeID" />
+    </Key>
+    <Property Name="propertyTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="propertyType" Type="nvarchar" MaxLength="100" />
+    <Property Name="propertyTypeDesc" Type="nvarchar(max)" />
+    <Property Name="propertyTypeDelete" Type="int" />
+    <Property Name="propertyTypeDeletedOn" Type="datetime" />
+    <Property Name="propertyTypeCreatedBy" Type="int" />
+    <Property Name="propertyTypeCreatedOn" Type="datetime" />
+    <Property Name="propertyTypeUpdatedBy" Type="int" />
+    <Property Name="propertyTypeUpdatedOn" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Purchase">
+    <Key>
+      <PropertyRef Name="purchaseTypeID" />
+    </Key>
+    <Property Name="purchaseTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="purchaseType" Type="varchar" MaxLength="50" />
+    <Property Name="purchaseDesc" Type="nvarchar(max)" />
+    <Property Name="purchaseImage" Type="nvarchar" MaxLength="500" />
+    <Property Name="purchaseDelete" Type="int" />
+    <Property Name="purchaseCreatedBy" Type="int" />
+    <Property Name="purchaseCreatedOn" Type="datetime" />
+    <Property Name="purchaseDeletedBy" Type="int" />
+    <Property Name="purchaseDeletedOn" Type="datetime" />
+    <Property Name="purchaseUpdatedBy" Type="int" />
+    <Property Name="purchaseUpdatedOn" Type="nchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="Roles">
+    <Key>
+      <PropertyRef Name="roleID" />
+    </Key>
+    <Property Name="roleID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="roleName" Type="nvarchar" MaxLength="50" />
+    <Property Name="roleDescription" Type="nvarchar" MaxLength="100" />
+    <Property Name="roleDelete" Type="int" Nullable="false" />
+    <Property Name="roleCreatedBy" Type="int" />
+    <Property Name="roleCreatedOn" Type="datetime" />
+    <Property Name="roleDeletedBy" Type="int" />
+    <Property Name="roleDeletedOn" Type="datetime" />
+    <Property Name="roleUpdatedBy" Type="int" />
+    <Property Name="roleUpdatedOn" Type="datetime" />
+  </EntityType>
+  <EntityType Name="RoomType">
+    <Key>
+      <PropertyRef Name="RoomTypeID" />
+    </Key>
+    <Property Name="RoomTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RoomType" Type="nvarchar" MaxLength="100" />
+    <Property Name="RoomDesc" Type="nvarchar(max)" />
+    <Property Name="RoomImage" Type="nvarchar" MaxLength="500" />
+    <Property Name="RoomDelete" Type="int" />
+    <Property Name="RoomDeletedon" Type="datetime" />
+    <Property Name="RoomCreatedby" Type="int" />
+    <Property Name="RoomCreatedon" Type="datetime" />
+    <Property Name="RoomDeletedby" Type="int" />
+    <Property Name="RoomUpdatedby" Type="int" />
+    <Property Name="RoomUpdatedon" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Search">
+    <Key>
+      <PropertyRef Name="searchID" />
+    </Key>
+    <Property Name="searchID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="propertyID" Type="int" />
+    <Property Name="searchCreatedBy" Type="int" />
+    <Property Name="searchCreatedOn" Type="datetime" />
+  </EntityType>
+  <EntityType Name="State">
+    <Key>
+      <PropertyRef Name="StateID" />
+    </Key>
+    <Property Name="StateID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StateName" Type="nvarchar" MaxLength="100" />
+    <Property Name="StateDesc" Type="nvarchar(max)" />
+    <Property Name="StateImage" Type="nvarchar" MaxLength="500" />
+    <Property Name="StateDelete" Type="int" />
+    <Property Name="StateCreatedby" Type="int" />
+    <Property Name="StateCreatedon" Type="datetime" />
+    <Property Name="StateDeletedby" Type="int" />
+    <Property Name="StateDeletedon" Type="datetime" />
+    <Property Name="StateUpdatedby" Type="int" />
+    <Property Name="StateUpdatedon" Type="datetime" />
+    <Property Name="countryID" Type="int" />
+  </EntityType>
+  <EntityType Name="SubLink">
+    <Key>
+      <PropertyRef Name="subLinkID" />
+    </Key>
+    <Property Name="subLinkID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="linkID" Type="int" />
+    <Property Name="subLinkName" Type="nvarchar" MaxLength="100" />
+    <Property Name="subLinkPath" Type="nvarchar" MaxLength="200" />
+    <Property Name="subLinkRank" Type="int" />
+    <Property Name="subLinkDelete" Type="int" />
+    <Property Name="subLinkView" Type="int" />
+    <Property Name="subLinkAdd" Type="int" />
+    <Property Name="sublinkUpdate" Type="int" />
+    <Property Name="sublinkPrint" Type="int" />
+    <Property Name="subLinkCreatedBy" Type="int" />
+    <Property Name="subLinkCreatedOn" Type="datetime" />
+    <Property Name="subLinkDeletedBy" Type="int" />
+    <Property Name="subLinkDeletedOn" Type="datetime" />
+    <Property Name="subLinkUpdatedBy" Type="int" />
+    <Property Name="subLinkUpdatedOn" Type="datetime" />
+  </EntityType>
+  <EntityType Name="SubMenu">
+    <Key>
+      <PropertyRef Name="SubMenuId" />
+    </Key>
+    <Property Name="SubMenuId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SubMenuName" Type="varchar" MaxLength="50" />
+    <Property Name="Controller" Type="varchar" MaxLength="100" />
+    <Property Name="Action" Type="varchar" MaxLength="100" />
+    <Property Name="MainMenuId" Type="int" />
+    <Property Name="RoleId" Type="int" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="userID" />
+    </Key>
+    <Property Name="userID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="userFirstname" Type="nvarchar" MaxLength="50" />
+    <Property Name="userLastname" Type="nvarchar" MaxLength="50" />
+    <Property Name="userEmailID" Type="nvarchar" MaxLength="100" />
+    <Property Name="userContactno" Type="varchar" MaxLength="10" />
+    <Property Name="userName" Type="nvarchar" MaxLength="100" />
+    <Property Name="RoleID" Type="int" />
+    <Property Name="countryID" Type="int" />
+    <Property Name="StateID" Type="int" />
+    <Property Name="cityID" Type="int" />
+    <Property Name="userDelete" Type="int" Nullable="false" />
+    <Property Name="userPassword" Type="varchar" MaxLength="100" />
+    <Property Name="userCreatedBy" Type="int" Nullable="false" />
+    <Property Name="userCreatedOn" Type="datetime" />
+    <Property Name="userDeletedBy" Type="int" />
+    <Property Name="userDeletedOn" Type="datetime" />
+    <Property Name="userUpdatedBy" Type="int" />
+    <Property Name="userUpdatedOn" Type="datetime" />
+  </EntityType>
+  <Association Name="FK__PhoneType__UserI__3F865F66">
+    <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+    <End Role="PhoneType" Type="Self.PhoneType" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="userID" />
+      </Principal>
+      <Dependent Role="PhoneType">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblSubMenu_tblRoles1">
+    <End Role="MainMenu" Type="Self.MainMenu" Multiplicity="0..1" />
+    <End Role="SubMenu" Type="Self.SubMenu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MainMenu">
+        <PropertyRef Name="MainMenuId" />
+      </Principal>
+      <Dependent Role="SubMenu">
+        <PropertyRef Name="MainMenuId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Users_City">
+    <End Role="City" Type="Self.City" Multiplicity="0..1" />
+    <End Role="Users" Type="Self.Users" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="City">
+        <PropertyRef Name="CityID" />
+      </Principal>
+      <Dependent Role="Users">
+        <PropertyRef Name="cityID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Users_Country">
+    <End Role="Country" Type="Self.Country" Multiplicity="0..1" />
+    <End Role="Users" Type="Self.Users" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Country">
+        <PropertyRef Name="CountryID" />
+      </Principal>
+      <Dependent Role="Users">
+        <PropertyRef Name="countryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Users_State">
+    <End Role="State" Type="Self.State" Multiplicity="0..1" />
+    <End Role="Users" Type="Self.Users" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="State">
+        <PropertyRef Name="StateID" />
+      </Principal>
+      <Dependent Role="Users">
+        <PropertyRef Name="StateID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="Split" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="List" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="SplitOn" Type="nvarchar" Mode="In" />
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Value" Type="nvarchar(max)" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <Function Name="U_sp_ActiveUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="U_sp_AdminLinkDisplay" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="userid" Type="int" Mode="In" />
+  </Function>
+  <Function Name="U_sp_AutoFillU" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Text" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="U_sp_AutoFillUActive" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Text" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="U_sp_BuildingDropDown" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="BuildingID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="U_sp_changePassword" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="uid" Type="int" Mode="In" />
+    <Parameter Name="userpwd" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="U_sp_CheckRight" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="userID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="U_sp_cityDropDown" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="cityid" Type="int" Mode="In" />
+  </Function>
+  <Function Name="U_sp_cityUpdateHome" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="cityID" Type="int" Mode="In" />
+    <Parameter Name="cityforHome" Type="int" Mode="In" />
+  </Function>
+  <Function Name="U_sp_countryDropDown" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="countryid" Type="int" Mode="In" />
+  </Function>
+  <Function Name="U_sp_DefaultRightsMenu" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="userID" Type="int" Mode="In" />
+    <Parameter Name="roleID" Type="int" Mode="In" />
+    <Parameter Name="linkID" Type="int" Mode="In" />
+    <Parameter Name="sublinkID" Type="int" Mode="In" />
+    <Parameter Name="sublinkAdd" Type="int" Mode="In" />
+    <Parameter Name="linkCheck" Type="int" Mode="In" />
+    <Parameter Name="linkCreatedBy" Type="int" Mode="In" />
+  </Function>
+  <Function Name="U_sp_DeleteUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="userID" Type="int" Mode="In" />
+    <Parameter Name="userDeletedBy" Type="int" Mode="In" />
+  </Function>
+  <Function Name="U_sp_floorDropDown" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="floortypeid" Type="int" Mode="In" />
+  </Function>
+  <Function Name="U_sp_GetEmailID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="email" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="U_sp_GetLinksubLinkByUserID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserID" Type="int" Mode="In" />
+    <Parameter Name="RoleID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="U_sp_Getmenu" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="uid" Type="int" Mode="In" />
+  </Function>
+  <Function Name="U_sp_GetUserDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="uid" Type="int" Mode="In" />
+  </Function>
+  <Function Name="U_sp_InsertAgent" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="agentID" Type="int" Mode="In" />
+    <Parameter Name="dealingIn" Type="nvarchar" Mode="In" />
+    <Parameter Name="propertyHandled" Type="nvarchar" Mode="In" />
+    <Parameter Name="locality" Type="nvarchar" Mode="In" />
+    <Parameter Name="cityID" Type="int" Mode="In" />
+    <Parameter Name="agentCreatedby" Type="int" Mode="In" />
+  </Function>
+  <Function Name="U_sp_InsertContactInfo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="contactName" Type="nvarchar" Mode="In" />
+    <Parameter Name="contactEmail" Type="nvarchar" Mode="In" />
+    <Parameter Name="contactNo" Type="nvarchar" Mode="In" />
+    <Parameter Name="contactdesc" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <Function Name="U_sp_InsertSearch" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="propertyID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="U_sp_InsertUpdatebuilding" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="buildingTypeID" Type="int" Mode="In" />
+    <Parameter Name="buildingType" Type="nvarchar" Mode="In" />
+    <Parameter Name="buildingDesc" Type="nvarchar" Mode="In" />
+    <Parameter Name="buildingImage" Type="nvarchar" Mode="In" />
+    <Parameter Name="buildingCreatedBy" Type="int" Mode="In" />
+  </Function>
+  <Function Name="U_sp_InsertUpdateCity" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="cityID" Type="int" Mode="In" />
+    <Parameter Name="cityname" Type="nvarchar" Mode="In" />
+    <Parameter Name="citydesc" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="cityforHome" Type="int" Mode="In" />
+    <Parameter Name="cityimage" Type="nvarchar" Mode="In" />
+    <Parameter Name="countryID" Type="int" Mode="In" />
+    <Parameter Name="stateID" Type="int" Mode="In" />
+    <Parameter Name="citycreatedby" Type="int" Mode="In" />
+  </Function>
+  <Function Name="U_sp_InsertUpdateCountry" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="countryid" Type="int" Mode="In" />
+    <Parameter Name="COUNTRYNAME" Type="nvarchar" Mode="In" />
+    <Parameter Name="countrydesc" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="countryimage" Type="nvarchar" Mode="In" />
+    <Parameter Name="CountryCreatedby" Type="int" Mode="In" />
+  </Function>
+  <Function Name="U_sp_InsertUpdateFloor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="floorTypeID" Type="nvarchar" Mode="In" />
+    <Parameter Name="floorType" Type="nvarchar" Mode="In" />
+    <Parameter Name="floorDesc" Type="nvarchar" Mode="In" />
+    <Parameter Name="floorImage" Type="nvarchar" Mode="In" />
+    <Parameter Name="floorCreatedBy" Type="int" Mode="In" />
+  </Function>
+  <Function Name="U_sp_InsertUpdateLink" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="linkID" Type="int" Mode="In" />
+    <Parameter Name="linkName" Type="varchar" Mode="In" />
+    <Parameter Name="linkPath" Type="varchar" Mode="In" />
+    <Parameter Name="linkForHome" Type="int" Mode="In" />
+    <Parameter Name="linkDesc" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="linkCreatedBy" Type="int" Mode="In" />
+  </Function>
+  <Function Name="U_sp_InsertUpdateMapRoleLinkMap" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="roleID" Type="int" Mode="In" />
+    <Parameter Name="linkID" Type="int" Mode="In" />
+    <Parameter Name="subLinkID" Type="int" Mode="In" />
+    <Parameter Name="sublinkAdd" Type="int" Mode="In" />
+    <Parameter Name="sublinkUpdate" Type="int" Mode="In" />
+    <Parameter Name="sublinkDelete" Type="int" Mode="In" />
+    <Parameter Name="sublinkCheck" Type="int" Mode="In" />
+    <Parameter Name="sublinkPrint" Type="int" Mode="In" />
+    <Parameter Name="linkCreatedBy" Type="int" Mode="In" />
+    <Parameter Name="linkCheck" Type="int" Mode="In" />
+  </Function>
+  <Function Name="U_sp_Insertupdateproperty" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="propertyID" Type="int" Mode="In" />
+    <Parameter Name="propertyTypeID" Type="int" Mode="In" />
+    <Parameter Name="purchaseType" Type="varchar" Mode="In" />
+    <Parameter Name="propertyprice" Type="money" Mode="In" />
+    <Parameter Name="propertyarea" Type="nvarchar" Mode="In" />
+    <Parameter Name="bedroom" Type="int" Mode="In" />
+    <Parameter Name="countryid" Type="int" Mode="In" />
+    <Parameter Name="stateid" Type="int" Mode="In" />
+    <Parameter Name="cityid" Type="int" Mode="In" />
+    <Parameter Name="metro" Type="nvarchar" Mode="In" />
+    <Parameter Name="propertyaddress" Type="nvarchar" Mode="In" />
+    <Parameter Name="propertylocality" Type="nvarchar" Mode="In" />
+    <Parameter Name="pin" Type="int" Mode="In" />
+    <Parameter Name="propertyage" Type="int" Mode="In" />
+    <Parameter Name="propertytenure" Type="numeric" Mode="In" />
+    <Parameter Name="propertydesc" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="propertyimage" Type="nvarchar" Mode="In" />
+    <Parameter Name="propertycreatedby" Type="int" Mode="In" />
+  </Function>
+  <Function Name="U_sp_InsertUpdatePropertyType" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="PropertyTypeID" Type="int" Mode="In" />
+    <Parameter Name="PropertyType" Type="nvarchar" Mode="In" />
+    <Parameter Name="PropertyTypeDesc" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="PropertyTypeCreatedby" Type="int" Mode="In" />
+  </Function>
+  <Function Name="U_sp_InsertUpdateRegistration" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="userID" Type="int" Mode="In" />
+    <Parameter Name="userName" Type="nvarchar" Mode="In" />
+    <Parameter Name="userPassword" Type="varchar" Mode="In" />
+    <Parameter Name="userFirstname" Type="nvarchar" Mode="In" />
+    <Parameter Name="userLastname" Type="nvarchar" Mode="In" />
+    <Parameter Name="countryid" Type="int" Mode="In" />
+    <Parameter Name="stateid" Type="int" Mode="In" />
+    <Parameter Name="cityid" Type="int" Mode="In" />
+    <Parameter Name="userContactno" Type="nvarchar" Mode="In" />
+    <Parameter Name="userEmailID" Type="nvarchar" Mode="In" />
+    <Parameter Name="RoleID" Type="int" Mode="In" />
+    <Parameter Name="usercreatedby" Type="int" Mode="In" />
+  </Function>
+  <Function Name="U_sp_InsertUpdateRole" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="roleID" Type="int" Mode="In" />
+    <Parameter Name="roleName" Type="nvarchar" Mode="In" />
+    <Parameter Name="roleDescription" Type="nvarchar" Mode="In" />
+    <Parameter Name="roleCreatedBy" Type="int" Mode="In" />
+  </Function>
+  <Function Name="U_sp_InsertUpdateState" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="stateID" Type="int" Mode="In" />
+    <Parameter Name="statename" Type="nvarchar" Mode="In" />
+    <Parameter Name="statedesc" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="stateimage" Type="nvarchar" Mode="In" />
+    <Parameter Name="statecreatedby" Type="int" Mode="In" />
+    <Parameter Name="countryID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="U_sp_InsertUpdateSubLink" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="linkID" Type="int" Mode="In" />
+    <Parameter Name="subLinkName" Type="nvarchar" Mode="In" />
+    <Parameter Name="subLinkPath" Type="nvarchar" Mode="In" />
+    <Parameter Name="sublinkRank" Type="int" Mode="In" />
+    <Parameter Name="subLinkAdd" Type="int" Mode="In" />
+    <Parameter Name="subLinkUpdate" Type="int" Mode="In" />
+    <Parameter Name="subLinkDelete" Type="int" Mode="In" />
+    <Parameter Name="sublinkPrint" Type="int" Mode="In" />
+    <Parameter Name="sublinkCreatedBy" Type="int" Mode="In" />
+  </Function>
+  <Function Name="U_sp_InsertUpdateUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="userID" Type="int" Mode="In" />
+    <Parameter Name="userName" Type="nvarchar" Mode="In" />
+    <Parameter Name="userFirstname" Type="nvarchar" Mode="In" />
+    <Parameter Name="userLastname" Type="nvarchar" Mode="In" />
+    <Parameter Name="countryid" Type="int" Mode="In" />
+    <Parameter Name="stateid" Type="int" Mode="In" />
+    <Parameter Name="cityid" Type="int" Mode="In" />
+    <Parameter Name="userEmailID" Type="nvarchar" Mode="In" />
+    <Parameter Name="userContactno" Type="varchar" Mode="In" />
+    <Parameter Name="RoleID" Type="int" Mode="In" />
+    <Parameter Name="userPassword" Type="varchar" Mode="In" />
+    <Parameter Name="userCreatedBy" Type="int" Mode="In" />
+  </Function>
+  <Function Name="U_sp_InsertUpdateUserRoleLinkMap" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="roleID" Type="int" Mode="In" />
+    <Parameter Name="linkID" Type="int" Mode="In" />
+    <Parameter Name="subLinkID" Type="int" Mode="In" />
+    <Parameter Name="sublinkAdd" Type="int" Mode="In" />
+    <Parameter Name="sublinkUpdate" Type="int" Mode="In" />
+    <Parameter Name="sublinkDelete" Type="int" Mode="In" />
+    <Parameter Name="sublinkCheck" Type="int" Mode="In" />
+    <Parameter Name="sublinkPrint" Type="int" Mode="In" />
+    <Parameter Name="linkCreatedBy" Type="int" Mode="In" />
+    <Parameter Name="linkCheck" Type="int" Mode="In" />
+    <Parameter Name="UID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="U_sp_linkDropDown" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="linkid" Type="int" Mode="In" />
+  </Function>
+  <Function Name="U_sp_linkUpdateHome" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="linkID" Type="int" Mode="In" />
+    <Parameter Name="linkforHome" Type="int" Mode="In" />
+    <Parameter Name="linkCreatedBy" Type="int" Mode="In" />
+  </Function>
+  <Function Name="U_sp_Login" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserName" Type="varchar" Mode="In" />
+    <Parameter Name="Password" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="U_sp_RoleDropDown" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="RoleID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="U_sp_SearchAgent" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="dealingIn" Type="nvarchar" Mode="In" />
+    <Parameter Name="propertyHandled" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="locality" Type="nvarchar" Mode="In" />
+    <Parameter Name="city" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="U_sp_SearchByCity" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="cityID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="U_sp_SearchByUserFirstname" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="fname" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="U_sp_SearchProperty" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="purchaseType" Type="nvarchar" Mode="In" />
+    <Parameter Name="propertyType" Type="nvarchar" Mode="In" />
+    <Parameter Name="country" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="U_sp_SelectAllUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="U_sp_Selectbuilding" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="buildingTypeID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="U_sp_Selectcities" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="U_sp_SelectCity" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="cityID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="U_sp_SelectCountry" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="countryID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="U_sp_SelectDefaultMenu" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="U_sp_SelectFloor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="floorTypeID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="U_sp_SelectHomelink" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="lID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="U_sp_SelectLink" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="linkID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="U_sp_SelectMail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="aID" Type="int" Mode="In" />
+    <Parameter Name="uID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="U_sp_SelectMapRoleUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="U_sp_SelectMapUserRole" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="userID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="U_sp_SelectProperty" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="propertyCreatedby" Type="int" Mode="In" />
+  </Function>
+  <Function Name="U_sp_SelectPropertyByID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="propertyID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="U_sp_SelectPropertyTypeDropDown" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="propertyTypeID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="U_sp_SelectPropetyType" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="propertyTypeID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="U_sp_SelectRegister" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="uid" Type="int" Mode="In" />
+  </Function>
+  <Function Name="U_sp_SelectRight" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="userID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="U_sp_SelectRole" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="U_sp_SelectRoleLinkMap" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="U_sp_SelectRoleLinkMapDropDown" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="linkID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="U_sp_SelectSearch" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="U_sp_SelectState" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="stateID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="U_sp_SelectSubLink" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="U_sp_SelectUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="U_sp_SelectUserByID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="U_sp_SelectUserRoleMap" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserID" Type="int" Mode="In" />
+    <Parameter Name="linkID" Type="int" Mode="In" />
+    <Parameter Name="Flag" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="U_sp_sendmail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="maildesc" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="userid" Type="int" Mode="In" />
+    <Parameter Name="propertyid" Type="int" Mode="In" />
+    <Parameter Name="mailcreatedby" Type="int" Mode="In" />
+  </Function>
+  <Function Name="U_sp_stateDropDown" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="stateid" Type="int" Mode="In" />
+  </Function>
+  <Function Name="U_sp_SubLinkDropDown" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="subLinkID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="U_sp_SubLinkFromRoleLinkMap" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Flag" Type="nvarchar" Mode="In" />
+    <Parameter Name="LinkID" Type="int" Mode="In" />
+    <Parameter Name="RoleID" Type="int" Mode="In" />
+  </Function>
+  <Function Name="U_sp_updateLink" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="linkID" Type="int" Mode="In" />
+    <Parameter Name="linkName" Type="varchar" Mode="In" />
+    <Parameter Name="linkPath" Type="varchar" Mode="In" />
+    <Parameter Name="linkForHome" Type="int" Mode="In" />
+    <Parameter Name="linkDesc" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="linkCreatedBy" Type="int" Mode="In" />
+  </Function>
+  <Function Name="U_sp_UpdateRole" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="roleID" Type="int" Mode="In" />
+    <Parameter Name="roleName" Type="nvarchar" Mode="In" />
+    <Parameter Name="roleDescription" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="U_sp_UpdateRoleLinkMap" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="roleLinkMapID" Type="int" Mode="In" />
+    <Parameter Name="sublinkView" Type="int" Mode="In" />
+    <Parameter Name="sublinkAdd" Type="int" Mode="In" />
+    <Parameter Name="sublinkUpdate" Type="int" Mode="In" />
+    <Parameter Name="sublinkDelete" Type="int" Mode="In" />
+    <Parameter Name="sublinkPrint" Type="int" Mode="In" />
+    <Parameter Name="linkCheck" Type="int" Mode="In" />
+    <Parameter Name="sublinkCheck" Type="int" Mode="In" />
+    <Parameter Name="linkCreatedBy" Type="int" Mode="In" />
+  </Function>
+  <Function Name="U_sp_UpdateRoleLinkMapDropDown" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="linkName" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="U_sp_UpdateSubLink" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="subLinkID" Type="int" Mode="In" />
+    <Parameter Name="subLinkView" Type="int" Mode="In" />
+    <Parameter Name="subLinkAdd" Type="int" Mode="In" />
+    <Parameter Name="subLinkUpdate" Type="int" Mode="In" />
+    <Parameter Name="subLinkDelete" Type="int" Mode="In" />
+    <Parameter Name="sublinkPrint" Type="int" Mode="In" />
+    <Parameter Name="sublinkCreatedBy" Type="int" Mode="In" />
+  </Function>
+  <Function Name="U_sp_UpdateUserRoleLinkMap" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="sublinkView" Type="varchar" Mode="In" />
+    <Parameter Name="sublinkAdd" Type="varchar" Mode="In" />
+    <Parameter Name="sublinkUpdate" Type="varchar" Mode="In" />
+    <Parameter Name="sublinkDelete" Type="varchar" Mode="In" />
+    <Parameter Name="linkCheck" Type="varchar" Mode="In" />
+    <Parameter Name="sublinkCheck" Type="varchar" Mode="In" />
+    <Parameter Name="sublinkPrint" Type="varchar" Mode="In" />
+    <Parameter Name="linkCreatedBy" Type="varchar" Mode="In" />
+    <Parameter Name="userlinkMapID" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="U_spUpdateRole" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="roleid" Type="int" Mode="In" />
+    <Parameter Name="roleName" Type="nvarchar" Mode="In" />
+    <Parameter Name="roleDescription" Type="nvarchar" Mode="In" />
+    <Parameter Name="rolecreatedby" Type="int" Mode="In" />
+  </Function>
+  <Function Name="UM_sp_GetSublinkPermissions" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserID" Type="varchar" Mode="In" />
+    <Parameter Name="SubLinkID" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="UM_sp_roleCreate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="roleName" Type="nvarchar" Mode="In" />
+    <Parameter Name="roleDescription" Type="nvarchar" Mode="In" />
+    <Parameter Name="roleCreatedBy" Type="int" Mode="In" />
+  </Function>
+  <EntityContainer Name="PropertyModelStoreContainer">
+    <EntitySet Name="Agent" EntityType="Self.Agent" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Building" EntityType="Self.Building" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="City" EntityType="Self.City" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ContactInfo" EntityType="Self.ContactInfo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Country" EntityType="Self.Country" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Floor" EntityType="Self.Floor" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Link" EntityType="Self.Link" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="logError" EntityType="Self.logError" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Mail" EntityType="Self.Mail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MainMenu" EntityType="Self.MainMenu" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MapRoleLink" EntityType="Self.MapRoleLink" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MapuserRoleLink" EntityType="Self.MapuserRoleLink" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="News" EntityType="Self.News" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PhoneType" EntityType="Self.PhoneType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Property" EntityType="Self.Property" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PropertyType" EntityType="Self.PropertyType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Purchase" EntityType="Self.Purchase" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RoomType" EntityType="Self.RoomType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Search" EntityType="Self.Search" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="State" EntityType="Self.State" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SubLink" EntityType="Self.SubLink" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SubMenu" EntityType="Self.SubMenu" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="master" EntityType="Self.master" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [master].[userID] AS [userID], 
+    [master].[userFirstname] AS [userFirstname], 
+    [master].[userLastname] AS [userLastname], 
+    [master].[userEmailID] AS [userEmailID], 
+    [master].[userContactno] AS [userContactno], 
+    [master].[userName] AS [userName], 
+    [master].[userType] AS [userType], 
+    [master].[countryID] AS [countryID], 
+    [master].[StateID] AS [StateID], 
+    [master].[cityID] AS [cityID], 
+    [master].[userDelete] AS [userDelete], 
+    [master].[userPassword] AS [userPassword], 
+    [master].[userCreatedBy] AS [userCreatedBy], 
+    [master].[userCreatedOn] AS [userCreatedOn], 
+    [master].[userDeletedBy] AS [userDeletedBy], 
+    [master].[userDeletedOn] AS [userDeletedOn], 
+    [master].[userUpdatedBy] AS [userUpdatedBy], 
+    [master].[userUpdatedOn] AS [userUpdatedOn]
+    FROM [dbo].[master] AS [master]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK__PhoneType__UserI__3F865F66" Association="Self.FK__PhoneType__UserI__3F865F66">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="PhoneType" EntitySet="PhoneType" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblSubMenu_tblRoles1" Association="Self.FK_tblSubMenu_tblRoles1">
+      <End Role="MainMenu" EntitySet="MainMenu" />
+      <End Role="SubMenu" EntitySet="SubMenu" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Users_City" Association="Self.FK_Users_City">
+      <End Role="City" EntitySet="City" />
+      <End Role="Users" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Users_Country" Association="Self.FK_Users_Country">
+      <End Role="Country" EntitySet="Country" />
+      <End Role="Users" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Users_State" Association="Self.FK_Users_State">
+      <End Role="State" EntitySet="State" />
+      <End Role="Users" EntitySet="Users" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
