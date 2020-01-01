@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Ashyana.UI.Web.Models;
-using System.Data.Entity;
 using Ashyana.UI.Web.ViewModel;
 using System.IO;
 using System.Configuration;
@@ -52,10 +50,10 @@ namespace Ashyana.UI.Web.Controllers
         // GET: City/Create
         public ActionResult Create()
         {
-            
+
             return View();
         }
-   
+
         [HttpPost]
         public ActionResult Create(MyCityModel city, HttpPostedFileBase file)
         {
@@ -65,11 +63,11 @@ namespace Ashyana.UI.Web.Controllers
                 // TODO: Add insert logic here
                 AshyanaController objCtrl = new AshyanaController();
                 objCtrl.GetCountryList();
-                Random rnd = new Random();
-                int generatedNo = 0;
+                var rnd = new Random();
+
                 using (AshyanaDBEntities objEntity = new AshyanaDBEntities())
                 {
-                    generatedNo = rnd.Next(100, int.MaxValue);
+                    int generatedNo = rnd.Next(100, int.MaxValue);
                     var ext = Path.GetExtension(file.FileName); //getting the extension(ex-.jpg)  
                     var filewithoutext = Path.GetFileNameWithoutExtension(file.FileName);
                     string myfile = filewithoutext + "_" + generatedNo + ext;
@@ -105,7 +103,7 @@ namespace Ashyana.UI.Web.Controllers
         // GET: City/Edit/5
         public ActionResult Edit(int id)
         {
-          
+
             using (AshyanaDBEntities objEntity = new AshyanaDBEntities())
             {
                 var city = (from i in objEntity.Cities
@@ -126,15 +124,15 @@ namespace Ashyana.UI.Web.Controllers
 
         // POST: City/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id,City cty, HttpPostedFileBase file)
+        public ActionResult Edit(int id, City cty, HttpPostedFileBase file)
         {
             try
             {
                 using (AshyanaDBEntities objEntity = new AshyanaDBEntities())
                 {
                     City getCity = (from i in objEntity.Cities
-                                      where i.CityID == id
-                                      select i).FirstOrDefault();
+                                    where i.CityID == id
+                                    select i).FirstOrDefault();
                     string pic = System.IO.Path.GetFileName(file.FileName);
                     string path = System.IO.Path.Combine(
                                    Server.MapPath(ConfigurationManager.AppSettings["image"]), pic);

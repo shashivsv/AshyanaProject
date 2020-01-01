@@ -20,6 +20,7 @@
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -224,6 +225,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Mapper\CustomMapper.cs" />
+    <Compile Include="Models\abc.cs">
+      <DependentUpon>PropertyModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Agent.cs">
@@ -736,6 +740,16 @@
     <Content Include="images\uploads\two.png" />
     <Content Include="images\uploads\upload.jpg" />
     <Content Include="LogData\LogFile.txt" />
+    <Content Include="Models\PropertyModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>PropertyModel.edmx</DependentUpon>
+      <LastGenOutput>PropertyModel.Context1.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\PropertyModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>PropertyModel.edmx</DependentUpon>
+      <LastGenOutput>PropertyModel1.cs</LastGenOutput>
+    </Content>
     <Content Include="NewScriptCss\css\animate.css" />
     <Content Include="NewScriptCss\css\bootstrap.css" />
     <Content Include="NewScriptCss\css\bs_leftnavi.css" />
@@ -780,10 +794,6 @@
     </EntityDeploy>
     <Content Include="Models\PropertyModel.edmx.diagram">
       <DependentUpon>PropertyModel.edmx</DependentUpon>
-    </Content>
-    <Content Include="Models\PropertyModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>PropertyModel1.cs</LastGenOutput>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\FilterData\jquery-3.3.1.js" />
@@ -1549,7 +1559,9 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>

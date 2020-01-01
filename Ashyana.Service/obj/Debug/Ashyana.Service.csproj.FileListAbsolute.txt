@@ -1,6 +1,12 @@
 E:\AshyanaProject\Ashyana.Service\bin\Ashyana.Service.dll.config
 E:\AshyanaProject\Ashyana.Service\bin\Ashyana.Service.dll
 E:\AshyanaProject\Ashyana.Service\bin\Ashyana.Service.pdb
+E:\AshyanaProject\Ashyana.Service\obj\Debug\Ashyana.Service.csprojResolveAssemblyReference.cache
 E:\AshyanaProject\Ashyana.Service\obj\Debug\Ashyana.Service.dll
 E:\AshyanaProject\Ashyana.Service\obj\Debug\Ashyana.Service.pdb
-E:\AshyanaProject\Ashyana.Service\obj\Debug\Ashyana.Service.csprojResolveAssemblyReference.cache
+F:\AshyanaProject\Ashyana.Service\bin\Ashyana.Service.dll.config
+F:\AshyanaProject\Ashyana.Service\bin\Ashyana.Service.dll
+F:\AshyanaProject\Ashyana.Service\bin\Ashyana.Service.pdb
+F:\AshyanaProject\Ashyana.Service\obj\Debug\Ashyana.Service.csprojResolveAssemblyReference.cache
+F:\AshyanaProject\Ashyana.Service\obj\Debug\Ashyana.Service.dll
+F:\AshyanaProject\Ashyana.Service\obj\Debug\Ashyana.Service.pdb

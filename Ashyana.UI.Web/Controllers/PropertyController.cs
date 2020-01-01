@@ -28,7 +28,7 @@ namespace Ashyana.UI.Web.Controllers
         // GET: Property
         public ActionResult Index()
         {
-            var list = (from i in repositoryProperty.GetModel() select i).ToList();
+            var list = (from i in repositoryProperty.GetModel() select i).OrderByDescending(c=>c.propertyID).ToList();
             foreach (var item in list)
             {
                 TempData["image"] = ConfigurationManager.AppSettings["image"] + item.propertyImage;
@@ -49,16 +49,16 @@ namespace Ashyana.UI.Web.Controllers
                                 propertyTypeID = i.propertyTypeID,
                                 propertyDesc = i.propertyDesc,
                                 purchaseType = i.purchaseType,
-                                propertyTypeName = i.propertyType,
+                               // propertyTypeName = i.propertyType,
                                 propertyPrice = i.propertyPrice,
                                 bedroom = i.bedroom,
                                 propertyArea = i.propertyArea,
                                 countryID = i.countryID,
-                                CountryName = i.CountryName,
+                              //  CountryName = i.CountryName,
                                 stateID = i.stateID,
-                                StateName = i.StateName,
+                              //  StateName = i.StateName,
                                 cityID = i.cityID,
-                                CityName = i.CityName,
+                              //  CityName = i.CityName,
                                 metro = i.metro,
                                 propertyAddress = i.propertyAddress,
                                 propertyLocality = i.propertyLocality,

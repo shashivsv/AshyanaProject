@@ -1,5 +1,10 @@
 E:\AshyanaProject\Ashyana.Common\bin\Debug\Ashyana.Common.dll
 E:\AshyanaProject\Ashyana.Common\bin\Debug\Ashyana.Common.pdb
+E:\AshyanaProject\Ashyana.Common\obj\Debug\Ashyana.Common.csprojResolveAssemblyReference.cache
 E:\AshyanaProject\Ashyana.Common\obj\Debug\Ashyana.Common.dll
 E:\AshyanaProject\Ashyana.Common\obj\Debug\Ashyana.Common.pdb
-E:\AshyanaProject\Ashyana.Common\obj\Debug\Ashyana.Common.csprojResolveAssemblyReference.cache
+F:\AshyanaProject\Ashyana.Common\bin\Debug\Ashyana.Common.dll
+F:\AshyanaProject\Ashyana.Common\bin\Debug\Ashyana.Common.pdb
+F:\AshyanaProject\Ashyana.Common\obj\Debug\Ashyana.Common.csprojResolveAssemblyReference.cache
+F:\AshyanaProject\Ashyana.Common\obj\Debug\Ashyana.Common.dll
+F:\AshyanaProject\Ashyana.Common\obj\Debug\Ashyana.Common.pdb

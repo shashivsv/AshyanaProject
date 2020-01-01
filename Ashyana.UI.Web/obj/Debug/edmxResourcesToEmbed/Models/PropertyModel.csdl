@@ -55,7 +55,7 @@
     <Property Name="CityUpdatedon" Type="DateTime" Precision="3" />
     <Property Name="countryID" Type="Int32" />
     <Property Name="StateID" Type="Int32" />
-    <NavigationProperty Name="Users" Relationship="PropertyModel.FK_Users_City" FromRole="City" ToRole="User" />
+    <NavigationProperty Name="Users" Relationship="Self.FK_Users_City" FromRole="City" ToRole="Users" />
   </EntityType>
   <EntityType Name="ContactInfo">
     <Key>
@@ -84,7 +84,7 @@
     <Property Name="CountryDeletedon" Type="DateTime" Precision="3" />
     <Property Name="CountryUpdatedby" Type="Int32" />
     <Property Name="CountryUpdatedon" Type="DateTime" Precision="3" />
-    <NavigationProperty Name="Users" Relationship="PropertyModel.FK_Users_Country" FromRole="Country" ToRole="User" />
+    <NavigationProperty Name="Users" Relationship="Self.FK_Users_Country" FromRole="Country" ToRole="Users" />
   </EntityType>
   <EntityType Name="Floor">
     <Key>
@@ -119,6 +119,14 @@
     <Property Name="linkDeletedOn" Type="DateTime" Precision="3" />
     <Property Name="linkUpdatedBy" Type="Int32" />
     <Property Name="linkUpdatedOn" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="logError">
+    <Key>
+      <PropertyRef Name="logID" />
+    </Key>
+    <Property Name="logID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="logDate" Type="DateTime" Precision="3" />
+    <Property Name="logErrorMsg" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="Mail">
     <Key>
@@ -202,6 +210,15 @@
     <Property Name="NewsUpdatedby" Type="Int32" />
     <Property Name="NewsUpdatedon" Type="DateTime" Precision="3" />
   </EntityType>
+  <EntityType Name="PhoneType">
+    <Key>
+      <PropertyRef Name="PhoneTypeID" />
+    </Key>
+    <Property Name="PhoneTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PhoneTypeName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="UserID" Type="Int32" />
+    <NavigationProperty Name="User" Relationship="Self.FK__PhoneType__UserI__3F865F66" FromRole="PhoneType" ToRole="Users" />
+  </EntityType>
   <EntityType Name="Property">
     <Key>
       <PropertyRef Name="propertyID" />
@@ -244,6 +261,22 @@
     <Property Name="propertyTypeCreatedOn" Type="DateTime" Precision="3" />
     <Property Name="propertyTypeUpdatedBy" Type="Int32" />
     <Property Name="propertyTypeUpdatedOn" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="Purchase">
+    <Key>
+      <PropertyRef Name="purchaseTypeID" />
+    </Key>
+    <Property Name="purchaseTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="purchaseType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="purchaseDesc" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="purchaseImage" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="purchaseDelete" Type="Int32" />
+    <Property Name="purchaseCreatedBy" Type="Int32" />
+    <Property Name="purchaseCreatedOn" Type="DateTime" Precision="3" />
+    <Property Name="purchaseDeletedBy" Type="Int32" />
+    <Property Name="purchaseDeletedOn" Type="DateTime" Precision="3" />
+    <Property Name="purchaseUpdatedBy" Type="Int32" />
+    <Property Name="purchaseUpdatedOn" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
   </EntityType>
   <EntityType Name="Role">
     <Key>
@@ -301,7 +334,7 @@
     <Property Name="StateUpdatedby" Type="Int32" />
     <Property Name="StateUpdatedon" Type="DateTime" Precision="3" />
     <Property Name="countryID" Type="Int32" />
-    <NavigationProperty Name="Users" Relationship="PropertyModel.FK_Users_State" FromRole="State" ToRole="User" />
+    <NavigationProperty Name="Users" Relationship="Self.FK_Users_State" FromRole="State" ToRole="Users" />
   </EntityType>
   <EntityType Name="SubLink">
     <Key>
@@ -358,10 +391,40 @@
     <Property Name="userDeletedOn" Type="DateTime" Precision="3" />
     <Property Name="userUpdatedBy" Type="Int32" />
     <Property Name="userUpdatedOn" Type="DateTime" Precision="3" />
-    <NavigationProperty Name="City" Relationship="PropertyModel.FK_Users_City" FromRole="User" ToRole="City" />
-    <NavigationProperty Name="Country" Relationship="PropertyModel.FK_Users_Country" FromRole="User" ToRole="Country" />
-    <NavigationProperty Name="PhoneTypes" Relationship="PropertyModel.FK__PhoneType__UserI__3F865F66" FromRole="User" ToRole="PhoneType" />
-    <NavigationProperty Name="State" Relationship="PropertyModel.FK_Users_State" FromRole="User" ToRole="State" />
+    <NavigationProperty Name="City" Relationship="Self.FK_Users_City" FromRole="Users" ToRole="City" />
+    <NavigationProperty Name="Country" Relationship="Self.FK_Users_Country" FromRole="Users" ToRole="Country" />
+    <NavigationProperty Name="PhoneTypes" Relationship="Self.FK__PhoneType__UserI__3F865F66" FromRole="Users" ToRole="PhoneType" />
+    <NavigationProperty Name="State" Relationship="Self.FK_Users_State" FromRole="Users" ToRole="State" />
+  </EntityType>
+  <EntityType Name="abc">
+    <Key>
+      <PropertyRef Name="propertyID" />
+      <PropertyRef Name="propertyDelete" />
+    </Key>
+    <Property Name="propertyID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="propertyTypeID" Type="Int32" />
+    <Property Name="propertyDesc" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="purchaseType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="propertyPrice" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="bedroom" Type="Int32" />
+    <Property Name="propertyArea" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="countryID" Type="Int32" />
+    <Property Name="stateID" Type="Int32" />
+    <Property Name="cityID" Type="Int32" />
+    <Property Name="metro" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="propertyAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="propertyLocality" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="pin" Type="Int32" />
+    <Property Name="propertyAge" Type="Int32" />
+    <Property Name="propertyTenure" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="propertyImage" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="propertyDelete" Type="Int32" Nullable="false" />
+    <Property Name="propertyDeletedon" Type="DateTime" Precision="3" />
+    <Property Name="propertyCreatedby" Type="Int32" />
+    <Property Name="propertyCreatedon" Type="DateTime" Precision="3" />
+    <Property Name="propertyDeletedby" Type="Int32" />
+    <Property Name="propertyUpdatedby" Type="Int32" />
+    <Property Name="propertyUpdatedon" Type="DateTime" Precision="3" />
   </EntityType>
   <EntityType Name="master">
     <Key>
@@ -389,6 +452,30 @@
     <Property Name="userUpdatedBy" Type="Int32" />
     <Property Name="userUpdatedOn" Type="DateTime" Precision="3" />
   </EntityType>
+  <Association Name="FK_Users_City">
+    <End Role="City" Type="Self.City" Multiplicity="0..1" />
+    <End Role="Users" Type="Self.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="City">
+        <PropertyRef Name="CityID" />
+      </Principal>
+      <Dependent Role="Users">
+        <PropertyRef Name="cityID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Users_Country">
+    <End Role="Country" Type="Self.Country" Multiplicity="0..1" />
+    <End Role="Users" Type="Self.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Country">
+        <PropertyRef Name="CountryID" />
+      </Principal>
+      <Dependent Role="Users">
+        <PropertyRef Name="countryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_tblSubMenu_tblRoles1">
     <End Role="MainMenu" Type="Self.MainMenu" Multiplicity="0..1" />
     <End Role="SubMenu" Type="Self.SubMenu" Multiplicity="*" />
@@ -401,6 +488,30 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK__PhoneType__UserI__3F865F66">
+    <End Role="Users" Type="Self.User" Multiplicity="0..1" />
+    <End Role="PhoneType" Type="Self.PhoneType" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="userID" />
+      </Principal>
+      <Dependent Role="PhoneType">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Users_State">
+    <End Role="State" Type="Self.State" Multiplicity="0..1" />
+    <End Role="Users" Type="Self.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="State">
+        <PropertyRef Name="StateID" />
+      </Principal>
+      <Dependent Role="Users">
+        <PropertyRef Name="StateID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityContainer Name="AshyanaDBEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Agents" EntityType="Self.Agent" />
     <EntitySet Name="Buildings" EntityType="Self.Building" />
@@ -409,13 +520,16 @@
     <EntitySet Name="Countries" EntityType="Self.Country" />
     <EntitySet Name="Floors" EntityType="Self.Floor" />
     <EntitySet Name="Links" EntityType="Self.Link" />
+    <EntitySet Name="logErrors" EntityType="Self.logError" />
     <EntitySet Name="Mails" EntityType="Self.Mail" />
     <EntitySet Name="MainMenus" EntityType="Self.MainMenu" />
     <EntitySet Name="MapRoleLinks" EntityType="Self.MapRoleLink" />
     <EntitySet Name="MapuserRoleLinks" EntityType="Self.MapuserRoleLink" />
     <EntitySet Name="News" EntityType="Self.News" />
+    <EntitySet Name="PhoneTypes" EntityType="Self.PhoneType" />
     <EntitySet Name="Properties" EntityType="Self.Property" />
     <EntitySet Name="PropertyTypes" EntityType="Self.PropertyType" />
+    <EntitySet Name="Purchases" EntityType="Self.Purchase" />
     <EntitySet Name="Roles" EntityType="Self.Role" />
     <EntitySet Name="RoomTypes" EntityType="Self.RoomType" />
     <EntitySet Name="Searches" EntityType="Self.Search" />
@@ -423,14 +537,40 @@
     <EntitySet Name="SubLinks" EntityType="Self.SubLink" />
     <EntitySet Name="SubMenus" EntityType="Self.SubMenu" />
     <EntitySet Name="Users" EntityType="Self.User" />
+    <EntitySet Name="abcs" EntityType="Self.abc" />
     <EntitySet Name="masters" EntityType="Self.master" />
+    <AssociationSet Name="FK_Users_City" Association="Self.FK_Users_City">
+      <End Role="City" EntitySet="Cities" />
+      <End Role="Users" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Users_Country" Association="Self.FK_Users_Country">
+      <End Role="Country" EntitySet="Countries" />
+      <End Role="Users" EntitySet="Users" />
+    </AssociationSet>
     <AssociationSet Name="FK_tblSubMenu_tblRoles1" Association="Self.FK_tblSubMenu_tblRoles1">
       <End Role="MainMenu" EntitySet="MainMenus" />
       <End Role="SubMenu" EntitySet="SubMenus" />
     </AssociationSet>
+    <AssociationSet Name="FK__PhoneType__UserI__3F865F66" Association="Self.FK__PhoneType__UserI__3F865F66">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="PhoneType" EntitySet="PhoneTypes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Users_State" Association="Self.FK_Users_State">
+      <End Role="State" EntitySet="States" />
+      <End Role="Users" EntitySet="Users" />
+    </AssociationSet>
     <FunctionImport Name="Split" IsComposable="true" ReturnType="Collection(PropertyModel.Split_Result)">
       <Parameter Name="List" Mode="In" Type="String" />
       <Parameter Name="SplitOn" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="CHKUSER">
+      <Parameter Name="USERNAME" Mode="In" Type="String" />
+      <Parameter Name="PASSWORD" Mode="In" Type="String" />
+      <Parameter Name="RESULT" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="GETPASSOWORD">
+      <Parameter Name="USERNAME" Mode="In" Type="String" />
+      <Parameter Name="PASSWORD" Mode="InOut" Type="String" />
     </FunctionImport>
     <FunctionImport Name="U_sp_ActiveUser" ReturnType="Collection(Int32)">
       <Parameter Name="UserID" Mode="In" Type="Int32" />
@@ -770,6 +910,17 @@
       <Parameter Name="LinkID" Mode="In" Type="Int32" />
       <Parameter Name="RoleID" Mode="In" Type="Int32" />
     </FunctionImport>
+    <FunctionImport Name="U_sp_UpdateAllUserRoleLinkMap">
+      <Parameter Name="sublinkView" Mode="In" Type="String" />
+      <Parameter Name="sublinkAdd" Mode="In" Type="String" />
+      <Parameter Name="sublinkUpdate" Mode="In" Type="String" />
+      <Parameter Name="sublinkDelete" Mode="In" Type="String" />
+      <Parameter Name="linkCheck" Mode="In" Type="String" />
+      <Parameter Name="sublinkCheck" Mode="In" Type="String" />
+      <Parameter Name="sublinkPrint" Mode="In" Type="String" />
+      <Parameter Name="linkCreatedBy" Mode="In" Type="String" />
+      <Parameter Name="userlinkMapID" Mode="In" Type="String" />
+    </FunctionImport>
     <FunctionImport Name="U_sp_updateLink">
       <Parameter Name="linkID" Mode="In" Type="Int32" />
       <Parameter Name="linkName" Mode="In" Type="String" />
@@ -807,15 +958,15 @@
       <Parameter Name="sublinkCreatedBy" Mode="In" Type="Int32" />
     </FunctionImport>
     <FunctionImport Name="U_sp_UpdateUserRoleLinkMap">
-      <Parameter Name="sublinkView" Mode="In" Type="Int32" />
-      <Parameter Name="sublinkAdd" Mode="In" Type="Int32" />
-      <Parameter Name="sublinkUpdate" Mode="In" Type="Int32" />
-      <Parameter Name="sublinkDelete" Mode="In" Type="Int32" />
-      <Parameter Name="linkCheck" Mode="In" Type="Int32" />
-      <Parameter Name="sublinkCheck" Mode="In" Type="Int32" />
-      <Parameter Name="sublinkPrint" Mode="In" Type="Int32" />
-      <Parameter Name="linkCreatedBy" Mode="In" Type="Int32" />
-      <Parameter Name="userlinkMapID" Mode="In" Type="Int32" />
+      <Parameter Name="sublinkView" Mode="In" Type="String" />
+      <Parameter Name="sublinkAdd" Mode="In" Type="String" />
+      <Parameter Name="sublinkUpdate" Mode="In" Type="String" />
+      <Parameter Name="sublinkDelete" Mode="In" Type="String" />
+      <Parameter Name="linkCheck" Mode="In" Type="String" />
+      <Parameter Name="sublinkCheck" Mode="In" Type="String" />
+      <Parameter Name="sublinkPrint" Mode="In" Type="String" />
+      <Parameter Name="linkCreatedBy" Mode="In" Type="String" />
+      <Parameter Name="userlinkMapID" Mode="In" Type="String" />
     </FunctionImport>
     <FunctionImport Name="U_spUpdateRole">
       <Parameter Name="roleid" Mode="In" Type="Int32" />
@@ -832,25 +983,9 @@
       <Parameter Name="roleDescription" Mode="In" Type="String" />
       <Parameter Name="roleCreatedBy" Mode="In" Type="Int32" />
     </FunctionImport>
-    <EntitySet Name="Purchases" EntityType="PropertyModel.Purchase" />
-    <EntitySet Name="logErrors" EntityType="PropertyModel.logError" />
-    <EntitySet Name="PhoneTypes" EntityType="PropertyModel.PhoneType" />
-    <AssociationSet Name="FK_Users_City" Association="PropertyModel.FK_Users_City">
-      <End Role="City" EntitySet="Cities" />
-      <End Role="User" EntitySet="Users" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Users_Country" Association="PropertyModel.FK_Users_Country">
-      <End Role="Country" EntitySet="Countries" />
-      <End Role="User" EntitySet="Users" />
-    </AssociationSet>
-    <AssociationSet Name="FK__PhoneType__UserI__3F865F66" Association="PropertyModel.FK__PhoneType__UserI__3F865F66">
-      <End Role="User" EntitySet="Users" />
-      <End Role="PhoneType" EntitySet="PhoneTypes" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Users_State" Association="PropertyModel.FK_Users_State">
-      <End Role="State" EntitySet="States" />
-      <End Role="User" EntitySet="Users" />
-    </AssociationSet>
+    <FunctionImport Name="USERCOUNT">
+      <Parameter Name="COUNT" Mode="InOut" Type="Int32" />
+    </FunctionImport>
   </EntityContainer>
   <ComplexType Name="U_sp_AdminLinkDisplay_Result">
     <Property Type="Int32" Name="roleID" Nullable="true" />
@@ -1211,85 +1346,4 @@
     <Property Type="Int32" Name="sublinkDelete" Nullable="true" />
     <Property Type="Int32" Name="sublinkPrint" Nullable="true" />
   </ComplexType>
-  <EntityType Name="Purchase">
-    <Key>
-      <PropertyRef Name="purchaseTypeID" />
-    </Key>
-    <Property Name="purchaseTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="purchaseType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="purchaseDesc" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="purchaseImage" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-    <Property Name="purchaseDelete" Type="Int32" />
-    <Property Name="purchaseCreatedBy" Type="Int32" />
-    <Property Name="purchaseCreatedOn" Type="DateTime" Precision="3" />
-    <Property Name="purchaseDeletedBy" Type="Int32" />
-    <Property Name="purchaseDeletedOn" Type="DateTime" Precision="3" />
-    <Property Name="purchaseUpdatedBy" Type="Int32" />
-    <Property Name="purchaseUpdatedOn" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-  </EntityType>
-  <EntityType Name="logError">
-    <Key>
-      <PropertyRef Name="logID" />
-    </Key>
-    <Property Name="logID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="logDate" Type="DateTime" Precision="3" />
-    <Property Name="logErrorMsg" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-  </EntityType>
-  <EntityType Name="PhoneType">
-    <Key>
-      <PropertyRef Name="PhoneTypeID" />
-    </Key>
-    <Property Name="PhoneTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="PhoneTypeName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-    <Property Name="UserID" Type="Int32" />
-    <NavigationProperty Name="User" Relationship="PropertyModel.FK__PhoneType__UserI__3F865F66" FromRole="PhoneType" ToRole="User" />
-  </EntityType>
-  <Association Name="FK_Users_City">
-    <End Type="PropertyModel.City" Role="City" Multiplicity="0..1" />
-    <End Type="PropertyModel.User" Role="User" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="City">
-        <PropertyRef Name="CityID" />
-      </Principal>
-      <Dependent Role="User">
-        <PropertyRef Name="cityID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Users_Country">
-    <End Type="PropertyModel.Country" Role="Country" Multiplicity="0..1" />
-    <End Type="PropertyModel.User" Role="User" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Country">
-        <PropertyRef Name="CountryID" />
-      </Principal>
-      <Dependent Role="User">
-        <PropertyRef Name="countryID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__PhoneType__UserI__3F865F66">
-    <End Type="PropertyModel.User" Role="User" Multiplicity="0..1" />
-    <End Type="PropertyModel.PhoneType" Role="PhoneType" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="User">
-        <PropertyRef Name="userID" />
-      </Principal>
-      <Dependent Role="PhoneType">
-        <PropertyRef Name="UserID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Users_State">
-    <End Type="PropertyModel.State" Role="State" Multiplicity="0..1" />
-    <End Type="PropertyModel.User" Role="User" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="State">
-        <PropertyRef Name="StateID" />
-      </Principal>
-      <Dependent Role="User">
-        <PropertyRef Name="StateID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
 </Schema>

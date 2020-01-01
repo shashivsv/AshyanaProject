@@ -4,7 +4,39 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="PropertyModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="PropertyModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'PropertyDB.dbo.abc' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="abc">
+          <Key>
+            <PropertyRef Name="propertyID" />
+            <PropertyRef Name="propertyDelete" />
+          </Key>
+          <Property Name="propertyID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="propertyTypeID" Type="int" />
+          <Property Name="propertyDesc" Type="nvarchar(max)" />
+          <Property Name="purchaseType" Type="nvarchar" MaxLength="50" />
+          <Property Name="propertyPrice" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="bedroom" Type="int" />
+          <Property Name="propertyArea" Type="nvarchar" MaxLength="50" />
+          <Property Name="countryID" Type="int" />
+          <Property Name="stateID" Type="int" />
+          <Property Name="cityID" Type="int" />
+          <Property Name="metro" Type="nvarchar" MaxLength="100" />
+          <Property Name="propertyAddress" Type="nvarchar" MaxLength="100" />
+          <Property Name="propertyLocality" Type="nvarchar" MaxLength="50" />
+          <Property Name="pin" Type="int" />
+          <Property Name="propertyAge" Type="int" />
+          <Property Name="propertyTenure" Type="numeric" Precision="10" Scale="2" />
+          <Property Name="propertyImage" Type="nvarchar" MaxLength="500" />
+          <Property Name="propertyDelete" Type="int" Nullable="false" />
+          <Property Name="propertyDeletedon" Type="datetime" />
+          <Property Name="propertyCreatedby" Type="int" />
+          <Property Name="propertyCreatedon" Type="datetime" />
+          <Property Name="propertyDeletedby" Type="int" />
+          <Property Name="propertyUpdatedby" Type="int" />
+          <Property Name="propertyUpdatedon" Type="datetime" />
+        </EntityType>
         <EntityType Name="Agent">
           <Key>
             <PropertyRef Name="agentID" />
@@ -475,6 +507,15 @@ warning 6002: The table/view 'PropertyDB.dbo.master' does not have a primary key
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="CHKUSER" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="USERNAME" Type="varchar" Mode="In" />
+          <Parameter Name="PASSWORD" Type="varchar" Mode="In" />
+          <Parameter Name="RESULT" Type="varchar" Mode="InOut" />
+        </Function>
+        <Function Name="GETPASSOWORD" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="USERNAME" Type="varchar" Mode="In" />
+          <Parameter Name="PASSWORD" Type="varchar" Mode="InOut" />
+        </Function>
         <Function Name="Split" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="List" Type="nvarchar(max)" Mode="In" />
           <Parameter Name="SplitOn" Type="nvarchar" Mode="In" />
@@ -825,6 +866,17 @@ warning 6002: The table/view 'PropertyDB.dbo.master' does not have a primary key
           <Parameter Name="LinkID" Type="int" Mode="In" />
           <Parameter Name="RoleID" Type="int" Mode="In" />
         </Function>
+        <Function Name="U_sp_UpdateAllUserRoleLinkMap" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="sublinkView" Type="varchar" Mode="In" />
+          <Parameter Name="sublinkAdd" Type="varchar" Mode="In" />
+          <Parameter Name="sublinkUpdate" Type="varchar" Mode="In" />
+          <Parameter Name="sublinkDelete" Type="varchar" Mode="In" />
+          <Parameter Name="linkCheck" Type="varchar" Mode="In" />
+          <Parameter Name="sublinkCheck" Type="varchar" Mode="In" />
+          <Parameter Name="sublinkPrint" Type="varchar" Mode="In" />
+          <Parameter Name="linkCreatedBy" Type="varchar" Mode="In" />
+          <Parameter Name="userlinkMapID" Type="varchar" Mode="In" />
+        </Function>
         <Function Name="U_sp_updateLink" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="linkID" Type="int" Mode="In" />
           <Parameter Name="linkName" Type="varchar" Mode="In" />
@@ -887,6 +939,9 @@ warning 6002: The table/view 'PropertyDB.dbo.master' does not have a primary key
           <Parameter Name="roleDescription" Type="nvarchar" Mode="In" />
           <Parameter Name="roleCreatedBy" Type="int" Mode="In" />
         </Function>
+        <Function Name="USERCOUNT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="COUNT" Type="int" Mode="InOut" />
+        </Function>
         <EntityContainer Name="PropertyModelStoreContainer">
           <EntitySet Name="Agent" EntityType="Self.Agent" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Building" EntityType="Self.Building" Schema="dbo" store:Type="Tables" />
@@ -912,6 +967,34 @@ warning 6002: The table/view 'PropertyDB.dbo.master' does not have a primary key
           <EntitySet Name="SubLink" EntityType="Self.SubLink" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SubMenu" EntityType="Self.SubMenu" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="abc" EntityType="Self.abc" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [abc].[propertyID] AS [propertyID], 
+    [abc].[propertyTypeID] AS [propertyTypeID], 
+    [abc].[propertyDesc] AS [propertyDesc], 
+    [abc].[purchaseType] AS [purchaseType], 
+    [abc].[propertyPrice] AS [propertyPrice], 
+    [abc].[bedroom] AS [bedroom], 
+    [abc].[propertyArea] AS [propertyArea], 
+    [abc].[countryID] AS [countryID], 
+    [abc].[stateID] AS [stateID], 
+    [abc].[cityID] AS [cityID], 
+    [abc].[metro] AS [metro], 
+    [abc].[propertyAddress] AS [propertyAddress], 
+    [abc].[propertyLocality] AS [propertyLocality], 
+    [abc].[pin] AS [pin], 
+    [abc].[propertyAge] AS [propertyAge], 
+    [abc].[propertyTenure] AS [propertyTenure], 
+    [abc].[propertyImage] AS [propertyImage], 
+    [abc].[propertyDelete] AS [propertyDelete], 
+    [abc].[propertyDeletedon] AS [propertyDeletedon], 
+    [abc].[propertyCreatedby] AS [propertyCreatedby], 
+    [abc].[propertyCreatedon] AS [propertyCreatedon], 
+    [abc].[propertyDeletedby] AS [propertyDeletedby], 
+    [abc].[propertyUpdatedby] AS [propertyUpdatedby], 
+    [abc].[propertyUpdatedon] AS [propertyUpdatedon]
+    FROM [dbo].[abc] AS [abc]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="master" EntityType="Self.master" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [master].[userID] AS [userID], 
@@ -955,7 +1038,8 @@ warning 6002: The table/view 'PropertyDB.dbo.master' does not have a primary key
             <End Role="Users" EntitySet="Users" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="PropertyModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -1014,7 +1098,7 @@ warning 6002: The table/view 'PropertyDB.dbo.master' does not have a primary key
           <Property Name="CityUpdatedon" Type="DateTime" Precision="3" />
           <Property Name="countryID" Type="Int32" />
           <Property Name="StateID" Type="Int32" />
-          <NavigationProperty Name="Users" Relationship="PropertyModel.FK_Users_City" FromRole="City" ToRole="User" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_Users_City" FromRole="City" ToRole="Users" />
         </EntityType>
         <EntityType Name="ContactInfo">
           <Key>
@@ -1043,7 +1127,7 @@ warning 6002: The table/view 'PropertyDB.dbo.master' does not have a primary key
           <Property Name="CountryDeletedon" Type="DateTime" Precision="3" />
           <Property Name="CountryUpdatedby" Type="Int32" />
           <Property Name="CountryUpdatedon" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="Users" Relationship="PropertyModel.FK_Users_Country" FromRole="Country" ToRole="User" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_Users_Country" FromRole="Country" ToRole="Users" />
         </EntityType>
         <EntityType Name="Floor">
           <Key>
@@ -1078,6 +1162,14 @@ warning 6002: The table/view 'PropertyDB.dbo.master' does not have a primary key
           <Property Name="linkDeletedOn" Type="DateTime" Precision="3" />
           <Property Name="linkUpdatedBy" Type="Int32" />
           <Property Name="linkUpdatedOn" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="logError">
+          <Key>
+            <PropertyRef Name="logID" />
+          </Key>
+          <Property Name="logID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="logDate" Type="DateTime" Precision="3" />
+          <Property Name="logErrorMsg" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Mail">
           <Key>
@@ -1161,6 +1253,15 @@ warning 6002: The table/view 'PropertyDB.dbo.master' does not have a primary key
           <Property Name="NewsUpdatedby" Type="Int32" />
           <Property Name="NewsUpdatedon" Type="DateTime" Precision="3" />
         </EntityType>
+        <EntityType Name="PhoneType">
+          <Key>
+            <PropertyRef Name="PhoneTypeID" />
+          </Key>
+          <Property Name="PhoneTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PhoneTypeName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="UserID" Type="Int32" />
+          <NavigationProperty Name="User" Relationship="Self.FK__PhoneType__UserI__3F865F66" FromRole="PhoneType" ToRole="Users" />
+        </EntityType>
         <EntityType Name="Property">
           <Key>
             <PropertyRef Name="propertyID" />
@@ -1203,6 +1304,22 @@ warning 6002: The table/view 'PropertyDB.dbo.master' does not have a primary key
           <Property Name="propertyTypeCreatedOn" Type="DateTime" Precision="3" />
           <Property Name="propertyTypeUpdatedBy" Type="Int32" />
           <Property Name="propertyTypeUpdatedOn" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Purchase">
+          <Key>
+            <PropertyRef Name="purchaseTypeID" />
+          </Key>
+          <Property Name="purchaseTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="purchaseType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="purchaseDesc" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="purchaseImage" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="purchaseDelete" Type="Int32" />
+          <Property Name="purchaseCreatedBy" Type="Int32" />
+          <Property Name="purchaseCreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="purchaseDeletedBy" Type="Int32" />
+          <Property Name="purchaseDeletedOn" Type="DateTime" Precision="3" />
+          <Property Name="purchaseUpdatedBy" Type="Int32" />
+          <Property Name="purchaseUpdatedOn" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
         </EntityType>
         <EntityType Name="Role">
           <Key>
@@ -1260,7 +1377,7 @@ warning 6002: The table/view 'PropertyDB.dbo.master' does not have a primary key
           <Property Name="StateUpdatedby" Type="Int32" />
           <Property Name="StateUpdatedon" Type="DateTime" Precision="3" />
           <Property Name="countryID" Type="Int32" />
-          <NavigationProperty Name="Users" Relationship="PropertyModel.FK_Users_State" FromRole="State" ToRole="User" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_Users_State" FromRole="State" ToRole="Users" />
         </EntityType>
         <EntityType Name="SubLink">
           <Key>
@@ -1317,10 +1434,40 @@ warning 6002: The table/view 'PropertyDB.dbo.master' does not have a primary key
           <Property Name="userDeletedOn" Type="DateTime" Precision="3" />
           <Property Name="userUpdatedBy" Type="Int32" />
           <Property Name="userUpdatedOn" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="City" Relationship="PropertyModel.FK_Users_City" FromRole="User" ToRole="City" />
-          <NavigationProperty Name="Country" Relationship="PropertyModel.FK_Users_Country" FromRole="User" ToRole="Country" />
-          <NavigationProperty Name="PhoneTypes" Relationship="PropertyModel.FK__PhoneType__UserI__3F865F66" FromRole="User" ToRole="PhoneType" />
-          <NavigationProperty Name="State" Relationship="PropertyModel.FK_Users_State" FromRole="User" ToRole="State" />
+          <NavigationProperty Name="City" Relationship="Self.FK_Users_City" FromRole="Users" ToRole="City" />
+          <NavigationProperty Name="Country" Relationship="Self.FK_Users_Country" FromRole="Users" ToRole="Country" />
+          <NavigationProperty Name="PhoneTypes" Relationship="Self.FK__PhoneType__UserI__3F865F66" FromRole="Users" ToRole="PhoneType" />
+          <NavigationProperty Name="State" Relationship="Self.FK_Users_State" FromRole="Users" ToRole="State" />
+        </EntityType>
+        <EntityType Name="abc">
+          <Key>
+            <PropertyRef Name="propertyID" />
+            <PropertyRef Name="propertyDelete" />
+          </Key>
+          <Property Name="propertyID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="propertyTypeID" Type="Int32" />
+          <Property Name="propertyDesc" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="purchaseType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="propertyPrice" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="bedroom" Type="Int32" />
+          <Property Name="propertyArea" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="countryID" Type="Int32" />
+          <Property Name="stateID" Type="Int32" />
+          <Property Name="cityID" Type="Int32" />
+          <Property Name="metro" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="propertyAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="propertyLocality" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="pin" Type="Int32" />
+          <Property Name="propertyAge" Type="Int32" />
+          <Property Name="propertyTenure" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="propertyImage" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="propertyDelete" Type="Int32" Nullable="false" />
+          <Property Name="propertyDeletedon" Type="DateTime" Precision="3" />
+          <Property Name="propertyCreatedby" Type="Int32" />
+          <Property Name="propertyCreatedon" Type="DateTime" Precision="3" />
+          <Property Name="propertyDeletedby" Type="Int32" />
+          <Property Name="propertyUpdatedby" Type="Int32" />
+          <Property Name="propertyUpdatedon" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="master">
           <Key>
@@ -1348,6 +1495,30 @@ warning 6002: The table/view 'PropertyDB.dbo.master' does not have a primary key
           <Property Name="userUpdatedBy" Type="Int32" />
           <Property Name="userUpdatedOn" Type="DateTime" Precision="3" />
         </EntityType>
+        <Association Name="FK_Users_City">
+          <End Role="City" Type="Self.City" Multiplicity="0..1" />
+          <End Role="Users" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="CityID" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="cityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Users_Country">
+          <End Role="Country" Type="Self.Country" Multiplicity="0..1" />
+          <End Role="Users" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="CountryID" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="countryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_tblSubMenu_tblRoles1">
           <End Role="MainMenu" Type="Self.MainMenu" Multiplicity="0..1" />
           <End Role="SubMenu" Type="Self.SubMenu" Multiplicity="*" />
@@ -1360,6 +1531,30 @@ warning 6002: The table/view 'PropertyDB.dbo.master' does not have a primary key
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__PhoneType__UserI__3F865F66">
+          <End Role="Users" Type="Self.User" Multiplicity="0..1" />
+          <End Role="PhoneType" Type="Self.PhoneType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="userID" />
+            </Principal>
+            <Dependent Role="PhoneType">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Users_State">
+          <End Role="State" Type="Self.State" Multiplicity="0..1" />
+          <End Role="Users" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="State">
+              <PropertyRef Name="StateID" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="StateID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="AshyanaDBEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Agents" EntityType="Self.Agent" />
           <EntitySet Name="Buildings" EntityType="Self.Building" />
@@ -1368,13 +1563,16 @@ warning 6002: The table/view 'PropertyDB.dbo.master' does not have a primary key
           <EntitySet Name="Countries" EntityType="Self.Country" />
           <EntitySet Name="Floors" EntityType="Self.Floor" />
           <EntitySet Name="Links" EntityType="Self.Link" />
+          <EntitySet Name="logErrors" EntityType="Self.logError" />
           <EntitySet Name="Mails" EntityType="Self.Mail" />
           <EntitySet Name="MainMenus" EntityType="Self.MainMenu" />
           <EntitySet Name="MapRoleLinks" EntityType="Self.MapRoleLink" />
           <EntitySet Name="MapuserRoleLinks" EntityType="Self.MapuserRoleLink" />
           <EntitySet Name="News" EntityType="Self.News" />
+          <EntitySet Name="PhoneTypes" EntityType="Self.PhoneType" />
           <EntitySet Name="Properties" EntityType="Self.Property" />
           <EntitySet Name="PropertyTypes" EntityType="Self.PropertyType" />
+          <EntitySet Name="Purchases" EntityType="Self.Purchase" />
           <EntitySet Name="Roles" EntityType="Self.Role" />
           <EntitySet Name="RoomTypes" EntityType="Self.RoomType" />
           <EntitySet Name="Searches" EntityType="Self.Search" />
@@ -1382,46 +1580,72 @@ warning 6002: The table/view 'PropertyDB.dbo.master' does not have a primary key
           <EntitySet Name="SubLinks" EntityType="Self.SubLink" />
           <EntitySet Name="SubMenus" EntityType="Self.SubMenu" />
           <EntitySet Name="Users" EntityType="Self.User" />
+          <EntitySet Name="abcs" EntityType="Self.abc" />
           <EntitySet Name="masters" EntityType="Self.master" />
+          <AssociationSet Name="FK_Users_City" Association="Self.FK_Users_City">
+            <End Role="City" EntitySet="Cities" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Users_Country" Association="Self.FK_Users_Country">
+            <End Role="Country" EntitySet="Countries" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
           <AssociationSet Name="FK_tblSubMenu_tblRoles1" Association="Self.FK_tblSubMenu_tblRoles1">
             <End Role="MainMenu" EntitySet="MainMenus" />
             <End Role="SubMenu" EntitySet="SubMenus" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PhoneType__UserI__3F865F66" Association="Self.FK__PhoneType__UserI__3F865F66">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="PhoneType" EntitySet="PhoneTypes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Users_State" Association="Self.FK_Users_State">
+            <End Role="State" EntitySet="States" />
+            <End Role="Users" EntitySet="Users" />
           </AssociationSet>
           <FunctionImport Name="Split" IsComposable="true" ReturnType="Collection(PropertyModel.Split_Result)">
             <Parameter Name="List" Mode="In" Type="String" />
             <Parameter Name="SplitOn" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="CHKUSER">
+            <Parameter Name="USERNAME" Mode="In" Type="String" />
+            <Parameter Name="PASSWORD" Mode="In" Type="String" />
+            <Parameter Name="RESULT" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GETPASSOWORD">
+            <Parameter Name="USERNAME" Mode="In" Type="String" />
+            <Parameter Name="PASSWORD" Mode="InOut" Type="String" />
+          </FunctionImport>
           <FunctionImport Name="U_sp_ActiveUser" ReturnType="Collection(Int32)">
-          <Parameter Name="UserID" Mode="In" Type="Int32" />
+            <Parameter Name="UserID" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="U_sp_AdminLinkDisplay" ReturnType="Collection(PropertyModel.U_sp_AdminLinkDisplay_Result)">
-          <Parameter Name="userid" Mode="In" Type="Int32" />
+            <Parameter Name="userid" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="U_sp_AutoFillU" ReturnType="Collection(String)">
-          <Parameter Name="Text" Mode="In" Type="String" />
+            <Parameter Name="Text" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="U_sp_AutoFillUActive" ReturnType="Collection(String)">
-          <Parameter Name="Text" Mode="In" Type="String" />
+            <Parameter Name="Text" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="U_sp_BuildingDropDown" ReturnType="Collection(PropertyModel.U_sp_BuildingDropDown_Result)">
-          <Parameter Name="BuildingID" Mode="In" Type="Int32" />
+            <Parameter Name="BuildingID" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="U_sp_changePassword">
             <Parameter Name="uid" Mode="In" Type="Int32" />
             <Parameter Name="userpwd" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="U_sp_CheckRight" ReturnType="Collection(PropertyModel.U_sp_CheckRight_Result)">
-          <Parameter Name="userID" Mode="In" Type="Int32" />
+            <Parameter Name="userID" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="U_sp_cityDropDown" ReturnType="Collection(PropertyModel.U_sp_cityDropDown_Result)">
-          <Parameter Name="cityid" Mode="In" Type="Int32" />
+            <Parameter Name="cityid" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="U_sp_cityUpdateHome">
             <Parameter Name="cityID" Mode="In" Type="Int32" />
             <Parameter Name="cityforHome" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="U_sp_countryDropDown" ReturnType="Collection(PropertyModel.U_sp_countryDropDown_Result)">
-          <Parameter Name="countryid" Mode="In" Type="Int32" />
+            <Parameter Name="countryid" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="U_sp_DefaultRightsMenu">
             <Parameter Name="userID" Mode="In" Type="Int32" />
@@ -1437,20 +1661,20 @@ warning 6002: The table/view 'PropertyDB.dbo.master' does not have a primary key
             <Parameter Name="userDeletedBy" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="U_sp_floorDropDown" ReturnType="Collection(PropertyModel.U_sp_floorDropDown_Result)">
-          <Parameter Name="floortypeid" Mode="In" Type="Int32" />
+            <Parameter Name="floortypeid" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="U_sp_GetEmailID" ReturnType="Collection(PropertyModel.U_sp_GetEmailID_Result)">
-          <Parameter Name="email" Mode="In" Type="String" />
+            <Parameter Name="email" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="U_sp_GetLinksubLinkByUserID" ReturnType="Collection(PropertyModel.U_sp_GetLinksubLinkByUserID_Result)">
             <Parameter Name="UserID" Mode="In" Type="Int32" />
             <Parameter Name="RoleID" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="U_sp_Getmenu" ReturnType="Collection(PropertyModel.U_sp_Getmenu_Result)">
-          <Parameter Name="uid" Mode="In" Type="Int32" />
+            <Parameter Name="uid" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="U_sp_GetUserDetails">
-          <Parameter Name="uid" Mode="In" Type="Int32" />
+            <Parameter Name="uid" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="U_sp_InsertAgent">
             <Parameter Name="agentID" Mode="In" Type="Int32" />
@@ -1467,7 +1691,7 @@ warning 6002: The table/view 'PropertyDB.dbo.master' does not have a primary key
             <Parameter Name="contactdesc" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="U_sp_InsertSearch">
-          <Parameter Name="propertyID" Mode="In" Type="Int32" />
+            <Parameter Name="propertyID" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="U_sp_InsertUpdatebuilding" ReturnType="Collection(Int32)">
             <Parameter Name="buildingTypeID" Mode="In" Type="Int32" />
@@ -1613,7 +1837,7 @@ warning 6002: The table/view 'PropertyDB.dbo.master' does not have a primary key
             <Parameter Name="UID" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="U_sp_linkDropDown" ReturnType="Collection(PropertyModel.U_sp_linkDropDown_Result)">
-          <Parameter Name="linkid" Mode="In" Type="Int32" />
+            <Parameter Name="linkid" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="U_sp_linkUpdateHome">
             <Parameter Name="linkID" Mode="In" Type="Int32" />
@@ -1625,7 +1849,7 @@ warning 6002: The table/view 'PropertyDB.dbo.master' does not have a primary key
             <Parameter Name="Password" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="U_sp_RoleDropDown">
-          <Parameter Name="RoleID" Mode="In" Type="Int32" />
+            <Parameter Name="RoleID" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="U_sp_SearchAgent">
             <Parameter Name="dealingIn" Mode="In" Type="String" />
@@ -1634,10 +1858,10 @@ warning 6002: The table/view 'PropertyDB.dbo.master' does not have a primary key
             <Parameter Name="city" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="U_sp_SearchByCity">
-          <Parameter Name="cityID" Mode="In" Type="Int32" />
+            <Parameter Name="cityID" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="U_sp_SearchByUserFirstname" ReturnType="Collection(PropertyModel.U_sp_SearchByUserFirstname_Result)">
-          <Parameter Name="fname" Mode="In" Type="String" />
+            <Parameter Name="fname" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="U_sp_SearchProperty">
             <Parameter Name="purchaseType" Mode="In" Type="String" />
@@ -1646,24 +1870,24 @@ warning 6002: The table/view 'PropertyDB.dbo.master' does not have a primary key
           </FunctionImport>
           <FunctionImport Name="U_sp_SelectAllUser" ReturnType="Collection(PropertyModel.U_sp_SelectAllUser_Result)" />
           <FunctionImport Name="U_sp_Selectbuilding" ReturnType="Collection(PropertyModel.U_sp_Selectbuilding_Result)">
-          <Parameter Name="buildingTypeID" Mode="In" Type="Int32" />
+            <Parameter Name="buildingTypeID" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="U_sp_Selectcities" ReturnType="Collection(PropertyModel.U_sp_Selectcities_Result)" />
           <FunctionImport Name="U_sp_SelectCity" ReturnType="Collection(PropertyModel.U_sp_SelectCity_Result)">
-          <Parameter Name="cityID" Mode="In" Type="Int32" />
+            <Parameter Name="cityID" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="U_sp_SelectCountry" ReturnType="Collection(PropertyModel.U_sp_SelectCountry_Result)">
-          <Parameter Name="countryID" Mode="In" Type="Int32" />
+            <Parameter Name="countryID" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="U_sp_SelectDefaultMenu" ReturnType="Collection(PropertyModel.U_sp_SelectDefaultMenu_Result)" />
           <FunctionImport Name="U_sp_SelectFloor" ReturnType="Collection(PropertyModel.U_sp_SelectFloor_Result)">
-          <Parameter Name="floorTypeID" Mode="In" Type="Int32" />
+            <Parameter Name="floorTypeID" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="U_sp_SelectHomelink" ReturnType="Collection(PropertyModel.U_sp_SelectHomelink_Result)">
-          <Parameter Name="lID" Mode="In" Type="Int32" />
+            <Parameter Name="lID" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="U_sp_SelectLink" ReturnType="Collection(PropertyModel.U_sp_SelectLink_Result)">
-          <Parameter Name="linkID" Mode="In" Type="Int32" />
+            <Parameter Name="linkID" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="U_sp_SelectMail" ReturnType="Collection(String)">
             <Parameter Name="aID" Mode="In" Type="Int32" />
@@ -1671,41 +1895,41 @@ warning 6002: The table/view 'PropertyDB.dbo.master' does not have a primary key
           </FunctionImport>
           <FunctionImport Name="U_sp_SelectMapRoleUser" ReturnType="Collection(PropertyModel.U_sp_SelectMapRoleUser_Result)" />
           <FunctionImport Name="U_sp_SelectMapUserRole">
-          <Parameter Name="userID" Mode="In" Type="Int32" />
+            <Parameter Name="userID" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="U_sp_SelectProperty" ReturnType="Collection(PropertyModel.U_sp_SelectProperty_Result)">
-          <Parameter Name="propertyCreatedby" Mode="In" Type="Int32" />
+            <Parameter Name="propertyCreatedby" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="U_sp_SelectPropertyByID">
-          <Parameter Name="propertyID" Mode="In" Type="Int32" />
+            <Parameter Name="propertyID" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="U_sp_SelectPropertyTypeDropDown" ReturnType="Collection(PropertyModel.U_sp_SelectPropertyTypeDropDown_Result)">
-          <Parameter Name="propertyTypeID" Mode="In" Type="Int32" />
+            <Parameter Name="propertyTypeID" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="U_sp_SelectPropetyType" ReturnType="Collection(PropertyModel.U_sp_SelectPropetyType_Result)">
-          <Parameter Name="propertyTypeID" Mode="In" Type="Int32" />
+            <Parameter Name="propertyTypeID" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="U_sp_SelectRegister" ReturnType="Collection(PropertyModel.U_sp_SelectRegister_Result)">
-          <Parameter Name="uid" Mode="In" Type="Int32" />
+            <Parameter Name="uid" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="U_sp_SelectRight" ReturnType="Collection(PropertyModel.U_sp_SelectRight_Result)">
-          <Parameter Name="userID" Mode="In" Type="Int32" />
+            <Parameter Name="userID" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="U_sp_SelectRole" />
           <FunctionImport Name="U_sp_SelectRoleLinkMap" ReturnType="Collection(PropertyModel.U_sp_SelectRoleLinkMap_Result)" />
           <FunctionImport Name="U_sp_SelectRoleLinkMapDropDown">
-          <Parameter Name="linkID" Mode="In" Type="Int32" />
+            <Parameter Name="linkID" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="U_sp_SelectSearch" ReturnType="Collection(PropertyModel.U_sp_SelectSearch_Result)" />
           <FunctionImport Name="U_sp_SelectState" ReturnType="Collection(PropertyModel.U_sp_SelectState_Result)">
-          <Parameter Name="stateID" Mode="In" Type="Int32" />
+            <Parameter Name="stateID" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="U_sp_SelectSubLink" ReturnType="Collection(PropertyModel.U_sp_SelectSubLink_Result)" />
           <FunctionImport Name="U_sp_SelectUser">
-          <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="U_sp_SelectUserByID">
-          <Parameter Name="UserID" Mode="In" Type="Int32" />
+            <Parameter Name="UserID" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="U_sp_SelectUserRoleMap" ReturnType="Collection(PropertyModel.U_sp_SelectUserRoleMap_Result)">
             <Parameter Name="UserID" Mode="In" Type="Int32" />
@@ -1719,15 +1943,26 @@ warning 6002: The table/view 'PropertyDB.dbo.master' does not have a primary key
             <Parameter Name="mailcreatedby" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="U_sp_stateDropDown" ReturnType="Collection(PropertyModel.U_sp_stateDropDown_Result)">
-          <Parameter Name="stateid" Mode="In" Type="Int32" />
+            <Parameter Name="stateid" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="U_sp_SubLinkDropDown" ReturnType="Collection(PropertyModel.U_sp_SubLinkDropDown_Result)">
-          <Parameter Name="subLinkID" Mode="In" Type="Int32" />
+            <Parameter Name="subLinkID" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="U_sp_SubLinkFromRoleLinkMap" ReturnType="Collection(PropertyModel.U_sp_SubLinkFromRoleLinkMap_Result)">
             <Parameter Name="Flag" Mode="In" Type="String" />
             <Parameter Name="LinkID" Mode="In" Type="Int32" />
             <Parameter Name="RoleID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="U_sp_UpdateAllUserRoleLinkMap">
+            <Parameter Name="sublinkView" Mode="In" Type="String" />
+            <Parameter Name="sublinkAdd" Mode="In" Type="String" />
+            <Parameter Name="sublinkUpdate" Mode="In" Type="String" />
+            <Parameter Name="sublinkDelete" Mode="In" Type="String" />
+            <Parameter Name="linkCheck" Mode="In" Type="String" />
+            <Parameter Name="sublinkCheck" Mode="In" Type="String" />
+            <Parameter Name="sublinkPrint" Mode="In" Type="String" />
+            <Parameter Name="linkCreatedBy" Mode="In" Type="String" />
+            <Parameter Name="userlinkMapID" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="U_sp_updateLink">
             <Parameter Name="linkID" Mode="In" Type="Int32" />
@@ -1754,7 +1989,7 @@ warning 6002: The table/view 'PropertyDB.dbo.master' does not have a primary key
             <Parameter Name="linkCreatedBy" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="U_sp_UpdateRoleLinkMapDropDown">
-          <Parameter Name="linkName" Mode="In" Type="String" />
+            <Parameter Name="linkName" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="U_sp_UpdateSubLink">
             <Parameter Name="subLinkID" Mode="In" Type="Int32" />
@@ -1766,15 +2001,15 @@ warning 6002: The table/view 'PropertyDB.dbo.master' does not have a primary key
             <Parameter Name="sublinkCreatedBy" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="U_sp_UpdateUserRoleLinkMap">
-            <Parameter Name="sublinkView" Mode="In" Type="Int32" />
-            <Parameter Name="sublinkAdd" Mode="In" Type="Int32" />
-            <Parameter Name="sublinkUpdate" Mode="In" Type="Int32" />
-            <Parameter Name="sublinkDelete" Mode="In" Type="Int32" />
-            <Parameter Name="linkCheck" Mode="In" Type="Int32" />
-            <Parameter Name="sublinkCheck" Mode="In" Type="Int32" />
-            <Parameter Name="sublinkPrint" Mode="In" Type="Int32" />
-            <Parameter Name="linkCreatedBy" Mode="In" Type="Int32" />
-            <Parameter Name="userlinkMapID" Mode="In" Type="Int32" />
+            <Parameter Name="sublinkView" Mode="In" Type="String" />
+            <Parameter Name="sublinkAdd" Mode="In" Type="String" />
+            <Parameter Name="sublinkUpdate" Mode="In" Type="String" />
+            <Parameter Name="sublinkDelete" Mode="In" Type="String" />
+            <Parameter Name="linkCheck" Mode="In" Type="String" />
+            <Parameter Name="sublinkCheck" Mode="In" Type="String" />
+            <Parameter Name="sublinkPrint" Mode="In" Type="String" />
+            <Parameter Name="linkCreatedBy" Mode="In" Type="String" />
+            <Parameter Name="userlinkMapID" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="U_spUpdateRole">
             <Parameter Name="roleid" Mode="In" Type="Int32" />
@@ -1791,26 +2026,9 @@ warning 6002: The table/view 'PropertyDB.dbo.master' does not have a primary key
             <Parameter Name="roleDescription" Mode="In" Type="String" />
             <Parameter Name="roleCreatedBy" Mode="In" Type="Int32" />
           </FunctionImport>
-          <EntitySet Name="Purchases" EntityType="PropertyModel.Purchase" />
-          <EntitySet Name="logErrors" EntityType="PropertyModel.logError" />
-          <EntitySet Name="PhoneTypes" EntityType="PropertyModel.PhoneType" />
-          <AssociationSet Name="FK_Users_City" Association="PropertyModel.FK_Users_City">
-            <End Role="City" EntitySet="Cities" />
-            <End Role="User" EntitySet="Users" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Users_Country" Association="PropertyModel.FK_Users_Country">
-            <End Role="Country" EntitySet="Countries" />
-            <End Role="User" EntitySet="Users" />
-          </AssociationSet>
-          <AssociationSet Name="FK__PhoneType__UserI__3F865F66" Association="PropertyModel.FK__PhoneType__UserI__3F865F66">
-            <End Role="User" EntitySet="Users" />
-            <End Role="PhoneType" EntitySet="PhoneTypes" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Users_State" Association="PropertyModel.FK_Users_State">
-            <End Role="State" EntitySet="States" />
-            <End Role="User" EntitySet="Users" />
-          </AssociationSet>
-          
+          <FunctionImport Name="USERCOUNT">
+            <Parameter Name="COUNT" Mode="InOut" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="U_sp_AdminLinkDisplay_Result">
           <Property Type="Int32" Name="roleID" Nullable="true" />
@@ -2171,87 +2389,6 @@ warning 6002: The table/view 'PropertyDB.dbo.master' does not have a primary key
           <Property Type="Int32" Name="sublinkDelete" Nullable="true" />
           <Property Type="Int32" Name="sublinkPrint" Nullable="true" />
         </ComplexType>
-        <EntityType Name="Purchase">
-          <Key>
-            <PropertyRef Name="purchaseTypeID" />
-          </Key>
-          <Property Name="purchaseTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="purchaseType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="purchaseDesc" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="purchaseImage" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="purchaseDelete" Type="Int32" />
-          <Property Name="purchaseCreatedBy" Type="Int32" />
-          <Property Name="purchaseCreatedOn" Type="DateTime" Precision="3" />
-          <Property Name="purchaseDeletedBy" Type="Int32" />
-          <Property Name="purchaseDeletedOn" Type="DateTime" Precision="3" />
-          <Property Name="purchaseUpdatedBy" Type="Int32" />
-          <Property Name="purchaseUpdatedOn" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-        </EntityType>
-        <EntityType Name="logError">
-          <Key>
-            <PropertyRef Name="logID" />
-          </Key>
-          <Property Name="logID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="logDate" Type="DateTime" Precision="3" />
-          <Property Name="logErrorMsg" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <EntityType Name="PhoneType">
-          <Key>
-            <PropertyRef Name="PhoneTypeID" />
-          </Key>
-          <Property Name="PhoneTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="PhoneTypeName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="UserID" Type="Int32" />
-          <NavigationProperty Name="User" Relationship="PropertyModel.FK__PhoneType__UserI__3F865F66" FromRole="PhoneType" ToRole="User" />
-        </EntityType>
-        <Association Name="FK_Users_City">
-          <End Type="PropertyModel.City" Role="City" Multiplicity="0..1" />
-          <End Type="PropertyModel.User" Role="User" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="City">
-              <PropertyRef Name="CityID" />
-            </Principal>
-            <Dependent Role="User">
-              <PropertyRef Name="cityID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Users_Country">
-          <End Type="PropertyModel.Country" Role="Country" Multiplicity="0..1" />
-          <End Type="PropertyModel.User" Role="User" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Country">
-              <PropertyRef Name="CountryID" />
-            </Principal>
-            <Dependent Role="User">
-              <PropertyRef Name="countryID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__PhoneType__UserI__3F865F66">
-          <End Type="PropertyModel.User" Role="User" Multiplicity="0..1" />
-          <End Type="PropertyModel.PhoneType" Role="PhoneType" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="userID" />
-            </Principal>
-            <Dependent Role="PhoneType">
-              <PropertyRef Name="UserID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Users_State">
-          <End Type="PropertyModel.State" Role="State" Multiplicity="0..1" />
-          <End Type="PropertyModel.User" Role="User" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="State">
-              <PropertyRef Name="StateID" />
-            </Principal>
-            <Dependent Role="User">
-              <PropertyRef Name="StateID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -2379,6 +2516,15 @@ warning 6002: The table/view 'PropertyDB.dbo.master' does not have a primary key
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="logErrors">
+            <EntityTypeMapping TypeName="PropertyModel.logError">
+              <MappingFragment StoreEntitySet="logError">
+                <ScalarProperty Name="logID" ColumnName="logID" />
+                <ScalarProperty Name="logDate" ColumnName="logDate" />
+                <ScalarProperty Name="logErrorMsg" ColumnName="logErrorMsg" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Mails">
             <EntityTypeMapping TypeName="PropertyModel.Mail">
               <MappingFragment StoreEntitySet="Mail">
@@ -2465,6 +2611,15 @@ warning 6002: The table/view 'PropertyDB.dbo.master' does not have a primary key
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="PhoneTypes">
+            <EntityTypeMapping TypeName="PropertyModel.PhoneType">
+              <MappingFragment StoreEntitySet="PhoneType">
+                <ScalarProperty Name="PhoneTypeID" ColumnName="PhoneTypeID" />
+                <ScalarProperty Name="PhoneTypeName" ColumnName="PhoneTypeName" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Properties">
             <EntityTypeMapping TypeName="PropertyModel.Property">
               <MappingFragment StoreEntitySet="Property">
@@ -2507,6 +2662,23 @@ warning 6002: The table/view 'PropertyDB.dbo.master' does not have a primary key
                 <ScalarProperty Name="propertyTypeCreatedOn" ColumnName="propertyTypeCreatedOn" />
                 <ScalarProperty Name="propertyTypeUpdatedBy" ColumnName="propertyTypeUpdatedBy" />
                 <ScalarProperty Name="propertyTypeUpdatedOn" ColumnName="propertyTypeUpdatedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Purchases">
+            <EntityTypeMapping TypeName="PropertyModel.Purchase">
+              <MappingFragment StoreEntitySet="Purchase">
+                <ScalarProperty Name="purchaseTypeID" ColumnName="purchaseTypeID" />
+                <ScalarProperty Name="purchaseType" ColumnName="purchaseType" />
+                <ScalarProperty Name="purchaseDesc" ColumnName="purchaseDesc" />
+                <ScalarProperty Name="purchaseImage" ColumnName="purchaseImage" />
+                <ScalarProperty Name="purchaseDelete" ColumnName="purchaseDelete" />
+                <ScalarProperty Name="purchaseCreatedBy" ColumnName="purchaseCreatedBy" />
+                <ScalarProperty Name="purchaseCreatedOn" ColumnName="purchaseCreatedOn" />
+                <ScalarProperty Name="purchaseDeletedBy" ColumnName="purchaseDeletedBy" />
+                <ScalarProperty Name="purchaseDeletedOn" ColumnName="purchaseDeletedOn" />
+                <ScalarProperty Name="purchaseUpdatedBy" ColumnName="purchaseUpdatedBy" />
+                <ScalarProperty Name="purchaseUpdatedOn" ColumnName="purchaseUpdatedOn" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2629,6 +2801,36 @@ warning 6002: The table/view 'PropertyDB.dbo.master' does not have a primary key
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="abcs">
+            <EntityTypeMapping TypeName="PropertyModel.abc">
+              <MappingFragment StoreEntitySet="abc">
+                <ScalarProperty Name="propertyID" ColumnName="propertyID" />
+                <ScalarProperty Name="propertyTypeID" ColumnName="propertyTypeID" />
+                <ScalarProperty Name="propertyDesc" ColumnName="propertyDesc" />
+                <ScalarProperty Name="purchaseType" ColumnName="purchaseType" />
+                <ScalarProperty Name="propertyPrice" ColumnName="propertyPrice" />
+                <ScalarProperty Name="bedroom" ColumnName="bedroom" />
+                <ScalarProperty Name="propertyArea" ColumnName="propertyArea" />
+                <ScalarProperty Name="countryID" ColumnName="countryID" />
+                <ScalarProperty Name="stateID" ColumnName="stateID" />
+                <ScalarProperty Name="cityID" ColumnName="cityID" />
+                <ScalarProperty Name="metro" ColumnName="metro" />
+                <ScalarProperty Name="propertyAddress" ColumnName="propertyAddress" />
+                <ScalarProperty Name="propertyLocality" ColumnName="propertyLocality" />
+                <ScalarProperty Name="pin" ColumnName="pin" />
+                <ScalarProperty Name="propertyAge" ColumnName="propertyAge" />
+                <ScalarProperty Name="propertyTenure" ColumnName="propertyTenure" />
+                <ScalarProperty Name="propertyImage" ColumnName="propertyImage" />
+                <ScalarProperty Name="propertyDelete" ColumnName="propertyDelete" />
+                <ScalarProperty Name="propertyDeletedon" ColumnName="propertyDeletedon" />
+                <ScalarProperty Name="propertyCreatedby" ColumnName="propertyCreatedby" />
+                <ScalarProperty Name="propertyCreatedon" ColumnName="propertyCreatedon" />
+                <ScalarProperty Name="propertyDeletedby" ColumnName="propertyDeletedby" />
+                <ScalarProperty Name="propertyUpdatedby" ColumnName="propertyUpdatedby" />
+                <ScalarProperty Name="propertyUpdatedon" ColumnName="propertyUpdatedon" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="masters">
             <EntityTypeMapping TypeName="PropertyModel.master">
               <MappingFragment StoreEntitySet="master">
@@ -2661,6 +2863,8 @@ warning 6002: The table/view 'PropertyDB.dbo.master' does not have a primary key
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="CHKUSER" FunctionName="PropertyModel.Store.CHKUSER" />
+          <FunctionImportMapping FunctionImportName="GETPASSOWORD" FunctionName="PropertyModel.Store.GETPASSOWORD" />
           <FunctionImportMapping FunctionImportName="U_sp_ActiveUser" FunctionName="PropertyModel.Store.U_sp_ActiveUser" />
           <FunctionImportMapping FunctionImportName="U_sp_AdminLinkDisplay" FunctionName="PropertyModel.Store.U_sp_AdminLinkDisplay">
             <ResultMapping>
@@ -3191,11 +3395,13 @@ warning 6002: The table/view 'PropertyDB.dbo.master' does not have a primary key
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="U_sp_UpdateAllUserRoleLinkMap" FunctionName="PropertyModel.Store.U_sp_UpdateAllUserRoleLinkMap" />
           <FunctionImportMapping FunctionImportName="U_sp_updateLink" FunctionName="PropertyModel.Store.U_sp_updateLink" />
           <FunctionImportMapping FunctionImportName="U_sp_UpdateRole" FunctionName="PropertyModel.Store.U_sp_UpdateRole" />
           <FunctionImportMapping FunctionImportName="U_sp_UpdateRoleLinkMap" FunctionName="PropertyModel.Store.U_sp_UpdateRoleLinkMap" />
           <FunctionImportMapping FunctionImportName="U_sp_UpdateRoleLinkMapDropDown" FunctionName="PropertyModel.Store.U_sp_UpdateRoleLinkMapDropDown" />
           <FunctionImportMapping FunctionImportName="U_sp_UpdateSubLink" FunctionName="PropertyModel.Store.U_sp_UpdateSubLink" />
+          <FunctionImportMapping FunctionImportName="U_sp_UpdateUserRoleLinkMap" FunctionName="PropertyModel.Store.U_sp_UpdateUserRoleLinkMap" />
           <FunctionImportMapping FunctionImportName="U_spUpdateRole" FunctionName="PropertyModel.Store.U_spUpdateRole" />
           <FunctionImportMapping FunctionImportName="UM_sp_GetSublinkPermissions" FunctionName="PropertyModel.Store.UM_sp_GetSublinkPermissions">
             <ResultMapping>
@@ -3209,42 +3415,7 @@ warning 6002: The table/view 'PropertyDB.dbo.master' does not have a primary key
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="UM_sp_roleCreate" FunctionName="PropertyModel.Store.UM_sp_roleCreate" />
-          <EntitySetMapping Name="Purchases">
-            <EntityTypeMapping TypeName="PropertyModel.Purchase">
-              <MappingFragment StoreEntitySet="Purchase">
-                <ScalarProperty Name="purchaseUpdatedOn" ColumnName="purchaseUpdatedOn" />
-                <ScalarProperty Name="purchaseUpdatedBy" ColumnName="purchaseUpdatedBy" />
-                <ScalarProperty Name="purchaseDeletedOn" ColumnName="purchaseDeletedOn" />
-                <ScalarProperty Name="purchaseDeletedBy" ColumnName="purchaseDeletedBy" />
-                <ScalarProperty Name="purchaseCreatedOn" ColumnName="purchaseCreatedOn" />
-                <ScalarProperty Name="purchaseCreatedBy" ColumnName="purchaseCreatedBy" />
-                <ScalarProperty Name="purchaseDelete" ColumnName="purchaseDelete" />
-                <ScalarProperty Name="purchaseImage" ColumnName="purchaseImage" />
-                <ScalarProperty Name="purchaseDesc" ColumnName="purchaseDesc" />
-                <ScalarProperty Name="purchaseType" ColumnName="purchaseType" />
-                <ScalarProperty Name="purchaseTypeID" ColumnName="purchaseTypeID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="logErrors">
-            <EntityTypeMapping TypeName="PropertyModel.logError">
-              <MappingFragment StoreEntitySet="logError">
-                <ScalarProperty Name="logErrorMsg" ColumnName="logErrorMsg" />
-                <ScalarProperty Name="logDate" ColumnName="logDate" />
-                <ScalarProperty Name="logID" ColumnName="logID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="PhoneTypes">
-            <EntityTypeMapping TypeName="PropertyModel.PhoneType">
-              <MappingFragment StoreEntitySet="PhoneType">
-                <ScalarProperty Name="UserID" ColumnName="UserID" />
-                <ScalarProperty Name="PhoneTypeName" ColumnName="PhoneTypeName" />
-                <ScalarProperty Name="PhoneTypeID" ColumnName="PhoneTypeID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-       
+          <FunctionImportMapping FunctionImportName="USERCOUNT" FunctionName="PropertyModel.Store.USERCOUNT" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

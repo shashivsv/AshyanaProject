@@ -12,7 +12,7 @@ namespace Ashyana.UI.Web.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Property
+    public partial class abc
     {
         public int propertyID { get; set; }
         public Nullable<int> propertyTypeID { get; set; }

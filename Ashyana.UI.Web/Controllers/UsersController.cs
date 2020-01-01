@@ -13,7 +13,6 @@ using PagedList;
 using PagedList.Mvc;
 using Ashyana.Common;
 using Ashyana.UI.Web.Repository;
-
 using Microsoft.Practices.Unity;
 using Ashyana.Business;
 using System.Data;

@@ -122,6 +122,15 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="logErrors">
+      <EntityTypeMapping TypeName="PropertyModel.logError">
+        <MappingFragment StoreEntitySet="logError">
+          <ScalarProperty Name="logID" ColumnName="logID" />
+          <ScalarProperty Name="logDate" ColumnName="logDate" />
+          <ScalarProperty Name="logErrorMsg" ColumnName="logErrorMsg" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="Mails">
       <EntityTypeMapping TypeName="PropertyModel.Mail">
         <MappingFragment StoreEntitySet="Mail">
@@ -208,6 +217,15 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="PhoneTypes">
+      <EntityTypeMapping TypeName="PropertyModel.PhoneType">
+        <MappingFragment StoreEntitySet="PhoneType">
+          <ScalarProperty Name="PhoneTypeID" ColumnName="PhoneTypeID" />
+          <ScalarProperty Name="PhoneTypeName" ColumnName="PhoneTypeName" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="Properties">
       <EntityTypeMapping TypeName="PropertyModel.Property">
         <MappingFragment StoreEntitySet="Property">
@@ -250,6 +268,23 @@
           <ScalarProperty Name="propertyTypeCreatedOn" ColumnName="propertyTypeCreatedOn" />
           <ScalarProperty Name="propertyTypeUpdatedBy" ColumnName="propertyTypeUpdatedBy" />
           <ScalarProperty Name="propertyTypeUpdatedOn" ColumnName="propertyTypeUpdatedOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Purchases">
+      <EntityTypeMapping TypeName="PropertyModel.Purchase">
+        <MappingFragment StoreEntitySet="Purchase">
+          <ScalarProperty Name="purchaseTypeID" ColumnName="purchaseTypeID" />
+          <ScalarProperty Name="purchaseType" ColumnName="purchaseType" />
+          <ScalarProperty Name="purchaseDesc" ColumnName="purchaseDesc" />
+          <ScalarProperty Name="purchaseImage" ColumnName="purchaseImage" />
+          <ScalarProperty Name="purchaseDelete" ColumnName="purchaseDelete" />
+          <ScalarProperty Name="purchaseCreatedBy" ColumnName="purchaseCreatedBy" />
+          <ScalarProperty Name="purchaseCreatedOn" ColumnName="purchaseCreatedOn" />
+          <ScalarProperty Name="purchaseDeletedBy" ColumnName="purchaseDeletedBy" />
+          <ScalarProperty Name="purchaseDeletedOn" ColumnName="purchaseDeletedOn" />
+          <ScalarProperty Name="purchaseUpdatedBy" ColumnName="purchaseUpdatedBy" />
+          <ScalarProperty Name="purchaseUpdatedOn" ColumnName="purchaseUpdatedOn" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -372,6 +407,36 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="abcs">
+      <EntityTypeMapping TypeName="PropertyModel.abc">
+        <MappingFragment StoreEntitySet="abc">
+          <ScalarProperty Name="propertyID" ColumnName="propertyID" />
+          <ScalarProperty Name="propertyTypeID" ColumnName="propertyTypeID" />
+          <ScalarProperty Name="propertyDesc" ColumnName="propertyDesc" />
+          <ScalarProperty Name="purchaseType" ColumnName="purchaseType" />
+          <ScalarProperty Name="propertyPrice" ColumnName="propertyPrice" />
+          <ScalarProperty Name="bedroom" ColumnName="bedroom" />
+          <ScalarProperty Name="propertyArea" ColumnName="propertyArea" />
+          <ScalarProperty Name="countryID" ColumnName="countryID" />
+          <ScalarProperty Name="stateID" ColumnName="stateID" />
+          <ScalarProperty Name="cityID" ColumnName="cityID" />
+          <ScalarProperty Name="metro" ColumnName="metro" />
+          <ScalarProperty Name="propertyAddress" ColumnName="propertyAddress" />
+          <ScalarProperty Name="propertyLocality" ColumnName="propertyLocality" />
+          <ScalarProperty Name="pin" ColumnName="pin" />
+          <ScalarProperty Name="propertyAge" ColumnName="propertyAge" />
+          <ScalarProperty Name="propertyTenure" ColumnName="propertyTenure" />
+          <ScalarProperty Name="propertyImage" ColumnName="propertyImage" />
+          <ScalarProperty Name="propertyDelete" ColumnName="propertyDelete" />
+          <ScalarProperty Name="propertyDeletedon" ColumnName="propertyDeletedon" />
+          <ScalarProperty Name="propertyCreatedby" ColumnName="propertyCreatedby" />
+          <ScalarProperty Name="propertyCreatedon" ColumnName="propertyCreatedon" />
+          <ScalarProperty Name="propertyDeletedby" ColumnName="propertyDeletedby" />
+          <ScalarProperty Name="propertyUpdatedby" ColumnName="propertyUpdatedby" />
+          <ScalarProperty Name="propertyUpdatedon" ColumnName="propertyUpdatedon" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="masters">
       <EntityTypeMapping TypeName="PropertyModel.master">
         <MappingFragment StoreEntitySet="master">
@@ -404,6 +469,8 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="CHKUSER" FunctionName="PropertyModel.Store.CHKUSER" />
+    <FunctionImportMapping FunctionImportName="GETPASSOWORD" FunctionName="PropertyModel.Store.GETPASSOWORD" />
     <FunctionImportMapping FunctionImportName="U_sp_ActiveUser" FunctionName="PropertyModel.Store.U_sp_ActiveUser" />
     <FunctionImportMapping FunctionImportName="U_sp_AdminLinkDisplay" FunctionName="PropertyModel.Store.U_sp_AdminLinkDisplay">
       <ResultMapping>
@@ -934,11 +1001,13 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="U_sp_UpdateAllUserRoleLinkMap" FunctionName="PropertyModel.Store.U_sp_UpdateAllUserRoleLinkMap" />
     <FunctionImportMapping FunctionImportName="U_sp_updateLink" FunctionName="PropertyModel.Store.U_sp_updateLink" />
     <FunctionImportMapping FunctionImportName="U_sp_UpdateRole" FunctionName="PropertyModel.Store.U_sp_UpdateRole" />
     <FunctionImportMapping FunctionImportName="U_sp_UpdateRoleLinkMap" FunctionName="PropertyModel.Store.U_sp_UpdateRoleLinkMap" />
     <FunctionImportMapping FunctionImportName="U_sp_UpdateRoleLinkMapDropDown" FunctionName="PropertyModel.Store.U_sp_UpdateRoleLinkMapDropDown" />
     <FunctionImportMapping FunctionImportName="U_sp_UpdateSubLink" FunctionName="PropertyModel.Store.U_sp_UpdateSubLink" />
+    <FunctionImportMapping FunctionImportName="U_sp_UpdateUserRoleLinkMap" FunctionName="PropertyModel.Store.U_sp_UpdateUserRoleLinkMap" />
     <FunctionImportMapping FunctionImportName="U_spUpdateRole" FunctionName="PropertyModel.Store.U_spUpdateRole" />
     <FunctionImportMapping FunctionImportName="UM_sp_GetSublinkPermissions" FunctionName="PropertyModel.Store.UM_sp_GetSublinkPermissions">
       <ResultMapping>
@@ -952,40 +1021,6 @@
       </ResultMapping>
     </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="UM_sp_roleCreate" FunctionName="PropertyModel.Store.UM_sp_roleCreate" />
-    <EntitySetMapping Name="Purchases">
-      <EntityTypeMapping TypeName="PropertyModel.Purchase">
-        <MappingFragment StoreEntitySet="Purchase">
-          <ScalarProperty Name="purchaseUpdatedOn" ColumnName="purchaseUpdatedOn" />
-          <ScalarProperty Name="purchaseUpdatedBy" ColumnName="purchaseUpdatedBy" />
-          <ScalarProperty Name="purchaseDeletedOn" ColumnName="purchaseDeletedOn" />
-          <ScalarProperty Name="purchaseDeletedBy" ColumnName="purchaseDeletedBy" />
-          <ScalarProperty Name="purchaseCreatedOn" ColumnName="purchaseCreatedOn" />
-          <ScalarProperty Name="purchaseCreatedBy" ColumnName="purchaseCreatedBy" />
-          <ScalarProperty Name="purchaseDelete" ColumnName="purchaseDelete" />
-          <ScalarProperty Name="purchaseImage" ColumnName="purchaseImage" />
-          <ScalarProperty Name="purchaseDesc" ColumnName="purchaseDesc" />
-          <ScalarProperty Name="purchaseType" ColumnName="purchaseType" />
-          <ScalarProperty Name="purchaseTypeID" ColumnName="purchaseTypeID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="logErrors">
-      <EntityTypeMapping TypeName="PropertyModel.logError">
-        <MappingFragment StoreEntitySet="logError">
-          <ScalarProperty Name="logErrorMsg" ColumnName="logErrorMsg" />
-          <ScalarProperty Name="logDate" ColumnName="logDate" />
-          <ScalarProperty Name="logID" ColumnName="logID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="PhoneTypes">
-      <EntityTypeMapping TypeName="PropertyModel.PhoneType">
-        <MappingFragment StoreEntitySet="PhoneType">
-          <ScalarProperty Name="UserID" ColumnName="UserID" />
-          <ScalarProperty Name="PhoneTypeName" ColumnName="PhoneTypeName" />
-          <ScalarProperty Name="PhoneTypeID" ColumnName="PhoneTypeID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="USERCOUNT" FunctionName="PropertyModel.Store.USERCOUNT" />
   </EntityContainerMapping>
 </Mapping>

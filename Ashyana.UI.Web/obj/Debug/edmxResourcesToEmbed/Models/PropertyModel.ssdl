@@ -1,5 +1,37 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="PropertyModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'PropertyDB.dbo.abc' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="abc">
+    <Key>
+      <PropertyRef Name="propertyID" />
+      <PropertyRef Name="propertyDelete" />
+    </Key>
+    <Property Name="propertyID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="propertyTypeID" Type="int" />
+    <Property Name="propertyDesc" Type="nvarchar(max)" />
+    <Property Name="purchaseType" Type="nvarchar" MaxLength="50" />
+    <Property Name="propertyPrice" Type="numeric" Precision="18" Scale="0" />
+    <Property Name="bedroom" Type="int" />
+    <Property Name="propertyArea" Type="nvarchar" MaxLength="50" />
+    <Property Name="countryID" Type="int" />
+    <Property Name="stateID" Type="int" />
+    <Property Name="cityID" Type="int" />
+    <Property Name="metro" Type="nvarchar" MaxLength="100" />
+    <Property Name="propertyAddress" Type="nvarchar" MaxLength="100" />
+    <Property Name="propertyLocality" Type="nvarchar" MaxLength="50" />
+    <Property Name="pin" Type="int" />
+    <Property Name="propertyAge" Type="int" />
+    <Property Name="propertyTenure" Type="numeric" Precision="10" Scale="2" />
+    <Property Name="propertyImage" Type="nvarchar" MaxLength="500" />
+    <Property Name="propertyDelete" Type="int" Nullable="false" />
+    <Property Name="propertyDeletedon" Type="datetime" />
+    <Property Name="propertyCreatedby" Type="int" />
+    <Property Name="propertyCreatedon" Type="datetime" />
+    <Property Name="propertyDeletedby" Type="int" />
+    <Property Name="propertyUpdatedby" Type="int" />
+    <Property Name="propertyUpdatedon" Type="datetime" />
+  </EntityType>
   <EntityType Name="Agent">
     <Key>
       <PropertyRef Name="agentID" />
@@ -470,6 +502,15 @@ warning 6002: The table/view 'PropertyDB.dbo.master' does not have a primary key
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Function Name="CHKUSER" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="USERNAME" Type="varchar" Mode="In" />
+    <Parameter Name="PASSWORD" Type="varchar" Mode="In" />
+    <Parameter Name="RESULT" Type="varchar" Mode="InOut" />
+  </Function>
+  <Function Name="GETPASSOWORD" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="USERNAME" Type="varchar" Mode="In" />
+    <Parameter Name="PASSWORD" Type="varchar" Mode="InOut" />
+  </Function>
   <Function Name="Split" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="List" Type="nvarchar(max)" Mode="In" />
     <Parameter Name="SplitOn" Type="nvarchar" Mode="In" />
@@ -820,6 +861,17 @@ warning 6002: The table/view 'PropertyDB.dbo.master' does not have a primary key
     <Parameter Name="LinkID" Type="int" Mode="In" />
     <Parameter Name="RoleID" Type="int" Mode="In" />
   </Function>
+  <Function Name="U_sp_UpdateAllUserRoleLinkMap" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="sublinkView" Type="varchar" Mode="In" />
+    <Parameter Name="sublinkAdd" Type="varchar" Mode="In" />
+    <Parameter Name="sublinkUpdate" Type="varchar" Mode="In" />
+    <Parameter Name="sublinkDelete" Type="varchar" Mode="In" />
+    <Parameter Name="linkCheck" Type="varchar" Mode="In" />
+    <Parameter Name="sublinkCheck" Type="varchar" Mode="In" />
+    <Parameter Name="sublinkPrint" Type="varchar" Mode="In" />
+    <Parameter Name="linkCreatedBy" Type="varchar" Mode="In" />
+    <Parameter Name="userlinkMapID" Type="varchar" Mode="In" />
+  </Function>
   <Function Name="U_sp_updateLink" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="linkID" Type="int" Mode="In" />
     <Parameter Name="linkName" Type="varchar" Mode="In" />
@@ -882,6 +934,9 @@ warning 6002: The table/view 'PropertyDB.dbo.master' does not have a primary key
     <Parameter Name="roleDescription" Type="nvarchar" Mode="In" />
     <Parameter Name="roleCreatedBy" Type="int" Mode="In" />
   </Function>
+  <Function Name="USERCOUNT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="COUNT" Type="int" Mode="InOut" />
+  </Function>
   <EntityContainer Name="PropertyModelStoreContainer">
     <EntitySet Name="Agent" EntityType="Self.Agent" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Building" EntityType="Self.Building" Schema="dbo" store:Type="Tables" />
@@ -907,6 +962,34 @@ warning 6002: The table/view 'PropertyDB.dbo.master' does not have a primary key
     <EntitySet Name="SubLink" EntityType="Self.SubLink" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="SubMenu" EntityType="Self.SubMenu" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="abc" EntityType="Self.abc" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [abc].[propertyID] AS [propertyID], 
+    [abc].[propertyTypeID] AS [propertyTypeID], 
+    [abc].[propertyDesc] AS [propertyDesc], 
+    [abc].[purchaseType] AS [purchaseType], 
+    [abc].[propertyPrice] AS [propertyPrice], 
+    [abc].[bedroom] AS [bedroom], 
+    [abc].[propertyArea] AS [propertyArea], 
+    [abc].[countryID] AS [countryID], 
+    [abc].[stateID] AS [stateID], 
+    [abc].[cityID] AS [cityID], 
+    [abc].[metro] AS [metro], 
+    [abc].[propertyAddress] AS [propertyAddress], 
+    [abc].[propertyLocality] AS [propertyLocality], 
+    [abc].[pin] AS [pin], 
+    [abc].[propertyAge] AS [propertyAge], 
+    [abc].[propertyTenure] AS [propertyTenure], 
+    [abc].[propertyImage] AS [propertyImage], 
+    [abc].[propertyDelete] AS [propertyDelete], 
+    [abc].[propertyDeletedon] AS [propertyDeletedon], 
+    [abc].[propertyCreatedby] AS [propertyCreatedby], 
+    [abc].[propertyCreatedon] AS [propertyCreatedon], 
+    [abc].[propertyDeletedby] AS [propertyDeletedby], 
+    [abc].[propertyUpdatedby] AS [propertyUpdatedby], 
+    [abc].[propertyUpdatedon] AS [propertyUpdatedon]
+    FROM [dbo].[abc] AS [abc]</DefiningQuery>
+    </EntitySet>
     <EntitySet Name="master" EntityType="Self.master" store:Type="Tables" store:Schema="dbo">
       <DefiningQuery>SELECT 
     [master].[userID] AS [userID], 
